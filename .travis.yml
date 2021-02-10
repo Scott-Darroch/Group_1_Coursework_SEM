@@ -6,8 +6,8 @@ services:
   - docker
 
 after_success:
-  - docker network create --driver bridge GW
+  - docker network create --driver bridge gw
   - docker pull mongo
-  - docker run -d --name mongo-dbserver --network GW mongo
-  - docker build -t GW .
-  - docker run --network GW GW
+  - docker run -d --name mongo-dbserver --network gw mongo
+  - docker build -t gw .
+  - docker run --network gw gw
