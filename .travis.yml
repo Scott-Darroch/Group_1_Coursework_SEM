@@ -11,3 +11,4 @@ after_success:
   - docker run -d --name mongo-dbserver --network gw mongo
   - docker build -t gw .
   - docker run --network gw gw
+  - docker-compose up --abort-on-container-exit
