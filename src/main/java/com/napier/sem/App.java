@@ -12,11 +12,13 @@ public class App
 
         // Connect to database
         a.connect();
-        // Extract employee salary information
+        // Extract country population information
         ArrayList<Country> countries = a.getAllPopulations();
-        //Print employee salary information
+        //Send message to user explaining what the following report shows
+        System.out.println("A report showing all countries in the world in order of largest to smallest population.");
+        //Print country population information
         a.printPopulations(countries);
-        // Test the size of the returned data - should be 5
+        // Test the size of the returned data - should be 239
         System.out.println(countries.size());
         // Disconnect from database
         a.disconnect();
@@ -99,19 +101,22 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.code, country.name, country.population "
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, country.capital "
                             + "FROM country "
                             + "ORDER BY country.population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
+            // Extract country information
             ArrayList<Country> countries = new ArrayList<Country>();
             while (rset.next())
             {
                 Country coun = new Country();
                 coun.code = rset.getString("country.code");
                 coun.name = rset.getString("country.name");
+                coun.continent = rset.getString("country.continent");
+                coun.region = rset.getString("country.region");
                 coun.population = rset.getInt("country.population");
+                coun.capital = rset.getString("country.capital");
                 countries.add(coun);
             }
             return countries;
@@ -131,13 +136,13 @@ public class App
     public void printPopulations(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-5s %-48s %-20s", "Code", "Country Name", "Population"));
-        // Loop over all employees in the list
+        System.out.println(String.format("%-5s %-48s %-20s %-15s %-15s %-15s", "Code", "Country Name", "Continent", "Region", "Population", "Capitol"));
+        // Loop over all countries in the list
         for (Country coun : countries)
         {
             String emp_string =
-                    String.format("%-5s %-48s %-20s",
-                            coun.code, coun.name, coun.population);
+                    String.format("%-5s %-48s %-20s %-30s %-15s %-15s",
+                            coun.code, coun.name, coun.continent, coun.region, coun.population, coun.capital);
             System.out.println(emp_string);
         }
     }
