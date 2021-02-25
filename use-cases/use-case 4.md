@@ -4,7 +4,8 @@
 
 ### Goal in Context
 
-As an *economics professor* I require a report showing the top 'N' populated countries in the world so that I can show this versus their GDP in my lectures next semester.### Scope
+As an *economics professor* I require a report showing the top 'N' populated countries in the world so that I can show this versus their GDP in my lectures next semester.
+### Scope
 
 Company.
 
