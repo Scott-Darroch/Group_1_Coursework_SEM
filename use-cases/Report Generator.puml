@@ -58,4 +58,16 @@ rectangle "Report Generator" {
     UC8 ..> UCb : include
     UC8 - Database
 
+    usecase UC9 as "All the cities in a region organised
+    by largest population to smallest."
+    MC - UC9
+    UC9 ..> UCb : include
+    UC9 - Database
+
+    usecase UC10 as "All the cities in a country organised
+    by largest population to smallest."
+    MC - UC10
+    UC10 ..> UCb : include
+    UC10 - Database
+
 @enduml
