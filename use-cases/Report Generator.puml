@@ -2,6 +2,7 @@
 
 actor MC as "Marketing Consultant"
 actor LS as "Location Scout"
+actor EP as "Economics Professor"
 
 rectangle Database
 
@@ -26,5 +27,11 @@ rectangle "Report Generator" {
     LS - UC3
     UC3 ..> UCa : include
     UC3 - Database
+
+    usecase UC4 as "The top N populated countries in the world
+    where N is provided by the user."
+    EP - UC4
+    UC4 ..> UCa : include
+    UC4 - Database
 
 @enduml
