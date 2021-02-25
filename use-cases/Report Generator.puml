@@ -1,6 +1,7 @@
 @startuml
 
 actor MC as "Marketing Consultant"
+actor LS as "Location Scout"
 
 rectangle Database
 
@@ -20,6 +21,10 @@ rectangle "Report Generator" {
     UC2 ..> UCa : include
     UC2 - Database
 
-}
+    usecase UC3 as "Get population by region
+    in order of largest to smallest."
+    LS - UC3
+    UC3 ..> UCa : include
+    UC3 - Database
 
 @enduml
