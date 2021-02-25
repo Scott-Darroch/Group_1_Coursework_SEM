@@ -136,7 +136,7 @@ public class App
         for (Country coun : countries)
         {
             String emp_string =
-                    String.format("%-5s %-50s %-20s",
+                    String.format("%-5s %-48s %-20s",
                             coun.code, coun.name, coun.population);
             System.out.println(emp_string);
         }
