@@ -70,4 +70,20 @@ rectangle "Report Generator" {
     UC10 ..> UCb : include
     UC10 - Database
 
+    usecase UC11 as "All the cities in a district organised
+    by largest population to smallest."
+    MC - UC11
+    UC11 ..> UCb : include
+    UC11 - Database
+
+    usecase UC12 as "The top N populated cities in the world."
+    MC - UC12
+    UC12 ..> UCb : include
+    UC12 - Database
+
+    usecase UC13 as "The top N populated cities in a continent."
+    MC - UC13
+    UC13 ..> UCb : include
+    UC13 - Database
+
 @enduml
