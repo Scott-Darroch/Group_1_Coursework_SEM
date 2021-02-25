@@ -1,10 +1,10 @@
-# USE CASE: 13 The top N populated cities in a continent.
+# USE CASE: 14 The top N populated cities in a region.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As a marketing consultant I require a report showing the top "N" populated cities in a continent. Where the continent and "N" are decided by the user to show the population spread of the continent.
+As a marketing consultant I require a report showing the top "N" populated cities in a region. Where the region and "N" are decided by the user to show the population spread of the region.
 
 ### Scope
 
@@ -36,7 +36,7 @@ A request for country population is submitted.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Marketing consultant submits request for the top N populated cities in a continent.
+1. Marketing consultant submits request for the top N populated cities in a region.
 2. A report is returned.
 3. Marketing consultant can analyse the data.
 
