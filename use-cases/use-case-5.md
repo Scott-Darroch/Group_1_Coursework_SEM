@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a marketing consultant I require a report showing the top "N" populated countries in a continent. Where the continent and "N" are decided by the user to show the population spread of the continent.
+As a *marketing consultant* I require a report showing the top "N" populated countries in a continent. Where the continent and "N" are decided by the user to show the population spread of the continent.
 
 ### Scope
 

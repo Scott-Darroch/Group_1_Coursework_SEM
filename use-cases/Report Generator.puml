@@ -7,6 +7,7 @@ actor EP as "Economics Professor"
 rectangle Database
 
 rectangle "Report Generator" {
+
     usecase UC1 as "Get population by country
     in order of largest to smallest."
 
@@ -33,5 +34,23 @@ rectangle "Report Generator" {
     EP - UC4
     UC4 ..> UCa : include
     UC4 - Database
+
+    usecase UC5 as "The top N populated countries in a continent.
+    Where the continent and N are provided by the user."
+    MC - UC5
+    UC5 ..> UCa : include
+    UC5 - Database
+
+    usecase UC6 as "The top N populated countries in a region.
+    Where the region and N are provided by the user."
+    MC - UC6
+    UC6 ..> UCa : include
+    UC6 - Database
+
+    usecase UC7 as "All the cities in the world organised
+    by largest population to smallest."
+    MC - UC7
+    UC7 ..> UCa : include
+    UC7 - Database
 
 @enduml
