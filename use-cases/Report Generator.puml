@@ -1,0 +1,25 @@
+@startuml
+
+actor MC as "Marketing Consultant"
+
+rectangle Database
+
+rectangle "Report Generator" {
+    usecase UC1 as "Get population by country
+    in order of largest to smallest."
+
+    usecase UCa as "Print populations"
+
+    MC - UC1
+    UC1 ..> UCa : include
+    UC1 - Database
+
+    usecase UC2 as "Get population by continent
+    in order of largest to smallest."
+    MC - UC2
+    UC2 ..> UCa : include
+    UC2 - Database
+
+}
+
+@enduml
