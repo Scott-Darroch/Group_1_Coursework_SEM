@@ -1,10 +1,10 @@
-# USE CASE: 1 population of the world
+# USE CASE: 1 All the countries in the world organised by largest population to smallest.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As a *marketing consultant* I require a report showing the population of the world.
+As a *marketing consultant* in order to prioritise demographics I require a report of all the countries in the world organised by largest to smallest population.
 ### Scope
 
 Company.
