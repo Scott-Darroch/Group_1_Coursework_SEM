@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As an *economics professor* I require a report showing the top 'N' populated countries in the world so that I can show this versus their GDP in my lectures next semester.
+As an *marketing consultant* I require a report showing the top 'N' populated countries in the world so that I can show this versus their GDP in my marketing analysis.
 ### Scope
 
 Company.
@@ -27,7 +27,7 @@ No report is produced.
 
 ### Primary Actor
 
-Economics professor.
+Marketing consultant.
 
 ### Trigger
 
@@ -35,9 +35,9 @@ A request for country population is submitted.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Economics professor submits request for country population.
+1. Marketing consultant submits request for country population.
 2. A report is returned.
-3. Economics professor can analyse the data.
+3. Marketing consultant can analyse the data.
 
 ## EXTENSIONS
 

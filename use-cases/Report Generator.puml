@@ -1,8 +1,6 @@
 @startuml
 
 actor MC as "Marketing Consultant"
-actor LS as "Location Scout"
-actor EP as "Economics Professor"
 
 rectangle Database
 
@@ -12,6 +10,7 @@ rectangle "Report Generator" {
     in order of largest to smallest."
 
     usecase UCa as "Print populations"
+    usecase UCb as "Print cities"
 
     MC - UC1
     UC1 ..> UCa : include
@@ -25,13 +24,13 @@ rectangle "Report Generator" {
 
     usecase UC3 as "Get population by region
     in order of largest to smallest."
-    LS - UC3
+    MC - UC3
     UC3 ..> UCa : include
     UC3 - Database
 
     usecase UC4 as "The top N populated countries in the world
     where N is provided by the user."
-    EP - UC4
+    MC - UC4
     UC4 ..> UCa : include
     UC4 - Database
 
@@ -50,7 +49,13 @@ rectangle "Report Generator" {
     usecase UC7 as "All the cities in the world organised
     by largest population to smallest."
     MC - UC7
-    UC7 ..> UCa : include
+    UC7 ..> UCb : include
     UC7 - Database
+
+    usecase UC8 as "All the cities in a continent organised
+    by largest population to smallest."
+    MC - UC8
+    UC8 ..> UCb : include
+    UC8 - Database
 
 @enduml

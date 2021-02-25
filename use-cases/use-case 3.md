@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As a *location scout* for a movie production company I would like a report of all the countries in a region organised by largest to smallest population to help find the perfect location for shooting of my current project.
+As a *marketing consultant* for a movie production company I would like a report of all the countries in a region organised by largest to smallest population to help find the perfect location for shooting of my current project.
 ### Scope
 
 Company.
@@ -27,7 +27,7 @@ No report is produced.
 
 ### Primary Actor
 
-Location Scout.
+Marketing consultant.
 
 ### Trigger
 
@@ -35,9 +35,9 @@ A request for country population is submitted.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Location scout submits request for country population.
+1. Marketing consultant submits request for country population.
 2. A report is returned.
-3. Location scout can analyse the data.
+3. Marketing consultant can analyse the data.
 
 ## EXTENSIONS
 
