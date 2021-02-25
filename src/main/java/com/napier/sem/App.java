@@ -131,12 +131,12 @@ public class App
     public void printPopulations(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-5s %-48s %-15s", "Code", "Country Name", "Population"));
+        System.out.println(String.format("%-5s %-48s %-20s", "Code", "Country Name", "Population"));
         // Loop over all employees in the list
         for (Country coun : countries)
         {
             String emp_string =
-                    String.format("%-5s %-48s %-15s",
+                    String.format("%-5s %-50s %-20s",
                             coun.code, coun.name, coun.population);
             System.out.println(emp_string);
         }
