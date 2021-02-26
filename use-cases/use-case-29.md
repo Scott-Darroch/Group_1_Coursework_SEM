@@ -1,11 +1,9 @@
-# USE CASE: 10 All the cities in a country organised by largest population to smallest.
-
+# USE CASE: 29 The population of a country
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As a marketing consultant I require a report showing all the cities in a country decided by the user organised by largest population to smallest to show the population spread of the country.
-
+As a marketing consultant I require a report showing the population of the country for population research.
 ### Scope
 
 Country.
@@ -16,7 +14,7 @@ Primary task.
 
 ### Preconditions
 
-Database contains population data.
+Database contains country population data.
 
 ### Success End Condition
 
@@ -32,11 +30,11 @@ Marketing consultant
 
 ### Trigger
 
-A request for country population is submitted.
+A request for population of the country is made.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Marketing consultant submits request for all cities in a country organised by largest population to smallest.
+1. Marketing consultant submits request for population of the country
 2. A report is returned.
 3. Marketing consultant can analyse the data.
 

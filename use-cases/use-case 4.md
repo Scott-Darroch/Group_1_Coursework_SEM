@@ -7,7 +7,7 @@
 As an *marketing consultant* I require a report showing the top 'N' populated countries in the world so that I can show this versus their GDP in my marketing analysis.
 ### Scope
 
-Company.
+World.
 
 ### Level
 
@@ -16,6 +16,8 @@ Primary task.
 ### Preconditions
 
 Database contains population data.
+User provides suitable input.
+
 
 ### Success End Condition
 

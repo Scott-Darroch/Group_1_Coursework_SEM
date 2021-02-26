@@ -1,14 +1,12 @@
-# USE CASE: 9 All the cities in a region organised by largest population to smallest.
-
+# USE CASE: 27 The population of a continent
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As a marketing consultant I require a report showing all the cities in a region organised by largest population to smallest to show the population spread of the region.
-
+As a marketing consultant I require a report showing the population of the continent for population research.
 ### Scope
 
-Regional.
+Continent.
 
 ### Level
 
@@ -16,7 +14,7 @@ Primary task.
 
 ### Preconditions
 
-Database contains population data.
+Database contains continent population data.
 
 ### Success End Condition
 
@@ -32,11 +30,11 @@ Marketing consultant
 
 ### Trigger
 
-A request for country population is submitted.
+A request for population of the continent is made.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Marketing consultant submits request for all cities in a region organised by largest population to smallest.
+1. Marketing consultant submits request for population of the continent
 2. A report is returned.
 3. Marketing consultant can analyse the data.
 

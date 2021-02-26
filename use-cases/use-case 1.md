@@ -7,7 +7,7 @@
 As a *marketing consultant* in order to prioritise demographics I require a report of all the countries in the world organised by largest to smallest population.
 ### Scope
 
-Company.
+World.
 
 ### Level
 
@@ -49,4 +49,4 @@ None.
 
 ## SCHEDULE
 
-**DUE DATE**: Release 0.1-alpha-4
+**DUE DATE**: Release 1.0
