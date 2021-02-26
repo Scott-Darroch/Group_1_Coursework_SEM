@@ -29,7 +29,7 @@ public class App
         // Extract population information from a continent (Africa)
         countries = a.getPopulationContinent();
         // Output to user for clarity
-        System.out.println("A report showing the population of the countires in Africa in order of largest to smallest.");
+        System.out.println("A report showing the population of the countries in Africa in order of largest to smallest.");
         // printPopulations method can be reused here as it supplies the same output requirement as previous report
         a.printPopulations(countries);
         System.out.println("End of Reports.");
@@ -205,7 +205,7 @@ public class App
 
     /**
      * Gets all the current population information.
-     * @return A list of population for a continent (Africa), or null if there is an error.
+     * @return A list of country populations for a continent (Africa), or null if there is an error.
      */
     public ArrayList<Country> getPopulationContinent()
     {
