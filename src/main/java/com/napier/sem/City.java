@@ -5,6 +5,12 @@ package com.napier.sem;
  */
 public class City {
 
+
+    /**
+     * The city's ID
+     */
+    public int ID;
+
     /**
      * The city's name
      */

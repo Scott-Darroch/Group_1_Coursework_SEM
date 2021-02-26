@@ -107,8 +107,9 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.code, country.name, country.continent, country.region, country.population, country.capital "
-                            + "FROM country "
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
+                            + "FROM country, city "
+                            + "WHERE country.capital = city.ID "
                             + "ORDER BY country.population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -122,7 +123,7 @@ public class App
                 coun.continent = rset.getString("country.continent");
                 coun.region = rset.getString("country.region");
                 coun.population = rset.getInt("country.population");
-                coun.capital = rset.getString("country.capital");
+                coun.capital = rset.getString("city.name");
                 countries.add(coun);
             }
             return countries;
@@ -142,7 +143,7 @@ public class App
     public void printPopulations(ArrayList<Country> countries)
     {
         // Print header
-        System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Country Name", "Continent", "Region", "Population", "Capitol"));
+        System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Country Name", "Continent", "Region", "Population", "Capital"));
         // Loop over all countries in the list
         for (Country coun : countries)
         {
@@ -166,9 +167,9 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.code, country.name, country.continent, country.region, country.population, country.capital "
-                            + "FROM country "
-                            + "WHERE country.region = 'Caribbean' "
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
+                            + "FROM country, city "
+                            + "WHERE country.capital = city.ID AND country.region = 'Caribbean' "
                             + "ORDER BY country.population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -182,7 +183,7 @@ public class App
                 coun.continent = rset.getString("country.continent");
                 coun.region = rset.getString("country.region");
                 coun.population = rset.getInt("country.population");
-                coun.capital = rset.getString("country.capital");
+                coun.capital = rset.getString("city.name");
                 countries.add(coun);
             }
             return countries;
