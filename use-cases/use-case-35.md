@@ -6,7 +6,7 @@
 As a marketing consultant I require a report showing the number of people who speak Spanish from greatest number to smallest, including the percentage of the world population to help understand how widespread the language is.
 ### Scope
 
-Company.
+World.
 
 ### Level
 

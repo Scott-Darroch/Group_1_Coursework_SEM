@@ -8,7 +8,7 @@ As a marketing consultant I require a report showing all the cities in a country
 
 ### Scope
 
-Company.
+Country.
 
 ### Level
 

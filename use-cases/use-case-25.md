@@ -7,7 +7,7 @@ As a marketing consultant I require a report showing the population of people, p
 
 ### Scope
 
-Company.
+Country.
 
 ### Level
 

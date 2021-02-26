@@ -8,7 +8,7 @@ As a marketing consultant I require a report showing all the capital cities in a
 
 ### Scope
 
-Company.
+Continent.
 
 ### Level
 

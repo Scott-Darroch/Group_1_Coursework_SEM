@@ -8,11 +8,12 @@ As a marketing consultant I require a report showing the top "N" populated capit
 
 ### Scope
 
-Company.
+Region.
 
 ### Level
 
 Primary task.
+User provides suitable data 'N'.
 
 ### Preconditions
 

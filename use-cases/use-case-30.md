@@ -6,7 +6,7 @@
 As a marketing consultant I require a report showing the population of the district for population research.
 ### Scope
 
-Company.
+District.
 
 ### Level
 
