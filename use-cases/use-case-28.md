@@ -1,10 +1,9 @@
-# USE CASE: 1 All the countries in the world organised by largest population to smallest.
-
+# USE CASE: 28 The population of a region
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As a *marketing consultant* in order to prioritise demographics I require a report of all the countries in the world organised by largest to smallest population.
+As a marketing consultant I require a report showing the population of the region for population research.
 ### Scope
 
 Company.
@@ -15,7 +14,7 @@ Primary task.
 
 ### Preconditions
 
-Database contains population data. 
+Database contains region population data.
 
 ### Success End Condition
 
@@ -27,15 +26,15 @@ No report is produced.
 
 ### Primary Actor
 
-Marketing consultant.
+Marketing consultant
 
 ### Trigger
 
-A request for world population is submitted.
+A request for population of the region is made.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Marketing consultant submits request for world population.
+1. Marketing consultant submits request for population of the region
 2. A report is returned.
 3. Marketing consultant can analyse the data.
 
