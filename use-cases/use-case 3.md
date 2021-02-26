@@ -7,7 +7,7 @@
 As a *marketing consultant* for a movie production company I would like a report of all the countries in a region organised by largest to smallest population to help find the perfect location for shooting of my current project.
 ### Scope
 
-Company.
+Regional.
 
 ### Level
 

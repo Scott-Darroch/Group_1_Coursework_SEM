@@ -7,7 +7,7 @@
 As *marketing consultant* I require a report showing the countries in a continent in order of the largest to the smallest population in order to decide on the best product release location globally.
 ### Scope
 
-Company.
+Continent.
 
 ### Level
 

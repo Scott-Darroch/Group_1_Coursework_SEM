@@ -1,23 +1,23 @@
-# USE CASE: 6 The top N populated countries in a region. Where the region and N are provided by the user.
+# USE CASE: 22 The top N populated capital cities in a region.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As a marketing consultant I require a report showing the top "N" populated countries in a region. Where the region and "N" are decided by the user to show the population spread of the region.
+As a marketing consultant I require a report showing the top "N" populated capital cities in a region. Where the region and "N" is decided by the user to show the population spread of the region.
 
 ### Scope
 
-Country.
+Region.
 
 ### Level
 
 Primary task.
+User provides suitable data 'N'.
 
 ### Preconditions
 
 Database contains population data.
-User provides suitable data 'N'.
 
 ### Success End Condition
 
@@ -37,7 +37,7 @@ A request for country population is submitted.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Marketing consultant submits request for top N populated countries in a region.
+1. Marketing consultant submits request for the top N populated capital cities in a region.
 2. A report is returned.
 3. Marketing consultant can analyse the data.
 

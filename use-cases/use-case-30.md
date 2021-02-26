@@ -1,14 +1,12 @@
-# USE CASE: 9 All the cities in a region organised by largest population to smallest.
-
+# USE CASE: 30 The population of a district
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As a marketing consultant I require a report showing all the cities in a region organised by largest population to smallest to show the population spread of the region.
-
+As a marketing consultant I require a report showing the population of the district for population research.
 ### Scope
 
-Regional.
+District.
 
 ### Level
 
@@ -16,7 +14,7 @@ Primary task.
 
 ### Preconditions
 
-Database contains population data.
+Database contains district population data.
 
 ### Success End Condition
 
@@ -32,11 +30,11 @@ Marketing consultant
 
 ### Trigger
 
-A request for country population is submitted.
+A request for population of the district is made.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Marketing consultant submits request for all cities in a region organised by largest population to smallest.
+1. Marketing consultant submits request for population of the district
 2. A report is returned.
 3. Marketing consultant can analyse the data.
 

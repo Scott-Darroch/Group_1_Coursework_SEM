@@ -8,7 +8,7 @@ As a marketing consultant I require a report showing the top "N" populated citie
 
 ### Scope
 
-Company.
+Country.
 
 ### Level
 
@@ -17,6 +17,7 @@ Primary task.
 ### Preconditions
 
 Database contains population data.
+User provides suitable data 'N'.
 
 ### Success End Condition
 
