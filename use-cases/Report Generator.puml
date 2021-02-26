@@ -86,4 +86,48 @@ rectangle "Report Generator" {
     UC13 ..> UCb : include
     UC13 - Database
 
+    usecase UC14 as "The top N populated cities in a region."
+    MC - UC14
+    UC14 ..> UCb : include
+    UC14 - Database
+
+    usecase UC15 as "The top N populated cities in a country."
+    MC - UC15
+    UC15 ..> UCb : include
+    UC15 - Database
+
+    usecase UC16 as "The top N populated cities in a district."
+    MC - UC16
+    UC16 ..> UCb : include
+    UC16 - Database
+
+    usecase UC17 as "All the capital cities in the world organised
+    by largest population to smallest."
+    MC - UC17
+    UC17 ..> UCb : include
+    UC17 - Database
+
+    usecase UC18 as "All the capital cities in a continent organised
+    by largest population to smallest"
+    MC - UC18
+    UC18 ..> UCb : include
+    UC18 - Database
+
+    usecase UC19 as "All the capital cities in a region organised
+    by largest population to smallest."
+    MC - UC19
+    UC19 ..> UCb : include
+    UC19 - Database
+
+    usecase UC20 as "The top N populated capital cities in the world."
+    MC - UC20
+    UC20 ..> UCb : include
+    UC20 - Database
+
+    usecase UC21 as "The top N populated capital cities in a continent."
+    MC - UC21
+    UC21 ..> UCb : include
+    UC21 - Database
+
+
 @enduml
