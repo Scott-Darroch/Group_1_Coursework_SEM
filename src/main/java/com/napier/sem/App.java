@@ -37,7 +37,7 @@ public class App
         // Extract population information from a region (Caribbean)
         ArrayList<City> cities = a.getPopulationDistrict();
         // Output to user for clarity
-        System.out.println("Report 33?: A report showing the population of the district New South Wales");
+        System.out.println("Report 30: A report showing the population of the district New South Wales");
         a.printPopulation(cities);
         //
 
