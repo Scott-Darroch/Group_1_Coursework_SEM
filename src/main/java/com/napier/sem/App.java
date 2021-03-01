@@ -32,6 +32,9 @@ public class App
         System.out.println("A report showing the population of the countries in Africa in order of largest to smallest.");
         // printPopulations method can be reused here as it supplies the same output requirement as previous report
         a.printPopulations(countries);
+
+        a.getWorldPopulation();
+
         System.out.println("End of Reports.");
         // Disconnect from database
         a.disconnect();
@@ -241,6 +244,32 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
             return null;
+        }
+    }
+
+    public void getWorldPopulation()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.population) "
+                            + "FROM country ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next())
+            {
+                System.out.println(rset.getLong("SUM(country.population)"));
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
         }
     }
 
