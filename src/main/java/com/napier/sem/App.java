@@ -33,6 +33,7 @@ public class App
         // printPopulations method can be reused here as it supplies the same output requirement as previous report
         a.printPopulations(countries);
 
+        //getWorldPopulation method gets the world's population then prints it.
         a.getWorldPopulation();
 
         System.out.println("End of Reports.");
@@ -247,6 +248,9 @@ public class App
         }
     }
 
+    /**
+     * Gets the world's population and prints it.
+     */
     public void getWorldPopulation()
     {
         try
@@ -261,7 +265,8 @@ public class App
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next())
             {
-                System.out.println(rset.getLong("SUM(country.population)"));
+                System.out.println("The total population of the world is: " + rset.getLong("SUM(country.population)"));
+                //System.out.print(rset.getLong("SUM(country.population)"));
             }
 
         }
