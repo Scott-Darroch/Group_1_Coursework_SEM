@@ -254,7 +254,7 @@ public class App
     }
     /**
      * Gets all the current population information.
-     * @return A list of population for a region (Caribbean), or null if there is an error.
+     * @return A list of population for a district (New South Wales), or null if there is an error.
      */
     public ArrayList<City> getPopulationDistrict()
     {
