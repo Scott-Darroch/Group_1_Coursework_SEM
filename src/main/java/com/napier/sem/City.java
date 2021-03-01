@@ -29,6 +29,6 @@ public class City {
     /**
      * The city's population
      */
-    public String population;
+    public int population;
 
 }
