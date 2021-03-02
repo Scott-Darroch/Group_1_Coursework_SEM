@@ -31,4 +31,7 @@ public class City {
      */
     public int population;
 
+    public String toString() {
+        return String.format("%-5s %-48s %-20s %-30s %-15s", this.ID, this.name, this.country, this.district, this.population);
+    }
 }
