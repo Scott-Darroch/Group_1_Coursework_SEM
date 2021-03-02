@@ -2,8 +2,10 @@ package com.napier.sem;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
+/**
+ * Reports.
+ */
 public class App
 {
     public static void main(String[] args)
@@ -13,61 +15,96 @@ public class App
 
         // Connect to database
         a.connect();
-        // Extract country population information from world.sql
+
+
+        /**
+         * Report 1:
+         * Extract country population information from world.sql file, send message to user explaining what the report shows
+         * then print country population information.
+          */
         ArrayList<Country> countries = a.getAllCountries();
-        //Send message to user explaining what the report shows
         System.out.println("Report 1: A report showing all countries in the world in order of largest to smallest population.");
-        //Print country population information
         a.printCityReports(countries);
 
-        // Extract population information from a continent (Africa)
+
+        /**
+         * Report 2:
+         * Extract population information from a continent (Africa), send message to user explaining what the report shows
+         * then print the continent population information.
+         */
         countries = a.getPopulationContinent();
-        // Output to user for clarity
         System.out.println("Report 2: A report showing the population of the countries in Africa in order of largest to smallest.");
-        // printPopulations method can be reused here as it supplies the same output requirement as previous report
         a.printCityReports(countries);
 
-        // Extract population information from a region (Caribbean)
+
+        /**
+         * Report 3:
+         * Extract population information from a region (Caribbean), send message to user explaining what the report shows
+         * then print the region population information.
+         */
         countries = a.getPopulationRegion();
-        // Output to user for clarity
         System.out.println("Report 3: A report showing the population of the Caribbean in order of largest to smallest.");
-        // printCityReports method can be reused here as it supplies the same output requirement as previous report
         a.printCityReports(countries);
 
 
-        // Extract population data from a given District (Noord-Barbant)
-        // Output to user for clarity
+        /**
+         * Report 11:
+         * Extract population information from a given district (Noord-Barbant), send message to user explaining what the report shows
+         * then print the district population information.
+         */
         System.out.println("Report 11: The population of Cities in a given District, ordered from largest to smallest.");
-        //
         a.getCitiesInDistrictPopulation();
 
 
+        /**
+         * Report 26:
+         * Extract population information from the world, send message to user explaining what the report shows
+         * then print the world population information.
+         */
         System.out.println("Report 26: The population of the world.");
-        // getWorldPopulation method gets the world's population then prints it.
         a.getWorldPopulation();
 
+
+        /**
+         * Report 27:
+         * Extract population information from a given continent (Europe), send message to user explaining what the report shows
+         * then print the continent population information.
+         */
         System.out.println("Report 27: The total population of a continent (Europe).");
-        // Extract the population information from the continent Europe
         countries = a.getTotalPopulationContinent();
         a.printPopulationContinent(countries);
 
+
+        /**
+         * Report 29:
+         * Extract population information from a given country (Spain), send message to user explaining what the report shows
+         * then print the country population information.
+         */
         System.out.println("Report 29: The total population of a country (Spain).");
-        // getCountryPopulation method gets the population of a country then prints it.
         a.getCountryPopulation();
 
-        // Extract population information from a district (New South Wales)
+
+        /**
+         * Report 30:
+         * Extract population information from a given district (New South Wales), send message to user explaining what the report shows
+         * then print the district population information.
+         */
         ArrayList<City> cities = a.getPopulationDistrict();
-        // Output to user for clarity
         System.out.println("Report 30: The total population of a district (New South Wales).");
         a.printPopulationDistrict(cities);
-        //
 
-        //Prints the output of report 31, the population of Edinburgh
+
+        /**
+         * Report 31:
+         * Extract population information from a given city (Edinburgh), send message to user explaining what the report shows
+         * then print the city population information.
+         */
         System.out.println("Report #31, The population of a City (Edinburgh)");
         System.out.println(a.getPopulationCity());
 
 
         System.out.println("End of Reports.");
+        
         // Disconnect from database
         a.disconnect();
 
