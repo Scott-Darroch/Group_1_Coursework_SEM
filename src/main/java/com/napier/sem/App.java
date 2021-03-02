@@ -22,9 +22,7 @@ public class App
          * Extract country population information from world.sql file, send message to user explaining what the report shows
          * then print country population information.
           */
-        ArrayList<Country> countries = a.getAllCountries();
-        System.out.println("Report 1: A report showing all countries in the world in order of largest to smallest population.");
-        a.printCityReports(countries);
+        a.getAllCountries();
 
 
         /**
@@ -32,9 +30,7 @@ public class App
          * Extract population information from a continent (Africa), send message to user explaining what the report shows
          * then print the continent population information.
          */
-        countries = a.getPopulationContinent();
-        System.out.println("Report 2: A report showing the population of the countries in Africa in order of largest to smallest.");
-        a.printCityReports(countries);
+        a.getPopulationContinent();
 
 
         /**
@@ -42,9 +38,7 @@ public class App
          * Extract population information from a region (Caribbean), send message to user explaining what the report shows
          * then print the region population information.
          */
-        countries = a.getPopulationRegion();
-        System.out.println("Report 3: A report showing the population of the Caribbean in order of largest to smallest.");
-        a.printCityReports(countries);
+        a.getPopulationRegion();
 
 
         /**
@@ -52,7 +46,6 @@ public class App
          * Extract population information from a given district (Noord-Barbant), send message to user explaining what the report shows
          * then print the district population information.
          */
-        System.out.println("Report 11: The population of Cities in a given District, ordered from largest to smallest.");
         a.getCitiesInDistrictPopulation();
 
 
@@ -61,7 +54,6 @@ public class App
          * Extract population information from the world, send message to user explaining what the report shows
          * then print the world population information.
          */
-        System.out.println("Report 26: The population of the world.");
         a.getWorldPopulation();
 
 
@@ -70,9 +62,7 @@ public class App
          * Extract population information from a given continent (Europe), send message to user explaining what the report shows
          * then print the continent population information.
          */
-        System.out.println("Report 27: The total population of a continent (Europe).");
-        countries = a.getTotalPopulationContinent();
-        a.printPopulationContinent(countries);
+        a.getTotalPopulationContinent();
 
 
         /**
@@ -80,7 +70,6 @@ public class App
          * Extract population information from a given country (Spain), send message to user explaining what the report shows
          * then print the country population information.
          */
-        System.out.println("Report 29: The total population of a country (Spain).");
         a.getCountryPopulation();
 
 
@@ -89,9 +78,7 @@ public class App
          * Extract population information from a given district (New South Wales), send message to user explaining what the report shows
          * then print the district population information.
          */
-        ArrayList<City> cities = a.getPopulationDistrict();
-        System.out.println("Report 30: The total population of a district (New South Wales).");
-        a.printPopulationDistrict(cities);
+        a.getPopulationDistrict();
 
 
         /**
@@ -99,8 +86,7 @@ public class App
          * Extract population information from a given city (Edinburgh), send message to user explaining what the report shows
          * then print the city population information.
          */
-        System.out.println("Report #31, The population of a City (Edinburgh)");
-        System.out.println(a.getPopulationCity());
+        a.getPopulationCity();
 
 
         System.out.println("End of Reports.");
@@ -175,14 +161,17 @@ public class App
         }
     }
 
+
+
+
     /**
      * Gets all the current population information.
      * @return A list of all populations, or null if there is an error.
      */
-    public ArrayList<Country> getAllCountries()
-    {
+    public void getAllCountries() {
         try
         {
+            System.out.println("Report 1: A report showing all countries in the world in order of largest to smallest population.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -194,7 +183,6 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
-            ArrayList<Country> countries = new ArrayList<Country>();
             while (rset.next())
             {
                 Country coun = new Country();
@@ -204,75 +192,13 @@ public class App
                 coun.region = rset.getString("country.region");
                 coun.population = rset.getInt("country.population");
                 coun.capital = rset.getString("city.name");
-                countries.add(coun);
+                System.out.println(coun);
             }
-            return countries;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
-        }
-    }
-
-    /**
-     * Prints a list of populations.
-     * @param countries The list of populations to print.
-     */
-    public void printCityReports(ArrayList<Country> countries)
-    {
-        // Print header
-        System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Country Name", "Continent", "Region", "Population", "Capital"));
-        // Loop over all countries in the list
-        for (Country coun : countries)
-        {
-            String emp_string =
-                    String.format("%-5s %-48s %-20s %-30s %-15s %-15s",
-                            coun.code, coun.name, coun.continent, coun.region, coun.population, coun.capital);
-            System.out.println(emp_string);
-        }
-    }
-
-
-    /**
-     * Gets all the current population information.
-     * @return A list of population for a region (Caribbean), or null if there is an error.
-     */
-    public ArrayList<Country> getPopulationRegion()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
-                            + "FROM country, city "
-                            + "WHERE country.capital = city.ID AND country.region = 'Caribbean' "
-                            + "ORDER BY country.population DESC ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information
-            ArrayList<Country> countries = new ArrayList<Country>();
-            while (rset.next())
-            {
-                Country coun = new Country();
-                coun.code = rset.getString("country.code");
-                coun.name = rset.getString("country.name");
-                coun.continent = rset.getString("country.continent");
-                coun.region = rset.getString("country.region");
-                coun.population = rset.getInt("country.population");
-                coun.capital = rset.getString("city.name");
-                countries.add(coun);
-            }
-            return countries;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-            return null;
         }
     }
 
@@ -280,10 +206,10 @@ public class App
      * Gets all the current population information.
      * @return A list of country populations for a continent (Africa), or null if there is an error.
      */
-    public ArrayList<Country> getPopulationContinent()
-    {
+    public void getPopulationContinent(){
         try
         {
+            System.out.println("Report #2, A list of country populations in Africa");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -295,7 +221,6 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
-            ArrayList<Country> countries = new ArrayList<Country>();
             while (rset.next())
             {
                 Country coun = new Country();
@@ -305,221 +230,51 @@ public class App
                 coun.region = rset.getString("country.region");
                 coun.population = rset.getInt("country.population");
                 coun.capital = rset.getString("city.name");
-                countries.add(coun);
+                System.out.println(coun);
             }
-            return countries;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
-        }
-    }
-    /**
-     * Gets all the current population information.
-     * @return A list of population for a district (New South Wales), or null if there is an error.
-     */
-    public ArrayList<City> getPopulationDistrict()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.district, SUM(city.population) "
-                            + "FROM city "
-                            + "WHERE city.district = 'New South Wales' ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information
-            ArrayList<City> cities = new ArrayList<City>();
-            while (rset.next())
-            {
-                City city = new City();
-                city.district = rset.getString("city.district");
-                city.population = rset.getInt("SUM(city.population)");
-                cities.add(city);
-            }
-            return cities;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-            return null;
-        }
-    }
-
-    /**
-     * Prints a list of populations.
-     * @param cities The list of populations to print.
-     */
-    public void printPopulationDistrict(ArrayList<City> cities)
-    {
-        // Print header
-        System.out.println(String.format("%-25s %-20s", "District", "Total Population"));
-        // Loop over all countries in the list
-        for (City cit : cities)
-        {
-            String emp_string =
-                    String.format("%-25s %-20s",
-                            cit.district, cit.population);
-            System.out.println(emp_string);
-        }
-    }
-
-    /**
-     * Gets the world's population and prints it.
-     */
-    public void getWorldPopulation()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT SUM(country.population) "
-                            + "FROM country ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            while (rset.next())
-            {
-                System.out.println("The total population of the world is: " + rset.getLong("SUM(country.population)"));
-            }
-
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-
-        }
-    }
-
-    /**
-     * Gets the population of a country and prints it.
-     */
-    public void getCountryPopulation()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.name, country.population "
-                            + "FROM country "
-                            + "WHERE country.name = 'Spain' ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            while (rset.next())
-            {
-                Country country = new Country();
-                country.name = rset.getString("country.name");
-                country.population = rset.getInt("country.population");
-                System.out.println("The population of the country: " + country.name + " is: " + country.population);
-            }
-
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-
         }
     }
 
     /**
      * Gets all the current population information.
-     * @return A list of population for a continent (Europe), or null if there is an error.
+     * @return A list of population for a region (Caribbean), or null if there is an error.
      */
-    public ArrayList<Country> getTotalPopulationContinent()
-    {
+    public void getPopulationRegion() {
         try
         {
+            System.out.println("Report 3: A report showing the population of the countries in the Caribbean in order of largest to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.continent, SUM(country.population) "
-                            + "FROM country "
-                            + "WHERE country.continent = 'Europe' ";
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
+                            + "FROM country, city "
+                            + "WHERE country.capital = city.ID AND country.region = 'Caribbean' "
+                            + "ORDER BY country.population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
-            ArrayList<Country> countries = new ArrayList<Country>();
             while (rset.next())
             {
-                Country country = new Country();
-                country.continent = rset.getString("country.continent");
-                country.population = rset.getInt("SUM(country.population)");
-                countries.add(country);
+                Country coun = new Country();
+                coun.code = rset.getString("country.code");
+                coun.name = rset.getString("country.name");
+                coun.continent = rset.getString("country.continent");
+                coun.region = rset.getString("country.region");
+                coun.population = rset.getInt("country.population");
+                coun.capital = rset.getString("city.name");
+                System.out.println(coun);
             }
-            return countries;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-            return null;
-        }
-    }
-
-    /**
-     * Prints a list of populations.
-     * @param countries The list of populations to print.
-     */
-    public void printPopulationContinent(ArrayList<Country> countries)
-    {
-        // Print header
-        System.out.println(String.format("%-25s %-20s", "Continent", "Total Population"));
-        // Loop over all countries in the list
-        for (Country country : countries)
-        {
-            String emp_string =
-                    String.format("%-25s %-20s",
-                            country.continent, country.population);
-            System.out.println(emp_string);
-        }
-    }
-
-    /**
-     * Returns the population of a single city (Edinburgh).
-     * @return A City (Edinburgh), or null if there is an error.
-     */
-    public City getPopulationCity()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT ID, name, CountryCode, district, population "
-                            + "FROM city "
-                            + "WHERE name = 'Edinburgh' ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            rset.next();
-
-            City city = new City();
-            city.ID = rset.getInt("ID");
-            city.name = rset.getString("Name");
-            city.country = rset.getString("CountryCode");
-            city.district = rset.getString("District");
-            city.population = rset.getInt("Population");
-
-            return city;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-            return null;
         }
     }
 
@@ -527,12 +282,10 @@ public class App
      * Gets a list of the population of each city in a given district
      * @return a list of the population of all cities in a given district, or Null if there is an error
      */
-    public void getCitiesInDistrictPopulation()
-    {
-
+    public void getCitiesInDistrictPopulation() {
         try
         {
-
+            System.out.println("Report 11: The population of each city in Noord_Brabant ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -563,6 +316,149 @@ public class App
             System.out.println("Failed to get population details");
 
 
+        }
+    }
+
+    /**
+     * Gets all the current population information.
+     * @return A list of population for a district (New South Wales), or null if there is an error.
+     */
+    public void getPopulationDistrict() {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.district, SUM(city.population) "
+                            + "FROM city "
+                            + "WHERE city.district = 'New South Wales' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information
+            while (rset.next())
+            {
+                System.out.println("Report #30: The total population of New South Wales is: " + rset.getInt("SUM(city.population)"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Gets the world's population and prints it.
+     */
+    public void getWorldPopulation() {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.population) "
+                            + "FROM country ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next())
+            {
+                System.out.println("Report #26: The total population of the world is: " + rset.getLong("SUM(country.population)"));
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+        }
+    }
+
+    /**
+     * Gets the population of a country and prints it.
+     */
+    public void getCountryPopulation() {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.population "
+                            + "FROM country "
+                            + "WHERE country.name = 'Spain' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next())
+            {
+                System.out.println("Report #29: The population of the Spain: " + rset.getInt("country.population"));
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+        }
+    }
+
+    /**
+     * Gets all the current population information.
+     * @return A list of population for a continent (Europe), or null if there is an error.
+     */
+    public void getTotalPopulationContinent() {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.continent, SUM(country.population) "
+                            + "FROM country "
+                            + "WHERE country.continent = 'Europe' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information
+            while (rset.next())
+            {
+                System.out.println("Report #27: The total population of Europe is: " + rset.getInt("SUM(country.population)"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Returns the population of a single city (Edinburgh).
+     * @return A City (Edinburgh), or null if there is an error.
+     */
+    public void getPopulationCity() {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, name, CountryCode, district, population "
+                            + "FROM city "
+                            + "WHERE name = 'Edinburgh' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            rset.next();
+
+            System.out.println("Report #31: The population of Edinburgh: " + rset.getInt("Population"));
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
         }
     }
 }
