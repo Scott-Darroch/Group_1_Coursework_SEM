@@ -332,7 +332,6 @@ public class App
             while (rset.next())
             {
                 System.out.println("The total population of the world is: " + rset.getLong("SUM(country.population)"));
-                //System.out.print(rset.getLong("SUM(country.population)"));
             }
 
         }
