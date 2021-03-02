@@ -49,6 +49,11 @@ public class App
         a.printPopulationDistrict(cities);
         //
 
+
+        //Prints the output of report 31, the population of Edinburgh
+        System.out.println("Report #31, The population of a City (Edinburgh)");
+        System.out.println(a.getPopulationCity());
+
         System.out.println("End of Reports.");
         // Disconnect from database
         a.disconnect();
@@ -394,6 +399,43 @@ public class App
                     String.format("%-25s %-20s",
                             country.continent, country.population);
             System.out.println(emp_string);
+        }
+    }
+
+    /**
+     * Returns the population of a single city (Edinburgh).
+     * @return A City (Edinburgh), or null if there is an error.
+     */
+    public City getPopulationCity()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, name, CountryCode, district, population "
+                            + "FROM city "
+                            + "WHERE name = 'Edinburgh' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            rset.next();
+
+            City city = new City();
+            city.ID = rset.getInt("ID");
+            city.name = rset.getString("Name");
+            city.country = rset.getString("CountryCode");
+            city.district = rset.getString("District");
+            city.population = rset.getInt("Population");
+
+            return city;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return null;
         }
     }
 }
