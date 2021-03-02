@@ -2,6 +2,7 @@ package com.napier.sem;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App
 {
@@ -33,6 +34,10 @@ public class App
         // printCityReports method can be reused here as it supplies the same output requirement as previous report
         a.printCityReports(countries);
 
+        System.out.println("Report 11: The population of Cities in a given District, ordered from largest to smallest.");
+        a.getCitiesInDistrictPopulation();
+
+
         System.out.println("Report 26: The population of the world.");
         // getWorldPopulation method gets the world's population then prints it.
         a.getWorldPopulation();
@@ -53,14 +58,15 @@ public class App
         a.printPopulationDistrict(cities);
         //
 
-
         //Prints the output of report 31, the population of Edinburgh
         System.out.println("Report #31, The population of a City (Edinburgh)");
         System.out.println(a.getPopulationCity());
 
+
         System.out.println("End of Reports.");
         // Disconnect from database
         a.disconnect();
+
     }
 
     /**
@@ -473,6 +479,49 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
             return null;
+        }
+    }
+
+    /**
+     * Gets a list of the population of all countries
+     * @return a list of country populations with N elements, where N is defined by the user, or Null if there is an error
+     */
+    public void getCitiesInDistrictPopulation()
+    {
+
+        try
+        {
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, name, CountryCode, district, population "
+                            + "FROM city "
+                            + "WHERE district = 'Noord-Brabant' "
+                            + "ORDER BY population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City();
+                city.ID = rset.getInt("city.ID");
+                city.name = rset.getString("city.name");
+                city.country = rset.getString( "city.CountryCode");
+                city.district = rset.getString("city.district");
+                city.population = rset.getInt("city.population");
+                System.out.println(city);
+
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+
         }
     }
 }
