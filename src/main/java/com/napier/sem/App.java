@@ -33,7 +33,7 @@ public class App
         // printCityReports method can be reused here as it supplies the same output requirement as previous report
         a.printCityReports(countries);
 
-        System.out.println("Report 26: The total population of the world.");
+        System.out.println("Report 26: The population of the world.");
         //getWorldPopulation method gets the world's population then prints it.
         a.getWorldPopulation();
 
