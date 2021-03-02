@@ -34,13 +34,17 @@ public class App
         a.printCityReports(countries);
 
         System.out.println("Report 26: The population of the world.");
-        //getWorldPopulation method gets the world's population then prints it.
+        // getWorldPopulation method gets the world's population then prints it.
         a.getWorldPopulation();
 
         System.out.println("Report 27: The total population of a continent (Europe).");
         // Extract the population information from the continent Europe
         countries = a.getTotalPopulationContinent();
         a.printPopulationContinent(countries);
+
+        System.out.println("Report 29: The total population of a country (Spain).");
+        // getCountryPopulation method gets the population of a country then prints it.
+        a.getCountryPopulation();
 
         // Extract population information from a district (New South Wales)
         ArrayList<City> cities = a.getPopulationDistrict();
@@ -337,6 +341,39 @@ public class App
             while (rset.next())
             {
                 System.out.println("The total population of the world is: " + rset.getLong("SUM(country.population)"));
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+        }
+    }
+
+    /**
+     * Gets the population of a country and prints it.
+     */
+    public void getCountryPopulation()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, country.population "
+                            + "FROM country "
+                            + "WHERE country.name = 'Spain' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.name = rset.getString("country.name");
+                country.population = rset.getInt("country.population");
+                System.out.println("The population of the country: " + country.name + " is: " + country.population);
             }
 
         }
