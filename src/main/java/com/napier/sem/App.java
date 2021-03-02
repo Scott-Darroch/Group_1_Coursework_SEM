@@ -34,7 +34,11 @@ public class App
         // printCityReports method can be reused here as it supplies the same output requirement as previous report
         a.printCityReports(countries);
 
+
+        // Extract population data from a given District (Noord-Barbant)
+        // Output to user for clarity
         System.out.println("Report 11: The population of Cities in a given District, ordered from largest to smallest.");
+        //
         a.getCitiesInDistrictPopulation();
 
 
@@ -483,8 +487,8 @@ public class App
     }
 
     /**
-     * Gets a list of the population of all countries
-     * @return a list of country populations with N elements, where N is defined by the user, or Null if there is an error
+     * Gets a list of the population of each city in a given district
+     * @return a list of the population of all cities in a given district, or Null if there is an error
      */
     public void getCitiesInDistrictPopulation()
     {
