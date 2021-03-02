@@ -1,7 +1,6 @@
 package com.napier.sem;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  * Reports.
@@ -16,76 +15,39 @@ public class App
         // Connect to database
         a.connect();
 
-
-        /**
-         * Report 1:
-         * Extract country population information from world.sql file, send message to user explaining what the report shows
-         * then print country population information.
-          */
+        //Report #1
         a.getAllCountries();
 
 
-        /**
-         * Report 2:
-         * Extract population information from a continent (Africa), send message to user explaining what the report shows
-         * then print the continent population information.
-         */
+        //Report #2
         a.getPopulationContinent();
 
 
-        /**
-         * Report 3:
-         * Extract population information from a region (Caribbean), send message to user explaining what the report shows
-         * then print the region population information.
-         */
+        //Report #3
         a.getPopulationRegion();
 
 
-        /**
-         * Report 11:
-         * Extract population information from a given district (Noord-Barbant), send message to user explaining what the report shows
-         * then print the district population information.
-         */
+        //Report #11
         a.getCitiesInDistrictPopulation();
 
 
-        /**
-         * Report 26:
-         * Extract population information from the world, send message to user explaining what the report shows
-         * then print the world population information.
-         */
+        //Report #26
         a.getWorldPopulation();
 
 
-        /**
-         * Report 27:
-         * Extract population information from a given continent (Europe), send message to user explaining what the report shows
-         * then print the continent population information.
-         */
+        //Report #27
         a.getTotalPopulationContinent();
 
 
-        /**
-         * Report 29:
-         * Extract population information from a given country (Spain), send message to user explaining what the report shows
-         * then print the country population information.
-         */
+        //Report #29
         a.getCountryPopulation();
 
 
-        /**
-         * Report 30:
-         * Extract population information from a given district (New South Wales), send message to user explaining what the report shows
-         * then print the district population information.
-         */
+        //Report #30
         a.getPopulationDistrict();
 
 
-        /**
-         * Report 31:
-         * Extract population information from a given city (Edinburgh), send message to user explaining what the report shows
-         * then print the city population information.
-         */
+        //Report #31
         a.getPopulationCity();
 
 
@@ -132,7 +94,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -166,7 +128,6 @@ public class App
 
     /**
      * Gets all the current population information.
-     * @return A list of all populations, or null if there is an error.
      */
     public void getAllCountries() {
         try
@@ -204,7 +165,6 @@ public class App
 
     /**
      * Gets all the current population information.
-     * @return A list of country populations for a continent (Africa), or null if there is an error.
      */
     public void getPopulationContinent(){
         try
@@ -242,7 +202,6 @@ public class App
 
     /**
      * Gets all the current population information.
-     * @return A list of population for a region (Caribbean), or null if there is an error.
      */
     public void getPopulationRegion() {
         try
@@ -280,7 +239,6 @@ public class App
 
     /**
      * Gets a list of the population of each city in a given district
-     * @return a list of the population of all cities in a given district, or Null if there is an error
      */
     public void getCitiesInDistrictPopulation() {
         try
@@ -321,7 +279,6 @@ public class App
 
     /**
      * Gets all the current population information.
-     * @return A list of population for a district (New South Wales), or null if there is an error.
      */
     public void getPopulationDistrict() {
         try
@@ -407,7 +364,6 @@ public class App
 
     /**
      * Gets all the current population information.
-     * @return A list of population for a continent (Europe), or null if there is an error.
      */
     public void getTotalPopulationContinent() {
         try
@@ -436,7 +392,6 @@ public class App
 
     /**
      * Returns the population of a single city (Edinburgh).
-     * @return A City (Edinburgh), or null if there is an error.
      */
     public void getPopulationCity() {
         try
