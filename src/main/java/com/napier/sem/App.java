@@ -155,6 +155,7 @@ public class App
                 coun.region = rset.getString("country.region");
                 coun.population = rset.getInt("country.population");
                 coun.capital = rset.getString("city.name");
+                
                 System.out.println(coun);
             }
         }
@@ -439,6 +440,9 @@ public class App
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            // Print header
+            System.out.println(String.format("%-8s %-25s %-8s %-25s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
             while (rset.next())
             {
                 City city = new City();
@@ -447,7 +451,10 @@ public class App
                 city.country = rset.getString( "city.CountryCode");
                 city.district = rset.getString("city.district");
                 city.population = rset.getInt("city.population");
-                System.out.println(city);
+                String emp_string =
+                        String.format("%-8s %-25s %-8s %-25s %-10s",
+                                city.ID, city.name, city.country, city.district, city.population);
+                System.out.println(emp_string);
             }
         }
         catch (Exception e)
