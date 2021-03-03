@@ -26,6 +26,8 @@ public class App
         //Report #3
         a.getPopulationRegion();
 
+        //report #9
+        a.report9();
 
         //Report #11
         a.getCitiesInDistrictPopulation();
@@ -409,6 +411,44 @@ public class App
             rset.next();
 
             System.out.println("Report #31: The population of Edinburgh: " + rset.getInt("Population"));
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Returns the population of each city in a region (The Caribbean) ordered from largest population to smallest.
+      */
+    public void report9(){
+        try
+        {
+            System.out.println("Report 9: The population of each city in The Caribbean ordered from largest population to smallest.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population, country.region "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.region = 'Caribbean' "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City();
+                city.ID = rset.getInt("city.ID");
+                city.name = rset.getString("city.name");
+                city.country = rset.getString( "city.CountryCode");
+                city.district = rset.getString("city.district");
+                city.population = rset.getInt("city.population");
+                System.out.println(city);
+            }
         }
         catch (Exception e)
         {
