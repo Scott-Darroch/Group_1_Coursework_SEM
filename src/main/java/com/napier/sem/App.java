@@ -26,6 +26,8 @@ public class App
         //Report #3
         a.getPopulationRegion();
 
+        //Report #8
+        a.report8();
 
         //Report #11
         a.getCitiesInDistrictPopulation();
@@ -416,4 +418,44 @@ public class App
             System.out.println("Failed to get population details");
         }
     }
+
+    /**
+     * Returns the population of each city in a continent (Asia) ordered from largest population to smallest.
+     */
+    public void report8(){
+        try
+        {
+            System.out.println("Report 8: The population of each city in Asia ordered from largest population to smallest.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population, country.region "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.continent = 'Asia' "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City();
+                city.ID = rset.getInt("city.ID");
+                city.name = rset.getString("city.name");
+                city.country = rset.getString( "city.CountryCode");
+                city.district = rset.getString("city.district");
+                city.population = rset.getInt("city.population");
+                System.out.println(city);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+
+    }
+
 }
