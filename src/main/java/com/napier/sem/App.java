@@ -451,10 +451,10 @@ public class App
                 city.country = rset.getString( "city.CountryCode");
                 city.district = rset.getString("city.district");
                 city.population = rset.getInt("city.population");
-                String emp_string =
+                String city_string =
                         String.format("%-8s %-25s %-8s %-25s %-10s",
                                 city.ID, city.name, city.country, city.district, city.population);
-                System.out.println(emp_string);
+                System.out.println(city_string);
             }
         }
         catch (Exception e)
