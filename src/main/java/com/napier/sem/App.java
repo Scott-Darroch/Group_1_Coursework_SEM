@@ -26,8 +26,6 @@ public class App
         //Report #3
         a.getPopulationRegion();
 
-        //report #9
-        a.report9();
 
         //Report #7
         a.report7();
@@ -36,6 +34,8 @@ public class App
         //Report  #8
         a.report8();
 
+        //report #9
+        a.report9();
 
         //Report #11
         a.getCitiesInDistrictPopulation();
