@@ -48,6 +48,8 @@ public class App
         //Report #27
         a.getTotalPopulationContinent();
 
+        //Report #28: The population of the Caribbean
+        a.report28();
 
         //Report #29
         a.getCountryPopulation();
@@ -541,6 +543,33 @@ public class App
                 city.population = rset.getInt("city.population");
                 System.out.println(city);
             }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Returns the population of a single region (Caribbean).
+     */
+    public void report28() {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(population), region "
+                            + "FROM country "
+                            + "WHERE region = 'Caribbean' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            rset.next();
+
+            System.out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
         }
         catch (Exception e)
         {
