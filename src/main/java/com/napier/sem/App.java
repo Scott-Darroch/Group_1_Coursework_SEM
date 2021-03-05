@@ -31,12 +31,9 @@ public class App
         a.report7();
 
 
-
-
-
-
         //Report  #8
         a.report8();
+
 
         //Report #11
         a.getCitiesInDistrictPopulation();
@@ -430,6 +427,44 @@ public class App
     }
 
     /**
+     * This function prints the report showing all the cities in the world organised by largest population to smallest.
+     */
+    public void report7(){
+        try
+        {
+            System.out.println("Report 7: All the cities in the world organised by largest population to smallest.");
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, name, CountryCode, district, population "
+                            + "FROM city "
+                            + "ORDER BY population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City();
+                city.ID = rset.getInt("ID");
+                city.name = rset.getString("name");
+                city.country = rset.getString("CountryCode");
+                city.district = rset.getString("district");
+                city.population = rset.getInt("population");
+
+                System.out.println(city);
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
      * Returns the population of each city in a continent (Asia) ordered from largest population to smallest.
      */
     public void report8(){
@@ -472,44 +507,5 @@ public class App
             System.out.println("Failed to get population details");
         }
 
-    }
-
-
-    /**
-     * This function prints the report showing all the cities in the world organised by largest population to smallest.
-     */
-    public void report7(){
-        try
-        {
-            System.out.println("Report 7: All the cities in the world organised by largest population to smallest.");
-
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT ID, name, CountryCode, district, population "
-                            + "FROM city "
-                            + "ORDER BY population DESC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            while (rset.next())
-            {
-                City city = new City();
-                city.ID = rset.getInt("ID");
-                city.name = rset.getString("name");
-                city.country = rset.getString("CountryCode");
-                city.district = rset.getString("district");
-                city.population = rset.getInt("population");
-
-                System.out.println(city);
-
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-        }
     }
 }
