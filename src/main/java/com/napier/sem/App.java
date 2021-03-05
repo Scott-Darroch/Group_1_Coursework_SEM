@@ -27,9 +27,12 @@ public class App
         a.getPopulationRegion();
 
 
-        //Report #7
-        a.report7();
 
+
+
+
+        //Report  #8
+        a.report8();
 
         //Report #11
         a.getCitiesInDistrictPopulation();
@@ -157,6 +160,7 @@ public class App
                 coun.region = rset.getString("country.region");
                 coun.population = rset.getInt("country.population");
                 coun.capital = rset.getString("city.name");
+                
                 System.out.println(coun);
             }
         }
@@ -422,34 +426,40 @@ public class App
     }
 
     /**
-     * This function prints the report showing all the cities in the world organised by largest population to smallest.
+     * Returns the population of each city in a continent (Asia) ordered from largest population to smallest.
      */
-    public void report7(){
+    public void report8(){
         try
         {
-            System.out.println("Report 7: All the cities in the world organised by largest population to smallest.");
-
+            System.out.println("Report 8: The population of each city in Asia ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT ID, name, CountryCode, district, population "
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population, country.region "
                             + "FROM city "
-                            + "ORDER BY population DESC";
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.continent = 'Asia' "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-8s %-25s %-8s %-25s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
                 City city = new City();
-                city.ID = rset.getInt("ID");
-                city.name = rset.getString("name");
-                city.country = rset.getString("CountryCode");
-                city.district = rset.getString("district");
-                city.population = rset.getInt("population");
-
-                System.out.println(city);
-
+                city.ID = rset.getInt("city.ID");
+                city.name = rset.getString("city.name");
+                city.country = rset.getString( "city.CountryCode");
+                city.district = rset.getString("city.district");
+                city.population = rset.getInt("city.population");
+                String city_string =
+                        String.format("%-8s %-25s %-8s %-25s %-10s",
+                                city.ID, city.name, city.country, city.district, city.population);
+                System.out.println(city_string);
             }
         }
         catch (Exception e)
@@ -457,5 +467,7 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
         }
+
     }
+
 }
