@@ -26,7 +26,7 @@ public class Population {
     public long total_population_not_in_cities;
 
     public String toString() {
-        return String.format("%-40s %-12s %-8s %-12s", this.name, this.total_population, this.total_population_in_cities, this.total_population_not_in_cities);
+        return String.format("%-40s %-18s %-18s %-12s", this.name, this.total_population, this.total_population_in_cities, this.total_population_not_in_cities);
     }
 
 }

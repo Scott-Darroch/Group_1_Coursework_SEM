@@ -663,7 +663,7 @@ public class App
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            System.out.println(String.format("%-40s %-12s %-8s %-12s", "Name", "Country Population", "City Population", "Non-city Population"));
+            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Name", "Country Population", "City Population", "Non-city Population"));
 
             while (rset.next())
             {
