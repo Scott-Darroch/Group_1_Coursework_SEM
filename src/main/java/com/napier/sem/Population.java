@@ -13,7 +13,7 @@ public class Population {
     /**
      * The total population of the continent, region or country for this population.
      */
-    public int total_population;
+    public long total_population;
 
     /**
      * The total population of the continent, region or country living in the cities(%).
@@ -23,6 +23,10 @@ public class Population {
     /**
      * The total population of the continent, region or country not living in cities(%).
      */
-    public int total_population_not_in_cities;
+    public long total_population_not_in_cities;
+
+    public String toString() {
+        return String.format("%-40s %-12s %-8s %-12s", this.name, this.total_population, this.total_population_in_cities, this.total_population_not_in_cities);
+    }
 
 }

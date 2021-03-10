@@ -16,61 +16,63 @@ public class App
         a.connect();
 
         //Report #1
-        a.getAllCountries();
+    //    a.getAllCountries();
 
 
         //Report #2
-        a.getPopulationContinent();
+     //   a.getPopulationContinent();
 
 
         //Report #3
-        a.getPopulationRegion();
+     //   a.getPopulationRegion();
 
 
         //Report #7
-        a.report7();
+    //    a.report7();
 
         //Report  #8
-        a.report8();
+    //    a.report8();
 
         //report #9
-        a.report9();
+     //   a.report9();
 
         //Report #10
-        a.report10();
+    //    a.report10();
 
         //Report #11
-        a.getCitiesInDistrictPopulation();
+    //    a.getCitiesInDistrictPopulation();
 
 
         //Report #17
-        a.report17();
+    //    a.report17();
 
+        //Report #25
+        a.report25();
 
         //Report #26
-        a.getWorldPopulation();
+     //   a.getWorldPopulation();
 
 
         //Report #27
-        a.getTotalPopulationContinent();
+     //   a.getTotalPopulationContinent();
 
         //Report #28: The population of the Caribbean
-        a.report28();
+    //    a.report28();
 
         //Report #29
-        a.getCountryPopulation();
+     //   a.getCountryPopulation();
 
 
         //Report #30
-        a.getPopulationDistrict();
+     //   a.getPopulationDistrict();
 
 
         //Report #31
-        a.getPopulationCity();
+    //    a.getPopulationCity();
 
 
         //report language
-        a.reportLanguage();
+    //    a.reportLanguage();
 
 
         System.out.println("End of Reports.");
@@ -642,6 +644,45 @@ public class App
         }
 
     }
+
+    /** Returns the population of each country that are both living in cities and not living in cities. **/
+    public void report25(){
+        try
+        {
+            System.out.println("Report 25: The population of each country living in cities and not living in cities..");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, SUM(country.population) As TotalCountryPopulation, SUM(city.population) As TotalCityPopulation "
+                    + "FROM country  "
+                            + "INNER JOIN city ON city.CountryCode = country.Code "
+                            + "GROUP BY country.name ";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-40s %-12s %-8s %-12s", "Name", "Country Population", "City Population", "Non-city Population"));
+
+            while (rset.next())
+            {
+                Population pop = new Population();
+                pop.name = rset.getString("country.name");
+                pop.total_population = rset.getLong( "TotalCountryPopulation");
+                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
+                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
+                System.out.println(pop);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+
+    }
+
 
     /**
      * Returns the population of a single region (Caribbean).
