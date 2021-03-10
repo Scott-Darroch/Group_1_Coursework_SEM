@@ -41,6 +41,10 @@ public class App
         a.getCitiesInDistrictPopulation();
 
 
+        //Report #17
+        a.report17();
+
+
         //Report #26
         a.getWorldPopulation();
 
@@ -554,6 +558,49 @@ public class App
             System.out.println("Failed to get population details");
         }
     }
+
+
+    /**
+     * This function prints the report showing all the capital cities in the world organised by largest population to smallest.
+     */
+    public void report17(){
+        try
+        {
+            System.out.println("Report 17: All the capital cities in the world organised by largest population to smallest.");
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.ID = country.capital "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City();
+                city.ID = rset.getInt("city.ID");
+                city.name = rset.getString("city.name");
+                city.country = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.district");
+                city.population = rset.getInt("city.population");
+
+                System.out.println(city);
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
 
     /**
      * Returns the population of a single region (Caribbean).
