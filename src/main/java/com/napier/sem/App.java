@@ -30,7 +30,6 @@ public class App
         //Report #7
         a.report7();
 
-
         //Report  #8
         a.report8();
 
@@ -46,6 +45,12 @@ public class App
 
         //Report #17
         a.report17();
+
+        //Report #18
+        a.report18();
+
+        //Report #19
+        a.report19();
 
         //Report #23
         a.report23();
@@ -83,7 +88,7 @@ public class App
 
 
         System.out.println("End of Reports.");
-        
+
         // Disconnect from database
         a.disconnect();
 
@@ -153,8 +158,6 @@ public class App
             }
         }
     }
-
-
 
 
     /**
@@ -531,7 +534,7 @@ public class App
 
     /**
      * Returns the population of each city in a region (The Caribbean) ordered from largest population to smallest.
-      */
+     */
     public void report9(){
         try
         {
@@ -652,6 +655,84 @@ public class App
 
     }
 
+    /**
+     * Returns a list of all Capital Cities in a given Continent (Europe) ordered by population from largest to smallest
+     */
+    public void report18(){
+        try{
+
+            System.out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.code "
+                            + "WHERE country.continent = 'Europe' "
+                            + "ORDER BY city.population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                CapitalCity city = new CapitalCity();
+                city.name = rset.getString("city.name");
+                city.country = rset.getString("country.name");
+                city.population = rset.getInt("city.population");
+                String CapitalCity_string =
+                        String.format("%-30s %-35s %-15s",
+                                city.name, city.country, city.population);
+                System.out.println(CapitalCity_string);
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details.");
+        }
+    }
+
+    /**
+     * Returns a list of all Capital Cities in a given Region (Caribbean) ordered by population from largest to smallest
+     */
+    public void report19(){
+        try{
+
+            System.out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.code "
+                            + "WHERE country.region = 'Caribbean' "
+                            + "ORDER BY city.population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                CapitalCity city = new CapitalCity();
+                city.name = rset.getString("city.name");
+                city.country = rset.getString("country.name");
+                city.population = rset.getInt("city.population");
+                String CapitalCity_string =
+                        String.format("%-30s %-35s %-15s",
+                                city.name, city.country, city.population);
+                System.out.println(CapitalCity_string);
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details.");
+        }
+    }
+
     /** Returns the population of each continent that are both living in cities and not living in cities. **/
     public void report23(){
         try
@@ -662,7 +743,7 @@ public class App
             // Create string for SQL statement
             String strSelect =
                     "SELECT country.continent, SUM(country.population) As TotalCountryPopulation, SUM(city.population) As TotalCityPopulation "
-                    + "FROM country  "
+                            + "FROM country  "
                             + "INNER JOIN city ON city.CountryCode = country.Code "
                             + "GROUP BY country.continent ";
 
