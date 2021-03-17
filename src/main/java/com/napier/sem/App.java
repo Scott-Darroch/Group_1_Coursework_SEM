@@ -43,6 +43,9 @@ public class App
         //Report #23
         a.report23();
 
+        //Report #24
+        a.report24();
+
 
         //Report #26
         a.getWorldPopulation();
@@ -594,7 +597,7 @@ public class App
     }
 
     /**
-     * Returns a list of all Capital Cities in a given Region () ordered by population from largest to smallest
+     * Returns a list of all Capital Cities in a given Region (Caribbean) ordered by population from largest to smallest
      */
     public void report24(){
         try{
