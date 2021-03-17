@@ -16,35 +16,35 @@ public class App
         a.connect();
 
         //Report #1
-    //    a.getAllCountries();
+        a.getAllCountries();
 
 
         //Report #2
-     //   a.getPopulationContinent();
+        a.getPopulationContinent();
 
 
         //Report #3
-     //   a.getPopulationRegion();
+        a.getPopulationRegion();
 
 
         //Report #7
-    //    a.report7();
+        a.report7();
 
         //Report  #8
-    //    a.report8();
+        a.report8();
 
         //report #9
-     //   a.report9();
+        a.report9();
 
         //Report #10
-    //    a.report10();
+        a.report10();
 
         //Report #11
-    //    a.getCitiesInDistrictPopulation();
+        a.getCitiesInDistrictPopulation();
 
 
         //Report #17
-    //    a.report17();
+        a.report17();
 
         //Report #23
         a.report23();
@@ -53,32 +53,32 @@ public class App
         a.report24();
 
         //Report #25
-    //    a.report25();
+        a.report25();
 
         //Report #26
-     //   a.getWorldPopulation();
+        a.getWorldPopulation();
 
 
         //Report #27
-     //   a.getTotalPopulationContinent();
+        a.getTotalPopulationContinent();
 
         //Report #28: The population of the Caribbean
-    //    a.report28();
+        a.report28();
 
         //Report #29
-     //   a.getCountryPopulation();
+        a.getCountryPopulation();
 
 
         //Report #30
-     //   a.getPopulationDistrict();
+        a.getPopulationDistrict();
 
 
         //Report #31
-    //    a.getPopulationCity();
+        a.getPopulationCity();
 
 
         //report language
-    //    a.reportLanguage();
+        a.reportLanguage();
 
 
         System.out.println("End of Reports.");
@@ -152,8 +152,6 @@ public class App
             }
         }
     }
-
-
 
 
     /**
