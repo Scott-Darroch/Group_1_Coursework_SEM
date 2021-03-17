@@ -40,6 +40,9 @@ public class App
         //Report #11
         a.getCitiesInDistrictPopulation();
 
+        //Report #23
+        a.report23();
+
 
         //Report #26
         a.getWorldPopulation();
@@ -548,6 +551,41 @@ public class App
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Returns a list of all Capital Cities in a given Continent (Europe) ordered by population from largest to smallest
+     */
+    public void report23(){
+        try{
+
+            System.out.println("Report #23");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.name, city.population, country.capital "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.name = country.capital "
+                            + "WHERE country.continent = 'Europe' "
+                            + "ORDER BY city.population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                City city = new City();
+                city.ID = rset.getInt("city.ID");
+                city.name = rset.getString("city.name");
+                city.population = rset.getInt("city.population");
+                System.out.println(city);
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details.");
         }
     }
 
