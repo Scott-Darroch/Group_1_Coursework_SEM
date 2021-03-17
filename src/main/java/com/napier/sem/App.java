@@ -40,11 +40,11 @@ public class App
         //Report #11
         a.getCitiesInDistrictPopulation();
 
-        //Report #23
-        a.report23();
+        //Report #18
+        a.report18();
 
-        //Report #24
-        a.report24();
+        //Report #19
+        a.report19();
 
 
         //Report #26
@@ -560,7 +560,7 @@ public class App
     /**
      * Returns a list of all Capital Cities in a given Continent (Europe) ordered by population from largest to smallest
      */
-    public void report23(){
+    public void report18(){
         try{
 
             System.out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
@@ -599,7 +599,7 @@ public class App
     /**
      * Returns a list of all Capital Cities in a given Region (Caribbean) ordered by population from largest to smallest
      */
-    public void report24(){
+    public void report19(){
         try{
 
             System.out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
