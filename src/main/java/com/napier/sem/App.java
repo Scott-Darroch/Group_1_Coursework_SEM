@@ -18,7 +18,6 @@ public class App
         //Report #1
         a.getAllCountries();
 
-
         //Report #2
         a.getPopulationContinent();
 
