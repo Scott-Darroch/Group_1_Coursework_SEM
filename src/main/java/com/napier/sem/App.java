@@ -582,7 +582,7 @@ public class App
                 city.country = rset.getString("country.name");
                 city.population = rset.getInt("city.population");
                 String CapitalCity_string =
-                        String.format("%-30s, %-35s, %-15s",
+                        String.format("%-30s %-35s %-15s",
                                 city.name, city.country, city.population);
                 System.out.println(CapitalCity_string);
 
@@ -621,7 +621,7 @@ public class App
                 city.country = rset.getString("country.name");
                 city.population = rset.getInt("city.population");
                 String CapitalCity_string =
-                        String.format("%-30s, %-35s, %-15s",
+                        String.format("%-30s %-35s %-15s",
                                 city.name, city.country, city.population);
                 System.out.println(CapitalCity_string);
 
