@@ -18,6 +18,7 @@ public class App
         //Report #1
         a.getAllCountries();
 
+
         //Report #2
         a.getPopulationContinent();
 
@@ -29,22 +30,30 @@ public class App
         //Report #7
         a.report7();
 
-
         //Report  #8
         a.report8();
 
         //report #9
         a.report9();
 
+        //Report #10
+        a.report10();
+
         //Report #11
         a.getCitiesInDistrictPopulation();
 
-        //Report #18
-        a.report18();
 
-        //Report #19
-        a.report19();
+        //Report #17
+        a.report17();
 
+        //Report #23
+        a.report23();
+
+        //Report #24
+        a.report24();
+
+        //Report #25
+        a.report25();
 
         //Report #26
         a.getWorldPopulation();
@@ -66,6 +75,10 @@ public class App
 
         //Report #31
         a.getPopulationCity();
+
+
+        //report language
+        a.reportLanguage();
 
 
         System.out.println("End of Reports.");
@@ -139,8 +152,6 @@ public class App
             }
         }
     }
-
-
 
 
     /**
@@ -504,10 +515,7 @@ public class App
                 city.country = rset.getString( "city.CountryCode");
                 city.district = rset.getString("city.district");
                 city.population = rset.getInt("city.population");
-                String city_string =
-                        String.format("%-8s %-25s %-8s %-25s %-10s",
-                                city.ID, city.name, city.country, city.district, city.population);
-                System.out.println(city_string);
+                System.out.println(city);
             }
         }
         catch (Exception e)
@@ -556,84 +564,203 @@ public class App
         }
     }
 
-    /**
-     * Returns a list of all Capital Cities in a given Continent (Europe) ordered by population from largest to smallest
-     */
-    public void report18(){
-        try{
 
-            System.out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
+    /**
+     * This function prints the report showing all the capital cities in the world organised by largest population to smallest.
+     */
+    public void report17(){
+        try
+        {
+            System.out.println("Report 17: All the capital cities in the world organised by largest population to smallest.");
+
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
                             + "FROM city "
-                            + "INNER JOIN country ON city.CountryCode = country.code "
-                            + "WHERE country.continent = 'Europe' "
-                            + "ORDER BY city.population DESC ";
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.ID = country.capital "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            while (rset.next()) {
-                CapitalCity city = new CapitalCity();
+            while (rset.next())
+            {
+                City city = new City();
+                city.ID = rset.getInt("city.ID");
                 city.name = rset.getString("city.name");
-                city.country = rset.getString("country.name");
+                city.country = rset.getString("city.CountryCode");
+                city.district = rset.getString("city.district");
                 city.population = rset.getInt("city.population");
-                String CapitalCity_string =
-                        String.format("%-30s %-35s %-15s",
-                                city.name, city.country, city.population);
-                System.out.println(CapitalCity_string);
 
+                System.out.println(city);
 
             }
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get population details.");
+            System.out.println("Failed to get population details");
         }
     }
 
-    /**
-     * Returns a list of all Capital Cities in a given Region (Caribbean) ordered by population from largest to smallest
-     */
-    public void report19(){
-        try{
 
-            System.out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
+    /**
+     * Returns the population of each city in a continent (Asia) ordered from largest population to smallest.
+     */
+    public void report10(){
+        try
+        {
+            System.out.println("Report 10: The population of each city in Scotland ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population, country.region "
                             + "FROM city "
-                            + "INNER JOIN country ON city.CountryCode = country.code "
-                            + "WHERE country.region = 'Caribbean' "
-                            + "ORDER BY city.population DESC ";
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.name = 'France' "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            while (rset.next()) {
-                CapitalCity city = new CapitalCity();
+            // Print header
+            System.out.println(String.format("%-8s %-25s %-8s %-25s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
+            while (rset.next())
+            {
+                City city = new City();
+                city.ID = rset.getInt("city.ID");
                 city.name = rset.getString("city.name");
-                city.country = rset.getString("country.name");
+                city.country = rset.getString( "city.CountryCode");
+                city.district = rset.getString("city.district");
                 city.population = rset.getInt("city.population");
-                String CapitalCity_string =
-                        String.format("%-30s %-35s %-15s",
-                                city.name, city.country, city.population);
-                System.out.println(CapitalCity_string);
-
-
+                System.out.println(city);
             }
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get population details.");
+            System.out.println("Failed to get population details");
         }
+
     }
 
+    /** Returns the population of each continent that are both living in cities and not living in cities. **/
+    public void report23(){
+        try
+        {
+            System.out.println("Report 23: The population of a continent living in cities and not living in cities.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.continent, SUM(country.population) As TotalCountryPopulation, SUM(city.population) As TotalCityPopulation "
+                    + "FROM country  "
+                            + "INNER JOIN city ON city.CountryCode = country.Code "
+                            + "GROUP BY country.continent ";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Continent", "Country Population", "City Population", "Non-city Population"));
+
+            while (rset.next())
+            {
+                Population pop = new Population();
+                pop.name = rset.getString("country.continent");
+                pop.total_population = rset.getLong( "TotalCountryPopulation");
+                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
+                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
+                System.out.println(pop);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+
+        /** Returns the population of each region that are both living in cities and not living in cities. **/
+    }
+    public void report24(){
+        try
+        {
+            System.out.println("Report 24: The population of a region living in cities and not living in cities.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.region, SUM(country.population) As TotalCountryPopulation, SUM(city.population) As TotalCityPopulation "
+                            + "FROM country  "
+                            + "INNER JOIN city ON city.CountryCode = country.Code "
+                            + "GROUP BY country.region ";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Region", "Country Population", "City Population", "Non-city Population"));
+
+            while (rset.next())
+            {
+                Population pop = new Population();
+                pop.name = rset.getString("country.region");
+                pop.total_population = rset.getLong( "TotalCountryPopulation");
+                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
+                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
+                System.out.println(pop);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+
+    }
+
+    /** Returns the population of each country that are both living in cities and not living in cities. **/
+    public void report25(){
+        try
+        {
+            System.out.println("Report 25: The population of each country living in cities and not living in cities..");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.name, SUM(country.population) As TotalCountryPopulation, SUM(city.population) As TotalCityPopulation "
+                            + "FROM country  "
+                            + "INNER JOIN city ON city.CountryCode = country.Code "
+                            + "GROUP BY country.name ";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Name", "Country Population", "City Population", "Non-city Population"));
+
+            while (rset.next())
+            {
+                Population pop = new Population();
+                pop.name = rset.getString("country.name");
+                pop.total_population = rset.getLong( "TotalCountryPopulation");
+                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
+                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
+                System.out.println(pop);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+
+    }
 
     /**
      * Returns the population of a single region (Caribbean).
@@ -654,6 +781,65 @@ public class App
             rset.next();
 
             System.out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Returns the language report.
+     */
+    public void reportLanguage() {
+        try
+        {
+            System.out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
+            System.out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
+
+            Language chinese = new Language();
+            chinese.name = "'Chinese'";
+            Language english = new Language();
+            english.name = "'English'";
+            Language hindi = new Language();
+            hindi.name = "'Hindi'";
+            Language spanish = new Language();
+            spanish.name = "'Spanish'";
+            Language arabic = new Language();
+            arabic.name = "'Arabic'";
+
+            Language[] languages = {chinese, english, hindi, spanish, arabic};
+
+            for (int i = 0; i<languages.length; i++){
+
+                Statement stmt = con.createStatement();
+                String strSelect =
+                        "SELECT SUM(country.population) AS country_pop, ROUND((100 * SUM(country.population))/(SELECT SUM(population) FROM country), 0) AS world_pop "
+                                + "FROM country INNER JOIN countrylanguage on country.code = countrylanguage.countryCode "
+                                + "WHERE countrylanguage.language = " + languages[i].name;
+                ResultSet rset = stmt.executeQuery(strSelect);
+
+                while (rset.next())
+                {
+                    languages[i].language_num = rset.getInt("country_pop");
+                    languages[i].language_percent = rset.getInt("world_pop");
+                }
+            }
+
+            for (int i = 0; i<languages.length; i++){
+                for (int j = i + 1; j<languages.length; j++){
+                    if(languages[i].language_num < languages[j].language_num){
+                        Language temp = languages[i];
+                        languages[i] = languages[j];
+                        languages[j] = temp;
+                    }
+                }
+            }
+
+            for (int i = 0; i<languages.length; i++){
+                System.out.println(languages[i]);
+            }
         }
         catch (Exception e)
         {
