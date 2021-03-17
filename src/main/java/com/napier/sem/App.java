@@ -594,6 +594,46 @@ public class App
     }
 
     /**
+     * Returns a list of all Capital Cities in a given Region () ordered by population from largest to smallest
+     */
+    public void report24(){
+        try{
+
+            System.out.println("Report #24");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.code "
+                            + "WHERE country.region = 'Caribbean' "
+                            + "ORDER BY city.population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                CapitalCity city = new CapitalCity();
+                city.name = rset.getString("city.name");
+                city.country = rset.getString("country.name");
+                city.population = rset.getInt("city.population");
+                String CapitalCity_string =
+                        String.format("%-30s, %-35s, %-15s",
+                                city.name, city.country, city.population);
+                System.out.println(CapitalCity_string);
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details.");
+        }
+    }
+
+
+    /**
      * Returns the population of a single region (Caribbean).
      */
     public void report28() {
