@@ -565,16 +565,16 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.ID, city.name, city.population, country.capital "
+                    "SELECT city.ID, city.CountryCode, city.population, country.code "
                             + "FROM city "
-                            + "INNER JOIN country ON city.name = country.capital "
+                            + "INNER JOIN country ON city.CountryCode = country.code "
                             + "WHERE country.continent = 'Europe' "
                             + "ORDER BY city.population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
             while (rset.next()) {
-                City city = new City();
+                CapitalCity city = new CapitalCity();
                 city.ID = rset.getInt("city.ID");
                 city.name = rset.getString("city.name");
                 city.population = rset.getInt("city.population");
