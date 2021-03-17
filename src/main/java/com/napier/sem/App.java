@@ -43,6 +43,9 @@ public class App
         //Report #23
         a.report23();
 
+        //Report #24
+        a.report24();
+
 
         //Report #26
         a.getWorldPopulation();
@@ -565,20 +568,24 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.ID, city.name, city.population, country.capital "
+                    "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
                             + "FROM city "
-                            + "INNER JOIN country ON city.name = country.capital "
+                            + "INNER JOIN country ON city.CountryCode = country.code "
                             + "WHERE country.continent = 'Europe' "
                             + "ORDER BY city.population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
             while (rset.next()) {
-                City city = new City();
-                city.ID = rset.getInt("city.ID");
+                CapitalCity city = new CapitalCity();
                 city.name = rset.getString("city.name");
+                city.country = rset.getString("country.name");
                 city.population = rset.getInt("city.population");
-                System.out.println(city);
+                String CapitalCity_string =
+                        String.format("%-30s, %-35s, %-15s",
+                                city.name, city.country, city.population);
+                System.out.println(CapitalCity_string);
+
 
             }
         }
@@ -588,6 +595,46 @@ public class App
             System.out.println("Failed to get population details.");
         }
     }
+
+    /**
+     * Returns a list of all Capital Cities in a given Region (Caribbean) ordered by population from largest to smallest
+     */
+    public void report24(){
+        try{
+
+            System.out.println("Report #24");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.code "
+                            + "WHERE country.region = 'Caribbean' "
+                            + "ORDER BY city.population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                CapitalCity city = new CapitalCity();
+                city.name = rset.getString("city.name");
+                city.country = rset.getString("country.name");
+                city.population = rset.getInt("city.population");
+                String CapitalCity_string =
+                        String.format("%-30s, %-35s, %-15s",
+                                city.name, city.country, city.population);
+                System.out.println(CapitalCity_string);
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details.");
+        }
+    }
+
 
     /**
      * Returns the population of a single region (Caribbean).
