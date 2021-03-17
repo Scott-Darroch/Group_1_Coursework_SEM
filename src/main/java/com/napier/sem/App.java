@@ -565,7 +565,7 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.ID, city.CountryCode, city.population, country.code "
+                    "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
                             + "FROM city "
                             + "INNER JOIN country ON city.CountryCode = country.code "
                             + "WHERE country.continent = 'Europe' "
@@ -575,10 +575,14 @@ public class App
 
             while (rset.next()) {
                 CapitalCity city = new CapitalCity();
-                city.ID = rset.getInt("city.ID");
                 city.name = rset.getString("city.name");
+                city.country = rset.getString("country.name");
                 city.population = rset.getInt("city.population");
-                System.out.println(city);
+                String CapitalCity_string =
+                        String.format("%-8s %-25s %-8s %-25s %-10s",
+                                city.name, city.country, city.population);
+                System.out.println(CapitalCity_string);
+
 
             }
         }
