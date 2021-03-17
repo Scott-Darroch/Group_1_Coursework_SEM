@@ -563,7 +563,7 @@ public class App
     public void report23(){
         try{
 
-            System.out.println("Report #23");
+            System.out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -602,7 +602,7 @@ public class App
     public void report24(){
         try{
 
-            System.out.println("Report #24");
+            System.out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
