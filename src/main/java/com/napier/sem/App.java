@@ -30,13 +30,11 @@ public class App
         //Report #7
         a.report7();
 
-        a.report7();
 
         //Report  #8
         a.report8();
 
         //report #9
-        a.report9();
         a.report9();
 
         //Report #10
