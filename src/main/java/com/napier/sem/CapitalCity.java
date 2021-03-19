@@ -20,4 +20,7 @@ public class CapitalCity {
      */
     public int population;
 
+    public String toString() {
+        return String.format("%-30s %-5s %-15s", this.name, this.country, this.population);
+    }
 }
