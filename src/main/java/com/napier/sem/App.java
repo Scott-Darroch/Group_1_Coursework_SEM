@@ -30,7 +30,7 @@ public class App
         //Report #3: Population of the countries in the Caribbean in order of largest to smallest.
         sql.report3();
 
-        /**
+        /*
          * Leave room for 4 - 6
          */
 
@@ -49,7 +49,7 @@ public class App
         //Report #11: population of each city in (District) Noord_Brabant
         sql.report11();
 
-        /**
+        /*
          * Leave room for 12 - 16
          */
 
@@ -62,7 +62,7 @@ public class App
         //Report #19: All the capital cities in a region organised by largest to smallest.
         sql.report19();
 
-        /**
+        /*
          * Leave room for 20 - 22
          */
 
