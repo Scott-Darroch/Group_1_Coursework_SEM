@@ -571,4 +571,60 @@ public class SQL {
         }
 
     }
+
+    /**
+     * Gets the world's population and prints it.
+     */
+    public void report26() {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.population) "
+                            + "FROM country ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            while (rset.next())
+            {
+                System.out.println("Report #26: The total population of the world is: " + rset.getLong("SUM(country.population)"));
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+        }
+    }
+
+    /**
+     * Gets all the current population information.
+     */
+    public void report27() {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.continent, SUM(country.population) "
+                            + "FROM country "
+                            + "WHERE country.continent = 'Europe' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information
+            while (rset.next())
+            {
+                System.out.println("Report #27: The total population of Europe is: " + rset.getInt("SUM(country.population)"));
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
 }

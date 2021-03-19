@@ -76,12 +76,11 @@ public class App
         //Report #25: Population of each country living in cities and not living in cities.
         sql.report25();
 
-        //Report #26
-        a.getWorldPopulation();
+        //Report #26: The total population of the world.
+        sql.report26();
 
-
-        //Report #27
-        a.getTotalPopulationContinent();
+        //Report #27: The total population of Europe
+        sql.report27();
 
         //Report #28: The population of the Caribbean
         a.report28();
@@ -205,33 +204,7 @@ public class App
         }
     }
 
-    /**
-     * Gets the world's population and prints it.
-     */
-    public void getWorldPopulation() {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT SUM(country.population) "
-                            + "FROM country ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            while (rset.next())
-            {
-                System.out.println("Report #26: The total population of the world is: " + rset.getLong("SUM(country.population)"));
-            }
 
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-
-        }
-    }
 
     /**
      * Gets the population of a country and prints it.
@@ -262,33 +235,7 @@ public class App
         }
     }
 
-    /**
-     * Gets all the current population information.
-     */
-    public void getTotalPopulationContinent() {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.continent, SUM(country.population) "
-                            + "FROM country "
-                            + "WHERE country.continent = 'Europe' ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information
-            while (rset.next())
-            {
-                System.out.println("Report #27: The total population of Europe is: " + rset.getInt("SUM(country.population)"));
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-        }
-    }
+
 
     /**
      * Returns the population of a single city (Edinburgh).
