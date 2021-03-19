@@ -79,26 +79,23 @@ public class App
         //Report #26: The total population of the world.
         sql.report26();
 
-        //Report #27: The total population of Europe
+        //Report #27: The total population of Europe.
         sql.report27();
 
-        //Report #28: The population of the Caribbean
-        a.report28();
+        //Report #28: The population of the Caribbean.
+        sql.report28();
 
-        //Report #29
-        a.getCountryPopulation();
+        //Report #29: The population of the Spain.
+        sql.report29();
 
+        //Report #30: The population of New South Wales.
+        sql.report30();
 
-        //Report #30
-        a.getPopulationDistrict();
-
-
-        //Report #31
-        a.getPopulationCity();
-
+        //Report #31: The population of a single city (Edinburgh)
+        sql.report31();
 
         //Report #32 :Percentage share of each language compared to world population
-        a.reportLanguage();
+        sql.report32();
 
 
         System.out.println("End of Reports.");
@@ -176,193 +173,4 @@ public class App
 
 
 
-    /**
-     * Gets all the current population information.
-     */
-    public void getPopulationDistrict() {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.district, SUM(city.population) "
-                            + "FROM city "
-                            + "WHERE city.district = 'New South Wales' ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract country information
-            while (rset.next())
-            {
-                System.out.println("Report #30: The total population of New South Wales is: " + rset.getInt("SUM(city.population)"));
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-        }
-    }
-
-
-
-    /**
-     * Gets the population of a country and prints it.
-     */
-    public void getCountryPopulation() {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.name, country.population "
-                            + "FROM country "
-                            + "WHERE country.name = 'Spain' ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            while (rset.next())
-            {
-                System.out.println("Report #29: The population of the Spain: " + rset.getInt("country.population"));
-            }
-
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-
-        }
-    }
-
-
-
-    /**
-     * Returns the population of a single city (Edinburgh).
-     */
-    public void getPopulationCity() {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT ID, name, CountryCode, district, population "
-                            + "FROM city "
-                            + "WHERE name = 'Edinburgh' ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            rset.next();
-
-            System.out.println("Report #31: The population of Edinburgh: " + rset.getInt("Population"));
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Returns the population of a single region (Caribbean).
-     */
-    public void report28() {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT SUM(population), region "
-                            + "FROM country "
-                            + "WHERE region = 'Caribbean' ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            rset.next();
-
-            System.out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-        }
-    }
-
-    /**
-     * Returns the language report.
-     */
-    public void reportLanguage() {
-        try
-        {
-            System.out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
-            System.out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
-
-            Language chinese = new Language();
-            chinese.name = "'Chinese'";
-            Language english = new Language();
-            english.name = "'English'";
-            Language hindi = new Language();
-            hindi.name = "'Hindi'";
-            Language spanish = new Language();
-            spanish.name = "'Spanish'";
-            Language arabic = new Language();
-            arabic.name = "'Arabic'";
-
-            Language[] languages = {chinese, english, hindi, spanish, arabic};
-
-            for (int i = 0; i<languages.length; i++){
-
-                Statement stmt = con.createStatement();
-                String strSelect =
-                        "SELECT SUM(country.population) AS country_pop, ROUND((100 * SUM(country.population))/(SELECT SUM(population) FROM country), 0) AS world_pop "
-                                + "FROM country INNER JOIN countrylanguage on country.code = countrylanguage.countryCode "
-                                + "WHERE countrylanguage.language = " + languages[i].name;
-                ResultSet rset = stmt.executeQuery(strSelect);
-
-                while (rset.next())
-                {
-                    languages[i].language_num = rset.getInt("country_pop");
-                    languages[i].language_percent = rset.getInt("world_pop");
-                }
-            }
-
-            for (int i = 0; i<languages.length; i++){
-                for (int j = i + 1; j<languages.length; j++){
-                    if(languages[i].language_num < languages[j].language_num){
-                        Language temp = languages[i];
-                        languages[i] = languages[j];
-                        languages[j] = temp;
-                    }
-                }
-            }
-
-            for (int i = 0; i<languages.length; i++){
-                System.out.println(languages[i]);
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-        }
-    }
 }
