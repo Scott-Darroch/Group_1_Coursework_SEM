@@ -63,14 +63,18 @@ public class App
         //Report #19: All the capital cities in a region organised by largest to smallest.
         sql.report19();
 
-        //Report #23
-        a.report23();
+        /**
+         * Leave room for 20 - 22
+         */
 
-        //Report #24
-        a.report24();
+        //Report #23: population of a continent living in cities and not living in cities.
+        sql.report23();
 
-        //Report #25
-        a.report25();
+        //Report #24: Population of a region living in cities and not living in cities.
+        sql.report24();
+
+        //Report #25: Population of each country living in cities and not living in cities.
+        sql.report25();
 
         //Report #26
         a.getWorldPopulation();
@@ -327,118 +331,7 @@ public class App
 
 
 
-    /** Returns the population of each continent that are both living in cities and not living in cities. **/
-    public void report23(){
-        try
-        {
-            System.out.println("Report 23: The population of a continent living in cities and not living in cities.");
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.continent, SUM(country.population) As TotalCountryPopulation, SUM(city.population) As TotalCityPopulation "
-                            + "FROM country  "
-                            + "INNER JOIN city ON city.CountryCode = country.Code "
-                            + "GROUP BY country.continent ";
 
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            // Print header
-            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Continent", "Country Population", "City Population", "Non-city Population"));
-
-            while (rset.next())
-            {
-                Population pop = new Population();
-                pop.name = rset.getString("country.continent");
-                pop.total_population = rset.getLong( "TotalCountryPopulation");
-                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
-                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
-                System.out.println(pop);
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-        }
-
-        /** Returns the population of each region that are both living in cities and not living in cities. **/
-    }
-    public void report24(){
-        try
-        {
-            System.out.println("Report 24: The population of a region living in cities and not living in cities.");
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.region, SUM(country.population) As TotalCountryPopulation, SUM(city.population) As TotalCityPopulation "
-                            + "FROM country  "
-                            + "INNER JOIN city ON city.CountryCode = country.Code "
-                            + "GROUP BY country.region ";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            // Print header
-            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Region", "Country Population", "City Population", "Non-city Population"));
-
-            while (rset.next())
-            {
-                Population pop = new Population();
-                pop.name = rset.getString("country.region");
-                pop.total_population = rset.getLong( "TotalCountryPopulation");
-                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
-                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
-                System.out.println(pop);
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-        }
-
-    }
-
-    /** Returns the population of each country that are both living in cities and not living in cities. **/
-    public void report25(){
-        try
-        {
-            System.out.println("Report 25: The population of each country living in cities and not living in cities..");
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.name, SUM(country.population) As TotalCountryPopulation, SUM(city.population) As TotalCityPopulation "
-                            + "FROM country  "
-                            + "INNER JOIN city ON city.CountryCode = country.Code "
-                            + "GROUP BY country.name ";
-
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            // Print header
-            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Name", "Country Population", "City Population", "Non-city Population"));
-
-            while (rset.next())
-            {
-                Population pop = new Population();
-                pop.name = rset.getString("country.name");
-                pop.total_population = rset.getLong( "TotalCountryPopulation");
-                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
-                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
-                System.out.println(pop);
-            }
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-        }
-
-    }
 
     /**
      * Returns the population of a single region (Caribbean).
