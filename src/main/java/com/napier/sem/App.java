@@ -12,8 +12,15 @@ public class App
         // Create new Application
         App a = new App();
 
+        //Connection to the SQL Database
+        Connection con = null;
+
+
         // Connect to database
         a.connect();
+
+        //Creates a new instance of the SQL reports
+        SQL sql = new SQL(con);
 
         //Report #1
         a.getAllCountries();
