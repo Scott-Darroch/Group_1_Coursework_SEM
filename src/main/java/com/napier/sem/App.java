@@ -47,8 +47,8 @@ public class App
         //Report #10: Population of each city in Scotland ordered from largest population to smallest.
         sql.report10();
 
-        //Report #11
-        a.getCitiesInDistrictPopulation();
+        //Report #11: population of each city in (District) Noord_Brabant
+        sql.report11();
 
         //Report #17
         a.report17();
@@ -167,45 +167,7 @@ public class App
     }
 
 
-    /**
-     * Gets a list of the population of each city in a given district
-     */
-    public void getCitiesInDistrictPopulation() {
-        try
-        {
-            System.out.println("Report 11: The population of each city in Noord_Brabant ordered from largest population to smallest.");
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT ID, name, CountryCode, district, population "
-                            + "FROM city "
-                            + "WHERE district = 'Noord-Brabant' "
-                            + "ORDER BY population DESC ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
 
-            while (rset.next())
-            {
-                City city = new City();
-                city.ID = rset.getInt("city.ID");
-                city.name = rset.getString("city.name");
-                city.country = rset.getString( "city.CountryCode");
-                city.district = rset.getString("city.district");
-                city.population = rset.getInt("city.population");
-                System.out.println(city);
-
-            }
-
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
-
-
-        }
-    }
 
     /**
      * Gets all the current population information.
