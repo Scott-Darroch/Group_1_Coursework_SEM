@@ -7,14 +7,13 @@ import java.sql.*;
  */
 public class App
 {
+    //Connection to the SQL Database
+    private static Connection con;
+
     public static void main(String[] args)
     {
         // Create new Application
         App a = new App();
-
-        //Connection to the SQL Database
-        Connection con = null;
-
 
         // Connect to database
         a.connect();
@@ -104,11 +103,6 @@ public class App
         a.disconnect();
 
     }
-
-    /**
-     * Connection to MySQL database.
-     */
-    private Connection con = null;
 
     /**
      * Connect to the MySQL database.
