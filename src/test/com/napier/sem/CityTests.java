@@ -39,7 +39,7 @@ public class CityTests {
         city.ID = (000);
         city.name = ("Paris");
         city.country = ("France");
-        city.district = ("?");
+        city.district = ("Central France");
         city.population = (180);
         cities.add(city);
         System.out.println(city);
