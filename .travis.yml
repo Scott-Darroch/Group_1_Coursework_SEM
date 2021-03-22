@@ -18,7 +18,7 @@ before_script:
   - mvn clean
 
 script:
-  - mvn test -Dtest=com.napier.sem.AppTest
+  - mvn test -Dtest=com.napier.sem.MyTest
 
 after_success:
   - docker-compose up --abort-on-container-exit
