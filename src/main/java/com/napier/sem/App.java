@@ -847,6 +847,39 @@ public class App
     }
 
     /**
+     * Gets the world's population and prints it.
+     * @return
+     */
+    public long report26() {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.population) "
+                            + "FROM country ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            if (rset.next())
+            {
+                System.out.println("Report #26: The total population of the world is: " + rset.getLong("SUM(country.population)"));
+                return rset.getLong("SUM(country.population)");
+
+            }else{
+                return Long.parseLong(null);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return Long.parseLong(null);
+        }
+    }
+
+    /**
      * Returns the population of a single region (Caribbean).
      */
     public void report28() {
