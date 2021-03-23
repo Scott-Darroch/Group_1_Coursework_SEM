@@ -77,6 +77,7 @@ public class Country {
     }
 
     //toString() method for class.
+    @Override
     public String toString() {
         return String.format("%-5s %-48s %-20s %-30s %-15s %-15s", this.code, this.name, this.continent, this.region, this.population, this.capital);
     }

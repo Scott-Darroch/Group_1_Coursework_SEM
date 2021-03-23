@@ -117,11 +117,7 @@ public class UnitTests {
     void printPopTest()
     {
         ArrayList<Population> populations = new ArrayList<>();
-        Population population = new Population();
-        population.name = ("France");
-        population.total_population = (42);
-        population.total_population_in_cities = (12);
-        population.total_population_not_in_cities = (30);
+        Population population = new Population("France",42,12,30);
         populations.add(population);
         System.out.println(population);
     }

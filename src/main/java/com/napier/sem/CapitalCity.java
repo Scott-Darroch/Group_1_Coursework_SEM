@@ -47,6 +47,7 @@ public class CapitalCity {
     }
 
     //toString method for the class.
+    @Override
     public String toString() {
         return String.format("%-30s %-5s %-15s", this.name, this.country, this.population);
     }

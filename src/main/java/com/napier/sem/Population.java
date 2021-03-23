@@ -1,30 +1,63 @@
 package com.napier.sem;
 
 /**
- * Class for population report
+ * Class for a population report
+ * @author Euan Holmes
+ * @author Adam Riddell
+ * @author Scott Darroch
+ * Date Last modified 23/3/2021
+ * Last modified by: Euan
  */
 public class Population {
+    //Private variables name, total population, total population in cities and total population not in cities.
+    private String name;
+    private long total_population;
+    private int total_population_in_cities;
+    private long total_population_not_in_cities;
 
-    /**
-     * The name of the continent, region or country for this population.
-     */
-    public String name;
+    //Constructor for Population class.
+    public Population(String name, long total_population, int total_population_in_cities, long total_population_not_in_cities) {
+        this.name = name;
+        this.total_population = total_population;
+        this.total_population_in_cities = total_population_in_cities;
+        this.total_population_not_in_cities = total_population_not_in_cities;
+    }
 
-    /**
-     * The total population of the continent, region or country for this population.
-     */
-    public long total_population;
+    //Getters and setter for private variables.
+    public String getName() {
+        return name;
+    }
 
-    /**
-     * The total population of the continent, region or country living in the cities(%).
-     */
-    public int total_population_in_cities;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    /**
-     * The total population of the continent, region or country not living in cities(%).
-     */
-    public long total_population_not_in_cities;
+    public long getTotal_population() {
+        return total_population;
+    }
 
+    public void setTotal_population(long total_population) {
+        this.total_population = total_population;
+    }
+
+    public int getTotal_population_in_cities() {
+        return total_population_in_cities;
+    }
+
+    public void setTotal_population_in_cities(int total_population_in_cities) {
+        this.total_population_in_cities = total_population_in_cities;
+    }
+
+    public long getTotal_population_not_in_cities() {
+        return total_population_not_in_cities;
+    }
+
+    public void setTotal_population_not_in_cities(long total_population_not_in_cities) {
+        this.total_population_not_in_cities = total_population_not_in_cities;
+    }
+
+    //toString() method for class.
+    @Override
     public String toString() {
         return String.format("%-40s %-18s %-18s %-12s", this.name, this.total_population, this.total_population_in_cities, this.total_population_not_in_cities);
     }
