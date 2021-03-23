@@ -4,6 +4,17 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+/**
+ * Class that contain all code for conducting unit tests.
+ * @author Euan Holmes,
+ * @author Adam Riddell,
+ * @author Scott Darroch
+ * Date Last modified 23/3/2021
+ * Last modified by: Euan
+ */
+
 public class UnitTests {
 
     //City
