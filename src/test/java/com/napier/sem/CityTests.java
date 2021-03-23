@@ -6,16 +6,6 @@ import java.util.ArrayList;
 
 public class CityTests {
 
-    static App app;
-
-    @BeforeAll
-    static void init()
-    {
-        // Init new instances of App & DbConnection
-        app = new App();
-
-    }
-
     @Test
     void printPrintEmptyCountryTest()
     {
