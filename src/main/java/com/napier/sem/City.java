@@ -2,6 +2,9 @@ package com.napier.sem;
 
 /**
  * Class for a city report
+ * @author Euan Holmes, Adam Riddell, Scott Darroch
+ * Date Last modified 23/3/2021
+ * Last modified by: Euan
  */
 public class City {
     //Private variables for ID, name, country, district and population.

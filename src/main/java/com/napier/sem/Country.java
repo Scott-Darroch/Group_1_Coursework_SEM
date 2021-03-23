@@ -1,7 +1,10 @@
 package com.napier.sem;
 
 /**
- * Class for a country report.
+ * Class for a country report
+ * @author Euan Holmes, Adam Riddell, Scott Darroch
+ * Date Last modified 23/3/2021
+ * Last modified by: Euan
  */
 public class Country {
     //Private variables code, name, continent, region, population and capital.
