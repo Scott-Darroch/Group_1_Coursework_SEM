@@ -628,9 +628,10 @@ public class SQL {
     /**
      * Gets the population of a country and prints it.
      */
-    public void report29() {
+    public int report29() {
         try
         {
+            int x = 0;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -642,24 +643,26 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next())
             {
+                x = rset.getInt("country.population");
                 System.out.println("Report #29: The population of the Spain: " + rset.getInt("country.population"));
             }
-
+            return x;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-
+            return 0;
         }
     }
 
     /**
      * The population of New South Wales.
      */
-    public void report30() {
+    public int report30() {
         try
         {
+            int x = 0;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -674,11 +677,13 @@ public class SQL {
             {
                 System.out.println("Report #30: The population of New South Wales is: " + rset.getInt("SUM(city.population)"));
             }
+            return x;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return 0;
         }
     }
 

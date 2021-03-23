@@ -53,4 +53,22 @@ public class IntegrationTests {
         int regionpop = sql.report28();
         assertEquals(testpop, regionpop);
     }
+
+    // A test to prove that the getcountrypopulation method correctly gets the country population from the database.
+    @Test
+    void testGetCountryPopulation()
+    {
+        int testpop = 39441700;
+        int countrypop = sql.report29();
+        assertEquals(testpop, countrypop);
+    }
+
+    // A test to prove that the getcitypopulation method correctly gets the city population from the database.
+    @Test
+    void testGetCityPopulation()
+    {
+        int testpop = 3993949;
+        int citypop = sql.report30();
+        assertEquals(testpop, citypop);
+    }
 }
