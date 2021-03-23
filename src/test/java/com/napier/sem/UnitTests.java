@@ -123,4 +123,30 @@ public class UnitTests {
         populations.add(population);
         System.out.println(population);
     }
+
+    //Capital City
+
+    @Test
+    void printPrintEmptyCapitalTest()
+    {
+        ArrayList<CapitalCity> capcities = new ArrayList<>();
+        System.out.println(capcities);
+    }
+
+    @Test
+    void printPrintNullCapitalTest()
+    {
+        ArrayList<CapitalCity> capcities = new ArrayList<>();
+        capcities.add(null);
+        System.out.println(capcities);
+    }
+
+    @Test
+    void printCapitalTest()
+    {
+        ArrayList<CapitalCity> capcities = new ArrayList<>();
+        CapitalCity capcity = new CapitalCity("Paris", "France", 126583905);
+        capcities.add(capcity);
+        System.out.println(capcity);
+    }
 }
