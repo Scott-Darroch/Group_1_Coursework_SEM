@@ -1,8 +1,8 @@
 package com.napier.sem;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class WorldPopTest {
 
@@ -12,14 +12,14 @@ public class WorldPopTest {
     static void init()
     {
         app = new App();
-        app.connect();
     }
 
     @Test
     void testGetWorldPopulation()
     {
+        app.connect();
         long testPop = 6078749450L;
         long worldPop = app.report26();
-        Assertions.assertEquals(worldPop, testPop, 1);
+        assertEquals(testPop, worldPop);
     }
 }
