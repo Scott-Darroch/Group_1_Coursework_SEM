@@ -4,6 +4,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * Class that contain all SQL query codes and prints the result of the sql query.
+ * @author Euan Holmes,
+ * @author Adam Riddell,
+ * @author Scott Darroch
+ * Date Last modified 23/3/2021
+ * Last modified by: Euan
+ */
+
 public class SQL {
 
     private Connection con;
@@ -550,11 +559,12 @@ public class SQL {
     }
 
     /**
-     * Gets all the current population information.
+     * Gets total population information for the continent of Europe.
      */
-    public void report27() {
+    public int report27() {
         try
         {
+            int x = 0;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -567,22 +577,25 @@ public class SQL {
             // Extract country information
             while (rset.next())
             {
+                x = rset.getInt("SUM(country.population)");
                 System.out.println("Report #27: The total population of Europe is: " + rset.getInt("SUM(country.population)"));
             }
+            return x;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return 0;
         }
     }
 
     /**
      * Returns the population of a single region (Caribbean).
      */
-    public void report28() {
-        try
-        {
+    public int report28() {
+        try {
+            int x = 0;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -593,17 +606,19 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            rset.next();
-
-            System.out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
+            while (rset.next()) {
+                x = rset.getInt("SUM(Population)");
+                System.out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
+            }
+            return x;
         }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+        catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to get population details");
+                return 0;
+            }
         }
-    }
-
     /**
      * Gets the population of a country and prints it.
      */

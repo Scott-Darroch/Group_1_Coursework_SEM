@@ -4,7 +4,15 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ *
+ * Class that contain all code for conducting integration tests for the project.
+ * @author Euan Holmes,
+ * @author Adam Riddell,
+ * @author Scott Darroch
+ * Date Last modified 23/3/2021
+ * Last modified by: Euan
+ */
 
 public class IntegrationTests {
 
@@ -19,6 +27,7 @@ public class IntegrationTests {
         sql = new SQL(app.getCon());
     }
 
+    // A test to prove that the getworldpopulation method correctly gets the world population from the database.
     @Test
     void testGetWorldPopulation()
     {
@@ -27,9 +36,21 @@ public class IntegrationTests {
         assertEquals(testPop, worldPop);
     }
 
+    // A test to prove that the getcontinentpopulation method correctly gets the continent population from the database.
     @Test
     void testGetContinentPopulation()
     {
+        int testpop = 730074600;
+        int continentpop = sql.report27();
+        assertEquals(testpop, continentpop);
+    }
 
+    // A test to prove that the getregionpopulation method correctly gets the region population from the database.
+    @Test
+    void testGetRegionPopulation()
+    {
+        int testpop = 38140000;
+        int regionpop = sql.report28();
+        assertEquals(testpop, regionpop);
     }
 }
