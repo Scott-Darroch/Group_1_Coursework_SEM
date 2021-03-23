@@ -669,6 +669,7 @@ public class SQL {
             // Extract country information
             while (rset.next())
             {
+                x = rset.getInt("SUM(city.population)");
                 System.out.println("Report #30: The population of New South Wales is: " + rset.getInt("SUM(city.population)"));
             }
             return x;
