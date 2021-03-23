@@ -5,7 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class SQL {
-    Connection con;
+
+    private Connection con;
 
     public SQL(Connection con) {
         this.con = con;
