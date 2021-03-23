@@ -12,17 +12,21 @@ import java.sql.Statement;
  * Date Last modified 23/3/2021
  * Last modified by: Euan
  */
-
 public class SQL {
 
+    //Connection to the SQL Database
     private Connection con;
 
     public SQL(Connection con) {
         this.con = con;
     }
 
+
     /**
-     * Gets all countries in the world in order of largest to smallest population..
+     * Function that gets all countries in the world in order of largest to smallest population.
+     * @author Scott Darroch
+     * Date Last modified 15/2/2021
+     * Last modified by: Scott
      */
     public void report1() {
         try
@@ -54,7 +58,10 @@ public class SQL {
     }
 
     /**
-     * Gets A list of country populations in Africa.
+     * Function that gets all countries in a continent in order of largest to smallest population.
+     * @author Euan Holmes
+     * Date Last modified 26/2/2021
+     * Last modified by: Euan
      */
     public void report2(){
         try
@@ -85,8 +92,12 @@ public class SQL {
         }
     }
 
+
     /**
-     * Gets the population of the countries in the Caribbean in order of largest to smallest.
+     * Function that gets the population of the countries in the Caribbean in order of largest to smallest.
+     * @author Scott Darroch
+     * Date Last modified 26/2/2021
+     * Last modified by: Scott
      */
     public void report3() {
         try
@@ -121,8 +132,12 @@ public class SQL {
         Leave Room For 4-6
      */
 
+
     /**
-     * Prints the report showing all the cities in the world organised by largest population to smallest.
+     * Function that prints the report showing all the cities in the world organised by largest population to smallest.
+     * @author Euan Holmes
+     * Date Last modified 4/3/2021
+     * Last modified by: Euan
      */
     public void report7(){
         try
@@ -153,8 +168,12 @@ public class SQL {
         }
     }
 
+
     /**
-     * Returns the population of each city in a continent (Asia) ordered from largest population to smallest.
+     * Function that returns the population of each city in a continent (Asia) ordered from largest population to smallest.
+     * @author Scott Darroch
+     * Date Last modified 3/3/2021
+     * Last modified by: Scott
      */
     public void report8(){
         try
@@ -191,8 +210,12 @@ public class SQL {
 
     }
 
+
     /**
-     * Returns the population of each city in a region (The Caribbean) ordered from largest population to smallest.
+     * Function that returns the population of each city in a region (The Caribbean) ordered from largest population to smallest.
+     * @author Adam Riddel
+     * Date Last modified 3/3/2021
+     * Last modified by: Adam
      */
     public void report9(){
         try
@@ -225,8 +248,12 @@ public class SQL {
         }
     }
 
+
     /**
-     * Returns the population of each city in Scotland ordered from largest population to smallest.
+     * Function that returns the population of each city in Scotland ordered from largest population to smallest.
+     * @author Scott Darroch
+     * Date Last modified 5/3/2021
+     * Last modified by: Scott
      */
     public void report10(){
         try
@@ -263,8 +290,14 @@ public class SQL {
 
     }
 
+
     /**
-     * Gets a list of the population of each city in (District) Noord_Brabant
+     * Function that gets a list of the population of each city in (District) Noord_Brabant
+     * @author Robert Denny
+     * @author Adam Riddel
+     * @author Euan Holmes
+     * Date Last modified 5/3/2021
+     * Last modified by: Robert
      */
     public void report11() {
         try
@@ -302,8 +335,12 @@ public class SQL {
         Leave Room For 12-16
      */
 
+
     /**
-     * This function prints the report showing all the capital cities in the world organised by largest population to smallest.
+     * Function that prints the report showing all the capital cities in the world organised by largest population to smallest.
+     * @author Euan Holmes
+     * Date Last modified 10/3/2021
+     * Last modified by: Euan
      */
     public void report17(){
         try
@@ -338,8 +375,14 @@ public class SQL {
         }
     }
 
+
     /**
-     * Returns a list of all Capital Cities in a given Continent (Europe) ordered by population from largest to smallest
+     * Function that returns a list of all Capital Cities in a given Continent (Europe) ordered by population from largest to smallest.
+     * @author Robert Denny
+     * @author Scott Darroch
+     * @author Euan Holmes
+     * Date Last modified 8/3/2021
+     * Last modified by: Robert
      */
     public void report18(){
         try{
@@ -374,8 +417,14 @@ public class SQL {
         }
     }
 
+
     /**
-     * Returns a list of all Capital Cities in a given Region (Caribbean) ordered by population from largest to smallest
+     * Function that returns a list of all Capital Cities in a given Region (Caribbean) ordered by population from largest to smallest
+     * @author Robert Denny
+     * @author Scott Darroch
+     * @author Euan Holmes
+     * Date Last modified 5/3/2021
+     * Last modified by: Robert
      */
     public void report19(){
         try{
@@ -414,9 +463,13 @@ public class SQL {
         Leave room for 20 - 22
      */
 
+
     /**
-     *  Returns the population of each continent that are both living in cities and not living in cities.
-     **/
+     * Function that returns the population of each continent that are both living in cities and not living in cities.
+     * @author Scott Darroch
+     * Date Last modified 12/3/2021
+     * Last modified by: Scott
+     */
     public void report23(){
         try
         {
@@ -450,8 +503,12 @@ public class SQL {
         }
     }
 
+
     /**
-     * Returns the population of each region that are both living in cities and not living in cities.
+     * Function that returns the population of each region that are both living in cities and not living in cities.
+     * @author Scott Darroch
+     * Date Last modified 12/3/2021
+     * Last modified by: Scott
      */
     public void report24(){
         try
@@ -488,9 +545,13 @@ public class SQL {
 
     }
 
+
     /**
-     * Returns the population of each country that are both living in cities and not living in cities.
-     **/
+     * Function that returns the population of each country that are both living in cities and not living in cities.
+     * @author Scott Darroch
+     * Date Last modified 10/3/2021
+     * Last modified by: Scott
+     */
     public void report25(){
         try
         {
@@ -526,8 +587,12 @@ public class SQL {
 
     }
 
+
     /**
-     * Gets the world's population and prints it.
+     * Function that gets the world's population and prints it.
+     * @author Euan Holmes
+     * Date Last modified 25/2/2021
+     * Last modified by: Euan
      */
     public long report26() {
         try
@@ -558,8 +623,12 @@ public class SQL {
         }
     }
 
+
     /**
-     * Gets total population information for the continent of Europe.
+     * Function that gets total population information for the continent of Europe.
+     * @author Scott Darroch
+     * Date Last modified 25/2/2021
+     * Last modified by: Scott
      */
     public int report27() {
         try
@@ -590,8 +659,12 @@ public class SQL {
         }
     }
 
+
     /**
-     * Returns the population of a single region (Caribbean).
+     * Function that returns the population of a single region (Caribbean).
+     * @author Scott Darroch
+     * Date Last modified 25/2/2021
+     * Last modified by: Scott
      */
     public int report28() {
         try {
@@ -619,8 +692,12 @@ public class SQL {
                 return 0;
             }
         }
+
     /**
-     * Gets the population of a country and prints it.
+     * Function that gets the population of a country and prints it.
+     * @author Euan Holmes
+     * Date Last modified 25/2/2021
+     * Last modified by: Euan
      */
     public int report29() {
         try
@@ -650,8 +727,12 @@ public class SQL {
         }
     }
 
+
     /**
-     * The population of New South Wales.
+     * Function that gets the population of New South Wales.
+     * @author Scott Darroch
+     * Date Last modified 25/2/2021
+     * Last modified by: Scott
      */
     public int report30() {
         try
@@ -682,8 +763,12 @@ public class SQL {
         }
     }
 
+
     /**
-     * Returns the population of a single city (Edinburgh).
+     * Function that returns the population of a single city (Edinburgh).
+     * @author Adam Riddell
+     * Date Last modified 25/2/2021
+     * Last modified by: Adam
      */
     public void report31() {
         try
@@ -709,8 +794,13 @@ public class SQL {
         }
     }
 
+
     /**
-     * Returns the language report.
+     * Function that returns the number of people who speak Chinese, English, Hindi, Spanish and Arabic from
+     * greatest number to smallest.
+     * @author Euan Holmes
+     * Date Last modified 10/3/2021
+     * Last modified by: Euan
      */
     public void report32() {
         try

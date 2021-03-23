@@ -3,7 +3,13 @@ package com.napier.sem;
 import java.sql.*;
 
 /**
- * Reports.
+ * Main app class that contains the connect() and disconnect() function for our database. Also contains
+ * our calls to SQL.java to do our report functions.
+ * @author Euan Holmes,
+ * @author Adam Riddell,
+ * @author Scott Darroch
+ * Date Last modified 23/3/2021
+ * Last modified by: Euan
  */
 public class App
 {
@@ -96,7 +102,6 @@ public class App
         //Report #32 :Percentage share of each language compared to world population
         sql.report32();
 
-
         System.out.println("End of Reports.");
 
         // Disconnect from database
@@ -104,7 +109,12 @@ public class App
     }
 
     /**
-     * Connect to the MySQL database.
+     * Class that connects to the database.
+     * @author Euan Holmes,
+     * @author Adam Riddell,
+     * @author Scott Darroch
+     * Date Last modified 22/3/2021
+     * Last modified by: Euan
      */
     public void connect()
     {
@@ -145,7 +155,12 @@ public class App
     }
 
     /**
-     * Disconnect from the MySQL database.
+     * Function that disconnects from SQL database.
+     * @author Euan Holmes,
+     * @author Adam Riddell,
+     * @author Scott Darroch
+     * Date Last modified 20/2/2021
+     * Last modified by: Scott
      */
     public void disconnect()
     {
@@ -163,11 +178,9 @@ public class App
         }
     }
 
+    //Establish connection.
     public Connection getCon() {
         return con;
     }
-
-
-
 
 }
