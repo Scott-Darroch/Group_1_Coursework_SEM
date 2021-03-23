@@ -148,15 +148,9 @@ public class SQL {
 
             while (rset.next())
             {
-                City city = new City();
-                city.ID = rset.getInt("ID");
-                city.name = rset.getString("name");
-                city.country = rset.getString("CountryCode");
-                city.district = rset.getString("district");
-                city.population = rset.getInt("population");
-
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
-
             }
         }
         catch (Exception e)
@@ -191,12 +185,8 @@ public class SQL {
 
             while (rset.next())
             {
-                City city = new City();
-                city.ID = rset.getInt("city.ID");
-                city.name = rset.getString("city.name");
-                city.country = rset.getString( "city.CountryCode");
-                city.district = rset.getString("city.district");
-                city.population = rset.getInt("city.population");
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
             }
         }
@@ -230,12 +220,8 @@ public class SQL {
 
             while (rset.next())
             {
-                City city = new City();
-                city.ID = rset.getInt("city.ID");
-                city.name = rset.getString("city.name");
-                city.country = rset.getString( "city.CountryCode");
-                city.district = rset.getString("city.district");
-                city.population = rset.getInt("city.population");
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
             }
         }
@@ -271,12 +257,8 @@ public class SQL {
 
             while (rset.next())
             {
-                City city = new City();
-                city.ID = rset.getInt("city.ID");
-                city.name = rset.getString("city.name");
-                city.country = rset.getString( "city.CountryCode");
-                city.district = rset.getString("city.district");
-                city.population = rset.getInt("city.population");
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
             }
         }
@@ -308,14 +290,9 @@ public class SQL {
 
             while (rset.next())
             {
-                City city = new City();
-                city.ID = rset.getInt("city.ID");
-                city.name = rset.getString("city.name");
-                city.country = rset.getString( "city.CountryCode");
-                city.district = rset.getString("city.district");
-                city.population = rset.getInt("city.population");
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
-
             }
 
         }
@@ -355,13 +332,8 @@ public class SQL {
 
             while (rset.next())
             {
-                City city = new City();
-                city.ID = rset.getInt("city.ID");
-                city.name = rset.getString("city.name");
-                city.country = rset.getString("city.CountryCode");
-                city.district = rset.getString("city.district");
-                city.population = rset.getInt("city.population");
-
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
 
             }

@@ -26,12 +26,7 @@ public class UnitTests {
     void printCityTest()
     {
         ArrayList<City> cities = new ArrayList<>();
-        City city = new City();
-        city.ID = (000);
-        city.name = ("Paris");
-        city.country = ("France");
-        city.district = ("Central France");
-        city.population = (180);
+        City city = new City(000, "Paris", "France", "Central France", 180);
         cities.add(city);
         System.out.println(city);
     }

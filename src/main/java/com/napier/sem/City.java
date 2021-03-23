@@ -1,36 +1,67 @@
 package com.napier.sem;
 
 /**
- * Class for a country report
+ * Class for a city report
  */
 public class City {
+    //private variables for ID, name, country, district and population.
+    private int ID;
+    private String name;
+    private String country;
+    private String district;
+    private int population;
 
+    //Constructor for City class.
+    public City(int ID, String name, String country, String district, int population) {
+        this.ID = ID;
+        this.name = name;
+        this.country = country;
+        this.district = district;
+        this.population = population;
+    }
 
-    /**
-     * The city's ID
-     */
-    public int ID;
+    //Getters and setters for private variables.
+    public int getID() {
+        return ID;
+    }
 
-    /**
-     * The city's name
-     */
-    public String name;
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
-    /**
-     * The city's country
-     */
-    public String country;
+    public String getName() {
+        return name;
+    }
 
-    /**
-     * The city's district
-     */
-    public String district;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    /**
-     * The city's population
-     */
-    public int population;
+    public String getCountry() {
+        return country;
+    }
 
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+    //toString method for class.
     public String toString() {
         return String.format("%-5s %-30s %-5s %-25s %-15s", this.ID, this.name, this.country, this.district, this.population);
     }
