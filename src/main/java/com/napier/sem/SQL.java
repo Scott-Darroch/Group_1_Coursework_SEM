@@ -599,9 +599,9 @@ public class SQL {
     /**
      * Returns the population of a single region (Caribbean).
      */
-    public void report28() {
-        try
-        {
+    public int report28() {
+        try {
+            int x = 0;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -612,17 +612,19 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            rset.next();
-
-            System.out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
+            while (rset.next()) {
+                x = rset.getInt("SUM(Population)");
+                System.out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
+            }
+            return x;
         }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+        catch(Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to get population details");
+                return 0;
+            }
         }
-    }
-
     /**
      * Gets the population of a country and prints it.
      */

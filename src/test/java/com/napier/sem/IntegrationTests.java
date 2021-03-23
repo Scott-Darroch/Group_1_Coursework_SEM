@@ -36,12 +36,21 @@ public class IntegrationTests {
         assertEquals(testPop, worldPop);
     }
 
-    // A test to prove that the getcontinentpopulation method correctly gets the world population from the database.
+    // A test to prove that the getcontinentpopulation method correctly gets the continent population from the database.
     @Test
     void testGetContinentPopulation()
     {
         int testpop = 730074600;
         int continentpop = sql.report27();
         assertEquals(testpop, continentpop);
+    }
+
+    // A test to prove that the getregionpopulation method correctly gets the region population from the database.
+    @Test
+    void testGetRegionPopulation()
+    {
+        int testpop = 38140000;
+        int regionpop = sql.report28();
+        assertEquals(testpop, regionpop);
     }
 }
