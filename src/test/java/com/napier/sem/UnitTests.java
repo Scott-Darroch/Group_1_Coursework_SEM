@@ -140,7 +140,6 @@ public class UnitTests {
         capcities.add(null);
         System.out.println(capcities);
     }
-
     @Test
     void printCapitalTest()
     {
