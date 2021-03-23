@@ -575,9 +575,10 @@ public class SQL {
     /**
      * Gets the world's population and prints it.
      */
-    public void report26() {
+    public long report26() {
         try
         {
+            long x = 0L;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -588,14 +589,17 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
             while (rset.next())
             {
-                System.out.println("Report #26: The total population of the world is: " + rset.getLong("SUM(country.population)"));
+                x = rset.getLong("SUM(country.population)");
+                System.out.println("Report #26: The total population of the world is: " + x);
             }
+            return x;
 
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return 0L;
 
         }
     }

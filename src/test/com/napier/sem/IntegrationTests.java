@@ -7,19 +7,21 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IntegrationTests {
 
     static App app;
+    static SQL sql;
 
     @BeforeAll
     static void init()
     {
         app = new App();
+        app.connect();
+        sql = new SQL(app.getCon());
     }
 
     @Test
     void testGetWorldPopulation()
     {
-        app.connect();
         long testPop = 6078749450L;
-        long worldPop = app.report26();
+        long worldPop = sql.report26();
         assertEquals(testPop, worldPop);
     }
 }
