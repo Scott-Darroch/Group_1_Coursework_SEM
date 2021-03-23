@@ -27,6 +27,7 @@ public class IntegrationTests {
         sql = new SQL(app.getCon());
     }
 
+    // A test to prove that the getworldpopulation method correctly gets the world population from the database.
     @Test
     void testGetWorldPopulation()
     {
@@ -35,6 +36,7 @@ public class IntegrationTests {
         assertEquals(testPop, worldPop);
     }
 
+    // A test to prove that the getcontinentpopulation method correctly gets the world population from the database.
     @Test
     void testGetContinentPopulation()
     {
