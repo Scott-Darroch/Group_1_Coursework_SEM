@@ -15,7 +15,10 @@ public class CapitalCity {
     /**
      * Constructor for the capital city class.
      */
-    public CapitalCity(){
+    public CapitalCity(String name, String country, int population) {
+        this.name = name;
+        this.country = country;
+        this.population = population;
     }
 
     //Getters and setters for all the private variables.

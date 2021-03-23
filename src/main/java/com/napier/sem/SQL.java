@@ -393,10 +393,7 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             while (rset.next()) {
-                CapitalCity city = new CapitalCity();
-                city.setName(rset.getString("city.name"));
-                city.setCountry(rset.getString("country.name"));
-                city.setPopulation(rset.getInt("city.population"));
+                CapitalCity city = new CapitalCity(rset.getString("city.name"),rset.getString("country.name"),rset.getInt("city.population"));
                 String CapitalCity_string =
                         String.format("%-30s %-35s %-15s",
                                 city.getName(), city.getCountry(), city.getPopulation());
@@ -432,10 +429,7 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             while (rset.next()) {
-                CapitalCity city = new CapitalCity();
-                city.setName(rset.getString("city.name"));
-                city.setCountry(rset.getString("country.name"));
-                city.setPopulation(rset.getInt("city.population"));
+                CapitalCity city = new CapitalCity(rset.getString("city.name"),rset.getString("country.name"),rset.getInt("city.population"));
                 String CapitalCity_string =
                         String.format("%-30s %-35s %-15s",
                                 city.getName(), city.getCountry(), city.getPopulation());
