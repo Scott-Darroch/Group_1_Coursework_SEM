@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+
+
 public class IntegrationTests {
 
     static App app;
@@ -23,5 +25,11 @@ public class IntegrationTests {
         long testPop = 6078749450L;
         long worldPop = sql.report26();
         assertEquals(testPop, worldPop);
+    }
+
+    @Test
+    void testGetContinentPopulation()
+    {
+
     }
 }
