@@ -37,7 +37,7 @@ public class App
         sql.report3();
 
         /*
-         * Leave room for 4 - 6
+         * Leave room for 4-6
          */
 
         //Report #7: All the cities in the world organised by largest population to smallest.
