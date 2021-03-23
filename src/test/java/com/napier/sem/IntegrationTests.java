@@ -63,7 +63,7 @@ public class IntegrationTests {
         assertEquals(testpop, countrypop);
     }
 
-    // A test to prove that the getcitypopulation method correctly gets the city population from the database.
+    // A test to prove that the getcitypopulation method correctly gets the city population from the database
     @Test
     void testGetCityPopulation()
     {
