@@ -864,8 +864,8 @@ public class App
             if (rset.next())
             {
                 System.out.println("Report #26: The total population of the world is: " + rset.getLong("SUM(country.population)"));
-                return rset.getLong("SUM(country.population)");
-
+                long worldpop = rset.getLong("SUM(country.population)");
+                return worldpop;
             }else{
                 return Long.parseLong(null);
             }
