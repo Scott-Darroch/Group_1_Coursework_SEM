@@ -4,6 +4,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/**
+ * Class that contain all SQL query codes and prints the result of the sql query.
+ * @author Euan Holmes,
+ * @author Adam Riddell,
+ * @author Scott Darroch
+ * Date Last modified 23/3/2021
+ * Last modified by: Euan
+ */
+
 public class SQL {
 
     private Connection con;
@@ -556,11 +565,12 @@ public class SQL {
     }
 
     /**
-     * Gets all the current population information.
+     * Gets total population information for the continent of Europe.
      */
-    public void report27() {
+    public int report27() {
         try
         {
+            int x = 0;
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -573,13 +583,16 @@ public class SQL {
             // Extract country information
             while (rset.next())
             {
+                x = rset.getInt("SUM(country.population)");
                 System.out.println("Report #27: The total population of Europe is: " + rset.getInt("SUM(country.population)"));
             }
+            return x;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return 0;
         }
     }
 
