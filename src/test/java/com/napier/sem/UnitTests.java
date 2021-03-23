@@ -10,7 +10,6 @@ public class UnitTests {
     @Test
     void printPrintEmptyCityTest()
     {
-        System.out.println("---------------City Testing---------------");
         ArrayList<City> cities = new ArrayList<>();
         System.out.println(cities);
     }
@@ -43,7 +42,6 @@ public class UnitTests {
     @Test
     void printPrintEmptyCountryTest()
     {
-        System.out.println("---------------Country Testing---------------");
         ArrayList<Country> countries = new ArrayList<>();
         System.out.println(countries);
     }
@@ -77,7 +75,6 @@ public class UnitTests {
     @Test
     void printPrintEmptyLanguageTest()
     {
-        System.out.println("---------------Language Testing---------------");
         ArrayList<Language> languages = new ArrayList<>();
         System.out.println(languages);
     }
@@ -107,7 +104,6 @@ public class UnitTests {
     @Test
     void printPrintEmptyPopTest()
     {
-        System.out.println("---------------Population Testing---------------");
         ArrayList<Population> populations = new ArrayList<>();
         System.out.println(populations);
     }
