@@ -1,7 +1,7 @@
 package com.napier.sem;
 
 /**
- * Class for a city report
+ * Class for a language report
  * @author Euan Holmes
  * @author Adam Riddell
  * @author Scott Darroch
@@ -9,10 +9,12 @@ package com.napier.sem;
  * Last modified by: Euan
  */
 public class Language {
+    //Private variables for name, language number percentage of that language.
     private String name;
     private int language_num;
     private int language_percent;
 
+    //Constructors for language class.
     public Language(String name) {
         this.name = name;
     }
@@ -23,6 +25,7 @@ public class Language {
         this.language_percent = language_percent;
     }
 
+    //Getters and setters for language class.
     public String getName() {
         return name;
     }
@@ -47,6 +50,7 @@ public class Language {
         this.language_percent = language_percent;
     }
 
+    //toString() method for class.
     @Override
     public String toString() {
         return name + "\t" + language_num + "\t" + language_percent + "%";

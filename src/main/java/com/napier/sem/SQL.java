@@ -429,11 +429,9 @@ public class SQL {
 
             while (rset.next())
             {
-                Population pop = new Population();
-                pop.name = rset.getString("country.continent");
-                pop.total_population = rset.getLong( "TotalCountryPopulation");
-                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
-                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
+                Population pop = new Population(rset.getString("country.continent"),rset.getLong( "TotalCountryPopulation"),
+                        rset.getInt("TotalCityPopulation"),
+                        ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
                 System.out.println(pop);
             }
         }
@@ -467,11 +465,9 @@ public class SQL {
 
             while (rset.next())
             {
-                Population pop = new Population();
-                pop.name = rset.getString("country.region");
-                pop.total_population = rset.getLong( "TotalCountryPopulation");
-                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
-                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
+                Population pop = new Population(rset.getString("country.region"),rset.getLong( "TotalCountryPopulation"),
+                        rset.getInt("TotalCityPopulation"),
+                        ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
                 System.out.println(pop);
             }
         }
@@ -507,11 +503,9 @@ public class SQL {
 
             while (rset.next())
             {
-                Population pop = new Population();
-                pop.name = rset.getString("country.name");
-                pop.total_population = rset.getLong( "TotalCountryPopulation");
-                pop.total_population_in_cities = rset.getInt("TotalCityPopulation");
-                pop.total_population_not_in_cities =  (pop.total_population - pop.total_population_in_cities);
+                Population pop = new Population(rset.getString("country.name"),rset.getLong( "TotalCountryPopulation"),
+                        rset.getInt("TotalCityPopulation"),
+                        ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
                 System.out.println(pop);
             }
         }
