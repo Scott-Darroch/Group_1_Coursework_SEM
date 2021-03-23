@@ -80,10 +80,7 @@ public class UnitTests {
     void printLangTest()
     {
         ArrayList<Language> languages = new ArrayList<>();
-        Language language = new Language();
-        language.name = ("English");
-        language.language_num = (42);
-        language.language_percent = (10);
+        Language language = new Language("English", 42, 10);
         languages.add(language);
         System.out.println(language);
     }
