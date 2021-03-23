@@ -716,16 +716,11 @@ public class SQL {
             System.out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
             System.out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
 
-            Language chinese = new Language();
-            chinese.name = "'Chinese'";
-            Language english = new Language();
-            english.name = "'English'";
-            Language hindi = new Language();
-            hindi.name = "'Hindi'";
-            Language spanish = new Language();
-            spanish.name = "'Spanish'";
-            Language arabic = new Language();
-            arabic.name = "'Arabic'";
+            Language chinese = new Language("'Chinese'");
+            Language english = new Language("'English'");
+            Language hindi = new Language("'Hindi'");
+            Language spanish = new Language("'Spanish'");
+            Language arabic = new Language("'Arabic'");
 
             Language[] languages = {chinese, english, hindi, spanish, arabic};
 
@@ -735,19 +730,19 @@ public class SQL {
                 String strSelect =
                         "SELECT SUM(country.population) AS country_pop, ROUND((100 * SUM(country.population))/(SELECT SUM(population) FROM country), 0) AS world_pop "
                                 + "FROM country INNER JOIN countrylanguage on country.code = countrylanguage.countryCode "
-                                + "WHERE countrylanguage.language = " + languages[i].name;
+                                + "WHERE countrylanguage.language = " + languages[i].getName();
                 ResultSet rset = stmt.executeQuery(strSelect);
 
                 while (rset.next())
                 {
-                    languages[i].language_num = rset.getInt("country_pop");
-                    languages[i].language_percent = rset.getInt("world_pop");
+                    languages[i].setLanguage_num(rset.getInt("country_pop"));
+                    languages[i].setLanguage_percent(rset.getInt("world_pop"));
                 }
             }
 
             for (int i = 0; i<languages.length; i++){
                 for (int j = i + 1; j<languages.length; j++){
-                    if(languages[i].language_num < languages[j].language_num){
+                    if(languages[i].getLanguage_num() < languages[j].getLanguage_num()){
                         Language temp = languages[i];
                         languages[i] = languages[j];
                         languages[j] = temp;
