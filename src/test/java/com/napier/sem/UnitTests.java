@@ -53,13 +53,7 @@ public class UnitTests {
     void printCountryTest()
     {
         ArrayList<Country> countries = new ArrayList<>();
-        Country country = new Country();
-        country.code = ("GER");
-        country.name = ("Germany");
-        country.continent = ("Europe");
-        country.region = ("Central Europe");
-        country.population = (520000000);
-        country.capital= ("Berlin");
+        Country country = new Country("GER","Germany","Europe","Central Europe",520000000,"Berlin");
         countries.add(country);
         System.out.println(country);
     }

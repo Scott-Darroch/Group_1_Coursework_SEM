@@ -4,37 +4,74 @@ package com.napier.sem;
  * Class for a country report.
  */
 public class Country {
+    //Private variables code, name, continent, region, population and capital.
+    private String code;
+    private String name;
+    private String continent;
+    private String region;
+    private int population;
+    private String capital;
 
-    /**
-     * The country's code
-     */
-    public String code;
+    //Constructor for country class.
+    public Country(String code, String name, String continent, String region, int population, String capital) {
+        this.code = code;
+        this.name = name;
+        this.continent = continent;
+        this.region = region;
+        this.population = population;
+        this.capital = capital;
+    }
 
-    /**
-     * The country's name
-     */
-    public String name;
+    //Getters and setters for private variables.
+    public String getCode() {
+        return code;
+    }
 
-    /**
-     * The country's continent
-     */
-    public String continent;
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-    /**
-     * The country's region
-     */
-    public String region;
+    public String getName() {
+        return name;
+    }
 
-    /**
-     * The country's population
-     */
-    public int population;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    /**
-     * The country's capital
-     */
-    public String capital;
+    public String getContinent() {
+        return continent;
+    }
 
+    public void setContinent(String continent) {
+        this.continent = continent;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public int getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public void setCapital(String capital) {
+        this.capital = capital;
+    }
+
+    //toString() method for class.
     public String toString() {
         return String.format("%-5s %-48s %-20s %-30s %-15s %-15s", this.code, this.name, this.continent, this.region, this.population, this.capital);
     }

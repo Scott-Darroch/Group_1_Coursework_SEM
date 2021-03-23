@@ -4,7 +4,7 @@ package com.napier.sem;
  * Class for a city report
  */
 public class City {
-    //private variables for ID, name, country, district and population.
+    //Private variables for ID, name, country, district and population.
     private int ID;
     private String name;
     private String country;

@@ -32,14 +32,8 @@ public class SQL {
             // Extract country information
             while (rset.next())
             {
-                Country coun = new Country();
-                coun.code = rset.getString("country.code");
-                coun.name = rset.getString("country.name");
-                coun.continent = rset.getString("country.continent");
-                coun.region = rset.getString("country.region");
-                coun.population = rset.getInt("country.population");
-                coun.capital = rset.getString("city.name");
-
+                Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
+                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
                 System.out.println(coun);
             }
         }
@@ -70,13 +64,8 @@ public class SQL {
             // Extract country information
             while (rset.next())
             {
-                Country coun = new Country();
-                coun.code = rset.getString("country.code");
-                coun.name = rset.getString("country.name");
-                coun.continent = rset.getString("country.continent");
-                coun.region = rset.getString("country.region");
-                coun.population = rset.getInt("country.population");
-                coun.capital = rset.getString("city.name");
+                Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
+                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
                 System.out.println(coun);
             }
         }
@@ -107,13 +96,8 @@ public class SQL {
             // Extract country information
             while (rset.next())
             {
-                Country coun = new Country();
-                coun.code = rset.getString("country.code");
-                coun.name = rset.getString("country.name");
-                coun.continent = rset.getString("country.continent");
-                coun.region = rset.getString("country.region");
-                coun.population = rset.getInt("country.population");
-                coun.capital = rset.getString("city.name");
+                Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
+                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
                 System.out.println(coun);
             }
         }
