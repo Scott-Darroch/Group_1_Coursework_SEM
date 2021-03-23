@@ -394,12 +394,12 @@ public class SQL {
 
             while (rset.next()) {
                 CapitalCity city = new CapitalCity();
-                city.name = rset.getString("city.name");
-                city.country = rset.getString("country.name");
-                city.population = rset.getInt("city.population");
+                city.setName(rset.getString("city.name"));
+                city.setCountry(rset.getString("country.name"));
+                city.setPopulation(rset.getInt("city.population"));
                 String CapitalCity_string =
                         String.format("%-30s %-35s %-15s",
-                                city.name, city.country, city.population);
+                                city.getName(), city.getCountry(), city.getPopulation());
                 System.out.println(CapitalCity_string);
 
 
@@ -433,12 +433,12 @@ public class SQL {
 
             while (rset.next()) {
                 CapitalCity city = new CapitalCity();
-                city.name = rset.getString("city.name");
-                city.country = rset.getString("country.name");
-                city.population = rset.getInt("city.population");
+                city.setName(rset.getString("city.name"));
+                city.setCountry(rset.getString("country.name"));
+                city.setPopulation(rset.getInt("city.population"));
                 String CapitalCity_string =
                         String.format("%-30s %-35s %-15s",
-                                city.name, city.country, city.population);
+                                city.getName(), city.getCountry(), city.getPopulation());
                 System.out.println(CapitalCity_string);
 
 
