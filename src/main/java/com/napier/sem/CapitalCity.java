@@ -4,17 +4,12 @@ package com.napier.sem;
  * Class for a capital city report
  */
 public class CapitalCity {
-
-    /**
-     * Private variables for name, country and population.
-     */
+    //Private variables for name, country and population.
     private String name;
     private String country;
     private int population;
 
-    /**
-     * Constructor for the capital city class.
-     */
+    //Constructor for the capital city class.
     public CapitalCity(String name, String country, int population) {
         this.name = name;
         this.country = country;
