@@ -57,8 +57,12 @@ public class App
 
         sql.report12();
 
+        sql.report13();
+
+        sql.report14();
+
         /*
-         * Leave room for 12 - 16
+         * Leave room for 16
          */
 
         //Report #17: All the capital cities in the world organised by largest population to smallest.

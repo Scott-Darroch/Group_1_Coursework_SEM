@@ -193,7 +193,7 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            System.out.println(String.format("%-8s %-25s %-8s %-25s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
@@ -273,7 +273,7 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            System.out.println(String.format("%-8s %-25s %-8s %-25s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
@@ -313,6 +313,9 @@ public class SQL {
                             + "ORDER BY population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
@@ -355,6 +358,9 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
             while (rset.next())
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
@@ -367,8 +373,88 @@ public class SQL {
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+        }
+    }
 
+    /**
+     * Function that gets a list of the top 14 most populated cities in North America.
+     * @author Scott Darroch
+     * Date Last modified 02/04/2021
+     * Last modified by: Scott
+     */
+    public void report13() {
+        try
+        {
+            System.out.println("Report 13: The top 14 populated cities in the continent of North America.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, city.name, CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.continent = 'North America' "
+                            + "ORDER BY population DESC "
+                            + "LIMIT 14 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
 
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Function that gets a list of the top 3 most populated cities in Southern Europe.
+     * @author Scott Darroch
+     * Date Last modified 02/04/2021
+     * Last modified by: Scott
+     */
+    public void report14() {
+        try
+        {
+            System.out.println("Report 14: The top 3 populated cities in the region of Southern Europe.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, city.name, CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.region = 'Southern Europe' "
+                            + "ORDER BY population DESC "
+                            + "LIMIT 3 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
         }
     }
 
