@@ -458,6 +458,47 @@ public class SQL {
         }
     }
 
+    /**
+     * Function that gets a list of the top 5 most populated cities in Japan.
+     * @author Scott Darroch
+     * Date Last modified 02/04/2021
+     * Last modified by: Scott
+     */
+    public void report15() {
+        try
+        {
+            System.out.println("Report 15: The top 5 populated cities in Japan.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, city.name, CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.name = 'Japan' "
+                            + "ORDER BY population DESC "
+                            + "LIMIT 5 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
 
     /**
      * Function that prints the report showing all the capital cities in the world organised by largest population to smallest.

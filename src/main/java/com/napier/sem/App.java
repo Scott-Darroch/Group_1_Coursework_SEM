@@ -55,11 +55,17 @@ public class App
         //Report #11: population of each city in (District) Noord_Brabant
         sql.report11();
 
+        //Report #12: The top 7 populated cities in the world.
         sql.report12();
 
+        //Report #13: Report 13: The top 14 populated cities in the continent of North America.
         sql.report13();
 
+        //Report #14: The top 3 populated cities in the region of Southern Europe.
         sql.report14();
+
+        //Report #15: The top 5 most populated cities in Japan.
+        sql.report15();
 
         /*
          * Leave room for 16
