@@ -42,7 +42,7 @@ public class IntegrationTests {
     {
         int testpop = 730074600;
         int continentpop = sql.report27();
-        assertEquals(testpop, continentpop);
+        assertEquals(testpop, continentpop, "If report 27 produces an output that matches our hardcoded variable then the method runs correctly.");
     }
 
     // A test to prove that the getregionpopulation method correctly gets the region population from the database.
@@ -51,7 +51,7 @@ public class IntegrationTests {
     {
         int testpop = 38140000;
         int regionpop = sql.report28();
-        assertEquals(testpop, regionpop);
+        assertEquals(testpop, regionpop,"If report 28 produces an output that matches our hardcoded variable then the method runs correctly.");
     }
 
     // A test to prove that the getcountrypopulation method correctly gets the country population from the database.
@@ -60,7 +60,7 @@ public class IntegrationTests {
     {
         int testpop = 39441700;
         int countrypop = sql.report29();
-        assertEquals(testpop, countrypop);
+        assertEquals(testpop, countrypop, "If report 29 produces an output that matches our hardcoded variable then the method runs correctly.");
     }
 
     // A test to prove that the getcitypopulation method correctly gets the city population from the database
@@ -69,6 +69,6 @@ public class IntegrationTests {
     {
         int testpop = 3993949;
         int citypop = sql.report30();
-        assertEquals(testpop, citypop);
+        assertEquals(testpop, citypop, "If report 30 produces an output that matches our hardcoded variable then the method runs correctly.");
     }
 }

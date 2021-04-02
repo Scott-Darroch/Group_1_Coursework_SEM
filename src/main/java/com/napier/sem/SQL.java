@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import static java.lang.System.*;
+
 /**
  * Class that contain all SQL query codes and prints the result of the sql query.
  * @author Euan Holmes,
@@ -31,7 +33,7 @@ public class SQL {
     public void report1() {
         try
         {
-            System.out.println("Report 1: A report showing all countries in the world in order of largest to smallest population.");
+            out.println("Report 1: A report showing all countries in the world in order of largest to smallest population.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -47,13 +49,13 @@ public class SQL {
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
-                System.out.println(coun);
+                out.println(coun);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
     }
 
@@ -66,7 +68,7 @@ public class SQL {
     public void report2(){
         try
         {
-            System.out.println("Report #2, A list of country populations in Africa");
+            out.println("Report #2, A list of country populations in Africa");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -82,13 +84,13 @@ public class SQL {
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
-                System.out.println(coun);
+                out.println(coun);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
     }
 
@@ -102,7 +104,7 @@ public class SQL {
     public void report3() {
         try
         {
-            System.out.println("Report 3: A report showing the population of the countries in the Caribbean in order of largest to smallest.");
+            out.println("Report 3: A report showing the population of the countries in the Caribbean in order of largest to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -118,13 +120,13 @@ public class SQL {
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
-                System.out.println(coun);
+                out.println(coun);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
     }
 
@@ -142,7 +144,7 @@ public class SQL {
     public void report7(){
         try
         {
-            System.out.println("Report 7: All the cities in the world organised by largest population to smallest.");
+            out.println("Report 7: All the cities in the world organised by largest population to smallest.");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -158,13 +160,13 @@ public class SQL {
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                System.out.println(city);
+                out.println(city);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
     }
 
@@ -178,7 +180,7 @@ public class SQL {
     public void report8(){
         try
         {
-            System.out.println("Report 8: The population of each city in Asia ordered from largest population to smallest.");
+            out.println("Report 8: The population of each city in Asia ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -193,19 +195,19 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            System.out.println(String.format("%-8s %-25s %-8s %-25s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+            out.printf("%-8s %-25s %-8s %-25s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
 
             while (rset.next())
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                System.out.println(city);
+                out.println(city);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
 
     }
@@ -220,7 +222,7 @@ public class SQL {
     public void report9(){
         try
         {
-            System.out.println("Report 9: The population of each city in The Caribbean ordered from largest population to smallest.");
+            out.println("Report 9: The population of each city in The Caribbean ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -238,13 +240,13 @@ public class SQL {
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                System.out.println(city);
+                out.println(city);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
     }
 
@@ -258,7 +260,7 @@ public class SQL {
     public void report10(){
         try
         {
-            System.out.println("Report 10: The population of each city in Scotland ordered from largest population to smallest.");
+            out.println("Report 10: The population of each city in Scotland ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -273,19 +275,19 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            System.out.println(String.format("%-8s %-25s %-8s %-25s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+            out.printf("%-8s %-25s %-8s %-25s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
 
             while (rset.next())
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                System.out.println(city);
+                out.println(city);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
 
     }
@@ -302,7 +304,7 @@ public class SQL {
     public void report11() {
         try
         {
-            System.out.println("Report 11: The population of each city in Noord_Brabant ordered from largest population to smallest.");
+            out.println("Report 11: The population of each city in Noord_Brabant ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -318,14 +320,14 @@ public class SQL {
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                System.out.println(city);
+                out.println(city);
             }
 
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
 
 
         }
@@ -345,7 +347,7 @@ public class SQL {
     public void report17(){
         try
         {
-            System.out.println("Report 17: All the capital cities in the world organised by largest population to smallest.");
+            out.println("Report 17: All the capital cities in the world organised by largest population to smallest.");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -364,14 +366,14 @@ public class SQL {
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                System.out.println(city);
+                out.println(city);
 
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
     }
 
@@ -387,7 +389,7 @@ public class SQL {
     public void report18(){
         try{
 
-            System.out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
+            out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -405,15 +407,15 @@ public class SQL {
                 String CapitalCity_string =
                         String.format("%-30s %-35s %-15s",
                                 city.getName(), city.getCountry(), city.getPopulation());
-                System.out.println(CapitalCity_string);
+                out.println(CapitalCity_string);
 
 
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details.");
+            out.println(e.getMessage());
+            out.println("Failed to get population details.");
         }
     }
 
@@ -429,7 +431,7 @@ public class SQL {
     public void report19(){
         try{
 
-            System.out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
+            out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -447,15 +449,15 @@ public class SQL {
                 String CapitalCity_string =
                         String.format("%-30s %-35s %-15s",
                                 city.getName(), city.getCountry(), city.getPopulation());
-                System.out.println(CapitalCity_string);
+                out.println(CapitalCity_string);
 
 
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details.");
+            out.println(e.getMessage());
+            out.println("Failed to get population details.");
         }
     }
 
@@ -473,7 +475,7 @@ public class SQL {
     public void report23(){
         try
         {
-            System.out.println("Report 23: The population of a continent living in cities and not living in cities.");
+            out.println("Report 23: The population of a continent living in cities and not living in cities.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -487,19 +489,19 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Continent", "Country Population", "City Population", "Non-city Population"));
+            out.printf("%-40s %-18s %-18s %-12s%n", "Continent", "Country Population", "City Population", "Non-city Population");
 
             while (rset.next())
             {
                 Population pop = new Population(rset.getString("country.continent"),rset.getLong( "TotalCountryPopulation"),
                         rset.getInt("TotalCityPopulation"),
                         ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
-                System.out.println(pop);
+                out.println(pop);
             }
         }
         catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
     }
 
@@ -513,7 +515,7 @@ public class SQL {
     public void report24(){
         try
         {
-            System.out.println("Report 24: The population of a region living in cities and not living in cities.");
+            out.println("Report 24: The population of a region living in cities and not living in cities.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -527,20 +529,20 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Region", "Country Population", "City Population", "Non-city Population"));
+            out.printf("%-40s %-18s %-18s %-12s%n", "Region", "Country Population", "City Population", "Non-city Population");
 
             while (rset.next())
             {
                 Population pop = new Population(rset.getString("country.region"),rset.getLong( "TotalCountryPopulation"),
                         rset.getInt("TotalCityPopulation"),
                         ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
-                System.out.println(pop);
+                out.println(pop);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
 
     }
@@ -555,7 +557,7 @@ public class SQL {
     public void report25(){
         try
         {
-            System.out.println("Report 25: The population of each country living in cities and not living in cities.");
+            out.println("Report 25: The population of each country living in cities and not living in cities.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -569,20 +571,20 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Name", "Country Population", "City Population", "Non-city Population"));
+            out.printf("%-40s %-18s %-18s %-12s%n", "Name", "Country Population", "City Population", "Non-city Population");
 
             while (rset.next())
             {
                 Population pop = new Population(rset.getString("country.name"),rset.getLong( "TotalCountryPopulation"),
                         rset.getInt("TotalCityPopulation"),
                         ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
-                System.out.println(pop);
+                out.println(pop);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
 
     }
@@ -609,15 +611,15 @@ public class SQL {
             while (rset.next())
             {
                 x = rset.getLong("SUM(country.population)");
-                System.out.println("Report #26: The total population of the world is: " + x);
+                out.println("Report #26: The total population of the world is: " + x);
             }
             return x;
 
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
             return 0L;
 
         }
@@ -647,14 +649,14 @@ public class SQL {
             while (rset.next())
             {
                 x = rset.getInt("SUM(country.population)");
-                System.out.println("Report #27: The total population of Europe is: " + rset.getInt("SUM(country.population)"));
+                out.println("Report #27: The total population of Europe is: " + rset.getInt("SUM(country.population)"));
             }
             return x;
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
             return 0;
         }
     }
@@ -681,14 +683,14 @@ public class SQL {
 
             while (rset.next()) {
                 x = rset.getInt("SUM(Population)");
-                System.out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
+                out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
             }
             return x;
         }
         catch(Exception e)
             {
-                System.out.println(e.getMessage());
-                System.out.println("Failed to get population details");
+                out.println(e.getMessage());
+                out.println("Failed to get population details");
                 return 0;
             }
         }
@@ -715,14 +717,14 @@ public class SQL {
             while (rset.next())
             {
                 x = rset.getInt("country.population");
-                System.out.println("Report #29: The population of the Spain: " + rset.getInt("country.population"));
+                out.println("Report #29: The population of the Spain: " + rset.getInt("country.population"));
             }
             return x;
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
             return 0;
         }
     }
@@ -751,14 +753,14 @@ public class SQL {
             while (rset.next())
             {
                 x = rset.getInt("SUM(city.population)");
-                System.out.println("Report #30: The population of New South Wales is: " + rset.getInt("SUM(city.population)"));
+                out.println("Report #30: The population of New South Wales is: " + rset.getInt("SUM(city.population)"));
             }
             return x;
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
             return 0;
         }
     }
@@ -781,16 +783,17 @@ public class SQL {
                             + "FROM city "
                             + "WHERE name = 'Edinburgh' ";
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            try (ResultSet rset = stmt.executeQuery(strSelect)) {
 
-            rset.next();
+                rset.next();
 
-            System.out.println("Report #31: The population of Edinburgh: " + rset.getInt("Population"));
+                out.println("Report #31: The population of Edinburgh: " + rset.getInt("Population"));
+            }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
     }
 
@@ -805,8 +808,8 @@ public class SQL {
     public void report32() {
         try
         {
-            System.out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
-            System.out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
+            out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
+            out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
 
             Language chinese = new Language("'Chinese'");
             Language english = new Language("'English'");
@@ -816,19 +819,18 @@ public class SQL {
 
             Language[] languages = {chinese, english, hindi, spanish, arabic};
 
-            for (int i = 0; i<languages.length; i++){
+            for (Language language : languages) {
 
                 Statement stmt = con.createStatement();
                 String strSelect =
                         "SELECT SUM(country.population) AS country_pop, ROUND((100 * SUM(country.population))/(SELECT SUM(population) FROM country), 0) AS world_pop "
                                 + "FROM country INNER JOIN countrylanguage on country.code = countrylanguage.countryCode "
-                                + "WHERE countrylanguage.language = " + languages[i].getName();
+                                + "WHERE countrylanguage.language = " + language.getName();
                 ResultSet rset = stmt.executeQuery(strSelect);
 
-                while (rset.next())
-                {
-                    languages[i].setLanguage_num(rset.getInt("country_pop"));
-                    languages[i].setLanguage_percent(rset.getInt("world_pop"));
+                while (rset.next()) {
+                    language.setLanguage_num(rset.getInt("country_pop"));
+                    language.setLanguage_percent(rset.getInt("world_pop"));
                 }
             }
 
@@ -842,14 +844,14 @@ public class SQL {
                 }
             }
 
-            for (int i = 0; i<languages.length; i++){
-                System.out.println(languages[i]);
+            for (Language language : languages) {
+                out.println(language);
             }
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get population details");
+            out.println(e.getMessage());
+            out.println("Failed to get population details");
         }
     }
 }

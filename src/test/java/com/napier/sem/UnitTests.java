@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static java.lang.System.*;
+
 
 /**
  * Class that contain all code for conducting unit tests.
@@ -22,7 +23,7 @@ public class UnitTests {
     void printPrintEmptyCityTest()
     {
         ArrayList<City> cities = new ArrayList<>();
-        System.out.println(cities);
+        out.println(cities);
     }
 
     @Test
@@ -30,16 +31,16 @@ public class UnitTests {
     {
         ArrayList<City> cities = new ArrayList<>();
         cities.add(null);
-        System.out.println(cities);
+        out.println(cities);
     }
 
     @Test
     void printCityTest()
     {
         ArrayList<City> cities = new ArrayList<>();
-        City city = new City(000, "Paris", "France", "Central France", 180);
+        City city = new City(42, "Paris", "France", "Central France", 180);
         cities.add(city);
-        System.out.println(city);
+        out.println(city);
     }
 
     //Country
@@ -49,7 +50,7 @@ public class UnitTests {
     void printPrintEmptyCountryTest()
     {
         ArrayList<Country> countries = new ArrayList<>();
-        System.out.println(countries);
+        out.println(countries);
     }
 
     @Test
@@ -57,7 +58,7 @@ public class UnitTests {
     {
         ArrayList<Country> countries = new ArrayList<>();
         countries.add(null);
-        System.out.println(countries);
+        out.println(countries);
     }
 
     @Test
@@ -66,7 +67,7 @@ public class UnitTests {
         ArrayList<Country> countries = new ArrayList<>();
         Country country = new Country("GER","Germany","Europe","Central Europe",520000000,"Berlin");
         countries.add(country);
-        System.out.println(country);
+        out.println(country);
     }
 
     //Language
@@ -76,7 +77,7 @@ public class UnitTests {
     void printPrintEmptyLanguageTest()
     {
         ArrayList<Language> languages = new ArrayList<>();
-        System.out.println(languages);
+        out.println(languages);
     }
 
     @Test
@@ -84,7 +85,7 @@ public class UnitTests {
     {
         ArrayList<Language> languages = new ArrayList<>();
         languages.add(null);
-        System.out.println(languages);
+        out.println(languages);
     }
 
     @Test
@@ -93,7 +94,7 @@ public class UnitTests {
         ArrayList<Language> languages = new ArrayList<>();
         Language language = new Language("English", 42, 10);
         languages.add(language);
-        System.out.println(language);
+        out.println(language);
     }
 
     //Population
@@ -102,7 +103,7 @@ public class UnitTests {
     void printPrintEmptyPopTest()
     {
         ArrayList<Population> populations = new ArrayList<>();
-        System.out.println(populations);
+        out.println(populations);
     }
 
     @Test
@@ -110,7 +111,7 @@ public class UnitTests {
     {
         ArrayList<Population> populations = new ArrayList<>();
         populations.add(null);
-        System.out.println(populations);
+        out.println(populations);
     }
 
     @Test
@@ -119,7 +120,7 @@ public class UnitTests {
         ArrayList<Population> populations = new ArrayList<>();
         Population population = new Population("France",42,12,30);
         populations.add(population);
-        System.out.println(population);
+        out.println(population);
     }
 
     //Capital City
@@ -128,7 +129,7 @@ public class UnitTests {
     void printPrintEmptyCapitalTest()
     {
         ArrayList<CapitalCity> capcities = new ArrayList<>();
-        System.out.println(capcities);
+        out.println(capcities);
     }
 
     @Test
@@ -136,7 +137,7 @@ public class UnitTests {
     {
         ArrayList<CapitalCity> capcities = new ArrayList<>();
         capcities.add(null);
-        System.out.println(capcities);
+        out.println(capcities);
     }
     @Test
     void printCapitalTest()
@@ -144,6 +145,6 @@ public class UnitTests {
         ArrayList<CapitalCity> capcities = new ArrayList<>();
         CapitalCity capcity = new CapitalCity("Paris", "France", 126583905);
         capcities.add(capcity);
-        System.out.println(capcity);
+        out.println(capcity);
     }
 }
