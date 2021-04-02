@@ -23,7 +23,7 @@ public class IntegrationTests {
     static void init()
     {
         app = new App();
-        app.connect();
+        app.connect("localhost:3306");
         sql = new SQL(app.getCon());
     }
 

@@ -334,6 +334,43 @@ public class SQL {
     /*
         Leave Room For 12-16
      */
+    /**
+     * Function that gets a list of the top 7 most populated cities in the world.
+     * @author Scott Darroch
+     * Date Last modified 02/04/2021
+     * Last modified by: Scott
+     */
+    public void report12() {
+        try
+        {
+            System.out.println("Report 12: The top 7 populated cities in the world.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, name, CountryCode, district, population "
+                            + "FROM city "
+                            + "ORDER BY population DESC "
+                            + "LIMIT 7 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+
+        }
+    }
 
 
     /**

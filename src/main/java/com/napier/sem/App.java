@@ -22,7 +22,7 @@ public class App
         App a = new App();
 
         // Connect to database
-        a.connect();
+        a.connect("localhost:33060");
 
         //Creates a new instance of the SQL reports
         SQL sql = new SQL(con);
@@ -54,6 +54,8 @@ public class App
 
         //Report #11: population of each city in (District) Noord_Brabant
         sql.report11();
+
+        sql.report12();
 
         /*
          * Leave room for 12 - 16
@@ -116,7 +118,7 @@ public class App
      * Date Last modified 22/3/2021
      * Last modified by: Euan
      */
-    public void connect()
+    public void connect(String location)
     {
         try
         {
@@ -136,9 +138,9 @@ public class App
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(10000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
