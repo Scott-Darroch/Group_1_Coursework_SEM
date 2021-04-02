@@ -3,6 +3,7 @@ package com.napier.sem;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  * Class that contain all SQL query codes and prints the result of the sql query.
@@ -25,10 +26,12 @@ public class SQL {
     /**
      * Function that gets all countries in the world in order of largest to smallest population.
      * @author Scott Darroch
+     * @return countries
      * Date Last modified 15/2/2021
      * Last modified by: Scott
      */
-    public void report1() {
+    public ArrayList<Country> report1() {
+        ArrayList<Country> countries = new ArrayList<>();
         try
         {
             System.out.println("Report 1: A report showing all countries in the world in order of largest to smallest population.");
@@ -43,27 +46,33 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
+
             while (rset.next())
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
                 System.out.println(coun);
+                countries.add(coun);
             }
+            return countries;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return countries;
         }
     }
 
     /**
      * Function that gets all countries in a continent in order of largest to smallest population.
      * @author Euan Holmes
+     * @return countries
      * Date Last modified 26/2/2021
      * Last modified by: Euan
      */
-    public void report2(){
+    public ArrayList<Country> report2(){
+        ArrayList<Country> countries = new ArrayList<>();
         try
         {
             System.out.println("Report #2, A list of country populations in Africa");
@@ -83,12 +92,15 @@ public class SQL {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
                 System.out.println(coun);
+                countries.add(coun);
             }
+            return countries;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return countries;
         }
     }
 
@@ -96,10 +108,12 @@ public class SQL {
     /**
      * Function that gets the population of the countries in the Caribbean in order of largest to smallest.
      * @author Scott Darroch
+     * @return countries
      * Date Last modified 26/2/2021
      * Last modified by: Scott
      */
-    public void report3() {
+    public ArrayList<Country> report3() {
+        ArrayList<Country> countries = new ArrayList<>();
         try
         {
             System.out.println("Report 3: A report showing the population of the countries in the Caribbean in order of largest to smallest.");
@@ -119,12 +133,15 @@ public class SQL {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
                 System.out.println(coun);
+                countries.add(coun);
             }
+            return countries;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return countries;
         }
     }
 
@@ -136,10 +153,12 @@ public class SQL {
     /**
      * Function that prints the report showing all the cities in the world organised by largest population to smallest.
      * @author Euan Holmes
+     * @return cities
      * Date Last modified 4/3/2021
      * Last modified by: Euan
      */
-    public void report7(){
+    public ArrayList<City> report7(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 7: All the cities in the world organised by largest population to smallest.");
@@ -159,12 +178,15 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
@@ -172,10 +194,12 @@ public class SQL {
     /**
      * Function that returns the population of each city in a continent (Asia) ordered from largest population to smallest.
      * @author Scott Darroch
+     * @return cities
      * Date Last modified 3/3/2021
      * Last modified by: Scott
      */
-    public void report8(){
+    public ArrayList<City> report8(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 8: The population of each city in Asia ordered from largest population to smallest.");
@@ -200,24 +224,28 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
-
     }
 
 
     /**
      * Function that returns the population of each city in a region (The Caribbean) ordered from largest population to smallest.
      * @author Adam Riddel
+     * @return cities
      * Date Last modified 3/3/2021
      * Last modified by: Adam
      */
-    public void report9(){
+    public ArrayList<City> report9(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 9: The population of each city in The Caribbean ordered from largest population to smallest.");
@@ -239,12 +267,15 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
@@ -252,10 +283,12 @@ public class SQL {
     /**
      * Function that returns the population of each city in Scotland ordered from largest population to smallest.
      * @author Scott Darroch
+     * @return cities
      * Date Last modified 5/3/2021
      * Last modified by: Scott
      */
-    public void report10(){
+    public ArrayList<City> report10(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 10: The population of each city in Scotland ordered from largest population to smallest.");
@@ -280,12 +313,15 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
 
     }
@@ -296,10 +332,12 @@ public class SQL {
      * @author Robert Denny
      * @author Adam Riddel
      * @author Euan Holmes
+     * @return cities
      * Date Last modified 5/3/2021
      * Last modified by: Robert
      */
-    public void report11() {
+    public ArrayList<City> report11() {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 11: The population of each city in Noord_Brabant ordered from largest population to smallest.");
@@ -319,15 +357,15 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
-
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-
-
+            return cities;
         }
     }
 
@@ -339,10 +377,12 @@ public class SQL {
     /**
      * Function that prints the report showing all the capital cities in the world organised by largest population to smallest.
      * @author Euan Holmes
+     * @return cities
      * Date Last modified 10/3/2021
      * Last modified by: Euan
      */
-    public void report17(){
+    public ArrayList<City> report17(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 17: All the capital cities in the world organised by largest population to smallest.");
@@ -365,13 +405,15 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
-
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
@@ -381,10 +423,12 @@ public class SQL {
      * @author Robert Denny
      * @author Scott Darroch
      * @author Euan Holmes
+     * @return capital_cities
      * Date Last modified 8/3/2021
      * Last modified by: Robert
      */
-    public void report18(){
+    public ArrayList<CapitalCity> report18(){
+        ArrayList<CapitalCity> capital_cities = new ArrayList<>();
         try{
 
             System.out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
@@ -406,14 +450,15 @@ public class SQL {
                         String.format("%-30s %-35s %-15s",
                                 city.getName(), city.getCountry(), city.getPopulation());
                 System.out.println(CapitalCity_string);
-
-
+                capital_cities.add(city);
             }
+            return capital_cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details.");
+            return capital_cities;
         }
     }
 
@@ -423,10 +468,12 @@ public class SQL {
      * @author Robert Denny
      * @author Scott Darroch
      * @author Euan Holmes
+     * @return capital_cities
      * Date Last modified 5/3/2021
      * Last modified by: Robert
      */
-    public void report19(){
+    public ArrayList<CapitalCity> report19(){
+        ArrayList<CapitalCity> capital_cities = new ArrayList<>();
         try{
 
             System.out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
@@ -448,14 +495,15 @@ public class SQL {
                         String.format("%-30s %-35s %-15s",
                                 city.getName(), city.getCountry(), city.getPopulation());
                 System.out.println(CapitalCity_string);
-
-
+                capital_cities.add(city);
             }
+            return capital_cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details.");
+            return capital_cities;
         }
     }
 
@@ -467,10 +515,12 @@ public class SQL {
     /**
      * Function that returns the population of each continent that are both living in cities and not living in cities.
      * @author Scott Darroch
+     * @return populations
      * Date Last modified 12/3/2021
      * Last modified by: Scott
      */
-    public void report23(){
+    public ArrayList<Population> report23(){
+        ArrayList<Population> populations = new ArrayList<>();
         try
         {
             System.out.println("Report 23: The population of a continent living in cities and not living in cities.");
@@ -495,11 +545,14 @@ public class SQL {
                         rset.getInt("TotalCityPopulation"),
                         ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
                 System.out.println(pop);
+                populations.add(pop);
             }
+            return populations;
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return populations;
         }
     }
 
@@ -507,10 +560,12 @@ public class SQL {
     /**
      * Function that returns the population of each region that are both living in cities and not living in cities.
      * @author Scott Darroch
+     * @return populations
      * Date Last modified 12/3/2021
      * Last modified by: Scott
      */
-    public void report24(){
+    public ArrayList<Population> report24(){
+        ArrayList<Population> populations = new ArrayList<>();
         try
         {
             System.out.println("Report 24: The population of a region living in cities and not living in cities.");
@@ -535,12 +590,15 @@ public class SQL {
                         rset.getInt("TotalCityPopulation"),
                         ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
                 System.out.println(pop);
+                populations.add(pop);
             }
+            return populations;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return populations;
         }
 
     }
@@ -549,10 +607,12 @@ public class SQL {
     /**
      * Function that returns the population of each country that are both living in cities and not living in cities.
      * @author Scott Darroch
+     * @return populations
      * Date Last modified 10/3/2021
      * Last modified by: Scott
      */
-    public void report25(){
+    public ArrayList<Population> report25(){
+        ArrayList<Population> populations = new ArrayList<>();
         try
         {
             System.out.println("Report 25: The population of each country living in cities and not living in cities.");
@@ -577,12 +637,15 @@ public class SQL {
                         rset.getInt("TotalCityPopulation"),
                         ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
                 System.out.println(pop);
+                populations.add(pop);
             }
+            return populations;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return populations;
         }
 
     }
@@ -767,10 +830,12 @@ public class SQL {
     /**
      * Function that returns the population of a single city (Edinburgh).
      * @author Adam Riddell
+     * @return city
      * Date Last modified 25/2/2021
      * Last modified by: Adam
      */
-    public void report31() {
+    public int report31() {
+        int city = 0;
         try
         {
             // Create an SQL statement
@@ -786,11 +851,14 @@ public class SQL {
             rset.next();
 
             System.out.println("Report #31: The population of Edinburgh: " + rset.getInt("Population"));
+            city = rset.getInt("Population");
+            return city;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return city;
         }
     }
 
@@ -799,23 +867,23 @@ public class SQL {
      * Function that returns the number of people who speak Chinese, English, Hindi, Spanish and Arabic from
      * greatest number to smallest.
      * @author Euan Holmes
+     * @return languages
      * Date Last modified 10/3/2021
      * Last modified by: Euan
      */
-    public void report32() {
+    public Language[] report32() {
+        System.out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
+        System.out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
+
+        Language chinese = new Language("'Chinese'");
+        Language english = new Language("'English'");
+        Language hindi = new Language("'Hindi'");
+        Language spanish = new Language("'Spanish'");
+        Language arabic = new Language("'Arabic'");
+
+        Language[] languages = {chinese, english, hindi, spanish, arabic};
         try
         {
-            System.out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
-            System.out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
-
-            Language chinese = new Language("'Chinese'");
-            Language english = new Language("'English'");
-            Language hindi = new Language("'Hindi'");
-            Language spanish = new Language("'Spanish'");
-            Language arabic = new Language("'Arabic'");
-
-            Language[] languages = {chinese, english, hindi, spanish, arabic};
-
             for (int i = 0; i<languages.length; i++){
 
                 Statement stmt = con.createStatement();
@@ -845,11 +913,13 @@ public class SQL {
             for (int i = 0; i<languages.length; i++){
                 System.out.println(languages[i]);
             }
+            return languages;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return languages;
         }
     }
 }
