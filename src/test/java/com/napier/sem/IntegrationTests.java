@@ -33,7 +33,7 @@ public class IntegrationTests {
     {
         long testPop = 6078749450L;
         long worldPop = sql.report26();
-        assertEquals(testPop, worldPop);
+        assertEquals(testPop, worldPop, "If report 26 produces an output that matches our hardcoded variable then the method runs correctly.");
     }
 
     // A test to prove that the getcontinentpopulation method correctly gets the continent population from the database.
