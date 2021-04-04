@@ -337,6 +337,45 @@ public class SQL {
 
 
     /**
+     * Outputs the top 'N' populated cities in a district (Noord-Brabant)
+     * @author Adam Riddel
+     * Date Last modified 04/04/2021
+     * Last modified by: Adam
+     */
+    public void report16(int n) {
+        try
+        {
+            System.out.println("Report 16: The top 'N' populated cities in a district (Noord-Brabant).");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, name, CountryCode, district, population "
+                            + "FROM city "
+                            + "WHERE district = 'Noord-Brabant' "
+                            + "ORDER BY population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+
+        }
+    }
+
+    /**
      * Function that prints the report showing all the capital cities in the world organised by largest population to smallest.
      * @author Euan Holmes
      * Date Last modified 10/3/2021
@@ -459,8 +498,48 @@ public class SQL {
         }
     }
 
+    /**
+     * Function that prints the report showing the top 'N' populated capital cities in the world.
+     * @author Adam Riddell
+     * Date Last modified 04/04/2021
+     * Last modified by: Adam
+     */
+    public void report20(int n) {
+        try
+        {
+            System.out.println("Report 20: Top 'N' populated capital cities in the world.");
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.ID = country.capital "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
     /*
-        Leave room for 20 - 22
+        Leave room for 21 - 22
      */
 
 
