@@ -560,7 +560,7 @@ public class SQL {
                     "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
                             + "FROM city "
                             + "INNER JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE country.continent = 'Europe' AND city.ID = country.capital city.ID = country.capital"
+                            + "WHERE country.continent = 'Europe' AND city.ID = country.capital "
                             + "GROUP BY city.ID "
                             + "ORDER BY city.population DESC "
                             + "LIMIT " + n;
@@ -582,6 +582,45 @@ public class SQL {
         }
     }
 
+    /**
+     * Function that prints the report showing the top 'N' populated capital cities in a region.
+     * @author Adam Riddell
+     * Date Last modified 04/04/2021
+     * Last modified by: Adam
+     */
+    public void report22(int n) {
+        try
+        {
+            System.out.println("Report 22: Top 'N' populated cities in the Caribbean.");
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.region = 'Caribbean' AND city.ID = country.capital "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
 
     /**
      * Function that returns the population of each continent that are both living in cities and not living in cities.

@@ -71,13 +71,14 @@ public class App
         //Report #19: All the capital cities in a region organised by largest to smallest.
         sql.report19();
 
+        //Report #20: Top 'N' populated capital cities in the world.
+        sql.report20(5);
+
         //Report #21: The top 'N' capital cities in a continent (Europe).
         sql.report21(5);
-        //Report #20: Top 'N' populated capital cities in the world ()
-        sql.report20(5);
-        /*
-         * Leave room for 20 - 22
-         */
+
+        //Report #22: The top 'N' capital cities in a region (Caribbean).
+        sql.report22(5);
 
         //Report #23: population of a continent living in cities and not living in cities.
         sql.report23();
