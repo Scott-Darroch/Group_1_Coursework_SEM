@@ -516,7 +516,7 @@ public class SQL {
                     "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
                             + "FROM city "
                             + "INNER JOIN country ON city.CountryCode = country.Code "
-                            + "WHERE city.ID = country.capital "
+                            + "WHERE city.ID = country.capital AND city.ID = country.capital "
                             + "GROUP BY city.ID "
                             + "ORDER BY city.population DESC "
                             + "LIMIT " + n;
