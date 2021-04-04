@@ -68,6 +68,8 @@ public class App
         //Report #19: All the capital cities in a region organised by largest to smallest.
         sql.report19();
 
+        //Report #21: The top 'N' capital cities in a continent (Europe).
+        sql.report21(5);
         /*
          * Leave room for 20 - 22
          */
