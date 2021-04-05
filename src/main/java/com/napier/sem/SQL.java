@@ -702,10 +702,6 @@ public class SQL {
         }
     }
 
-    /*
-        Leave room for 21 - 22
-     */
-
     /**
      * Function that prints the report showing the top 'N' populated capital cities in a continent.
      * @author Adam Riddell
