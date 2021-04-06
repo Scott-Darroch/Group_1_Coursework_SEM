@@ -129,9 +129,6 @@ public class SQL {
         }
     }
 
-    /*
-        Leave Room For 4-5
-     */
 
     /**
      * Function that prints the report showing the top 'N' populated populated countries in the World
@@ -146,8 +143,9 @@ public class SQL {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.code, country.name, country.continent, country.region, country.population, country.capital "
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
                             + "FROM country "
+                            + "WHERE country.capital = city.ID "
                             + "ORDER BY population DESC "
                             + "LIMIT " + n;
             // Execute SQL statement
@@ -155,7 +153,7 @@ public class SQL {
 
             while (rset.next()) {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
-                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("country.capital"));
+                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
                 System.out.println(coun);
             }
 
