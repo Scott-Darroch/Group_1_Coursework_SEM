@@ -2,8 +2,6 @@ package com.napier.sem;
 
 import java.sql.*;
 
-import static java.lang.System.*;
-
 /**
  * Main app class that contains the connect() and disconnect() function for our database. Also contains
  * our calls to SQL.java to do our report functions.
@@ -24,7 +22,7 @@ public class App
         App a = new App();
 
         // Connect to database
-        a.connect();
+        a.connect("localhost:33060");
 
         //Creates a new instance of the SQL reports
         SQL sql = new SQL(con);
@@ -39,8 +37,11 @@ public class App
         sql.report3();
 
         /*
-         * Leave room for 4-6
+         * Leave room for 4
          */
+
+        //Report #5: The top 17 populated countries in the continent of Europe.
+        sql.report5();
 
         //Report #7: All the cities in the world organised by largest population to smallest.
         sql.report7();
@@ -57,9 +58,24 @@ public class App
         //Report #11: population of each city in (District) Noord_Brabant
         sql.report11();
 
+        //Report #12: The top 7 populated cities in the world.
+        sql.report12();
+
+        //Report #13: The top 14 populated cities in the continent of North America.
+        sql.report13();
+
+        //Report #14: The top 3 populated cities in the region of Southern Europe.
+        sql.report14();
+
+        //Report #15: The top 5 most populated cities in Japan.
+        sql.report15();
+
         /*
-         * Leave room for 12 - 16
+         * Leave room for 16
          */
+
+        //Report #16: Top 'N' populated cities in a district ()
+        sql.report16(5);
 
         //Report #17: All the capital cities in the world organised by largest population to smallest.
         sql.report17();
@@ -70,9 +86,14 @@ public class App
         //Report #19: All the capital cities in a region organised by largest to smallest.
         sql.report19();
 
-        /*
-         * Leave room for 20 - 22
-         */
+        //Report #20: Top 'N' populated capital cities in the world.
+        sql.report20(5);
+
+        //Report #21: The top 'N' capital cities in a continent (Europe).
+        sql.report21(5);
+
+        //Report #22: The top 'N' capital cities in a region (Caribbean).
+        sql.report22(5);
 
         //Report #23: population of a continent living in cities and not living in cities.
         sql.report23();
@@ -104,7 +125,7 @@ public class App
         //Report #32 :Percentage share of each language compared to world population
         sql.report32();
 
-        out.println("End of Reports.");
+        System.out.println("End of Reports.");
 
         // Disconnect from database
         a.disconnect();
@@ -118,7 +139,7 @@ public class App
      * Date Last modified 22/3/2021
      * Last modified by: Euan
      */
-    public void connect()
+    public void connect(String location)
     {
         try
         {
@@ -127,31 +148,31 @@ public class App
         }
         catch (ClassNotFoundException e)
         {
-            out.println("Could not load SQL driver");
-            exit(-1);
+            System.out.println("Could not load SQL driver");
+            System.exit(-1);
         }
 
         int retries = 10;
         for (int i = 0; i < retries; ++i)
         {
-            out.println("Connecting to database...");
+            System.out.println("Connecting to database...");
             try
             {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(10000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
-                out.println("Successfully connected");
+                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
+                System.out.println("Successfully connected");
                 break;
             }
             catch (SQLException sqle)
             {
-                out.println("Failed to connect to database attempt " + i);
-                out.println(sqle.getMessage());
+                System.out.println("Failed to connect to database attempt " + i);
+                System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
             {
-                out.println("Thread interrupted? Should not happen.");
+                System.out.println("Thread interrupted? Should not happen.");
             }
         }
     }
@@ -175,7 +196,7 @@ public class App
             }
             catch (Exception e)
             {
-                out.println("Error closing connection to database");
+                System.out.println("Error closing connection to database");
             }
         }
     }

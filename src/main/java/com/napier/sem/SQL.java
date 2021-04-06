@@ -3,8 +3,7 @@ package com.napier.sem;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-import static java.lang.System.*;
+import java.util.ArrayList;
 
 /**
  * Class that contain all SQL query codes and prints the result of the sql query.
@@ -27,13 +26,15 @@ public class SQL {
     /**
      * Function that gets all countries in the world in order of largest to smallest population.
      * @author Scott Darroch
+     * @return countries
      * Date Last modified 15/2/2021
      * Last modified by: Scott
      */
-    public void report1() {
+    public ArrayList<Country> report1() {
+        ArrayList<Country> countries = new ArrayList<>();
         try
         {
-            out.println("Report 1: A report showing all countries in the world in order of largest to smallest population.");
+            System.out.println("Report 1: A report showing all countries in the world in order of largest to smallest population.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -45,30 +46,36 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
+
             while (rset.next())
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
-                out.println(coun);
+                System.out.println(coun);
+                countries.add(coun);
             }
+            return countries;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return countries;
         }
     }
 
     /**
      * Function that gets all countries in a continent in order of largest to smallest population.
      * @author Euan Holmes
+     * @return countries
      * Date Last modified 26/2/2021
      * Last modified by: Euan
      */
-    public void report2(){
+    public ArrayList<Country> report2(){
+        ArrayList<Country> countries = new ArrayList<>();
         try
         {
-            out.println("Report #2, A list of country populations in Africa");
+            System.out.println("Report #2, A list of country populations in Africa");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -84,13 +91,16 @@ public class SQL {
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
-                out.println(coun);
+                System.out.println(coun);
+                countries.add(coun);
             }
+            return countries;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return countries;
         }
     }
 
@@ -98,13 +108,15 @@ public class SQL {
     /**
      * Function that gets the population of the countries in the Caribbean in order of largest to smallest.
      * @author Scott Darroch
+     * @return countries
      * Date Last modified 26/2/2021
      * Last modified by: Scott
      */
-    public void report3() {
+    public ArrayList<Country> report3() {
+        ArrayList<Country> countries = new ArrayList<>();
         try
         {
-            out.println("Report 3: A report showing the population of the countries in the Caribbean in order of largest to smallest.");
+            System.out.println("Report 3: A report showing the population of the countries in the Caribbean in order of largest to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -120,31 +132,77 @@ public class SQL {
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
-                out.println(coun);
+                System.out.println(coun);
+                countries.add(coun);
             }
+            return countries;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return countries;
+        }
+    }
+
+    /**
+     * Function that gets the top 17 populated countries in the continent of Europe.
+     * @author Scott Darroch
+     * @return countries
+     * Date Last modified 06/04/2021
+     * Last modified by: Scott
+     */
+    public ArrayList<Country> report5() {
+        ArrayList<Country> countries = new ArrayList<>();
+        try
+        {
+            System.out.println("Report 5: A report showing the top 17 populated countries in Europe.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
+                            + "FROM country, city "
+                            + "WHERE country.continent = 'Europe' AND country.capital = city.ID "
+                            + "ORDER BY country.population DESC "
+                            + "LIMIT 17 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information
+            while (rset.next())
+            {
+                Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
+                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
+                System.out.println(coun);
+                countries.add(coun);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return countries;
         }
     }
 
     /*
-        Leave Room For 4-6
+        Leave Room For 6
      */
 
 
     /**
      * Function that prints the report showing all the cities in the world organised by largest population to smallest.
      * @author Euan Holmes
+     * @return cities
      * Date Last modified 4/3/2021
      * Last modified by: Euan
      */
-    public void report7(){
+    public ArrayList<City> report7(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
-            out.println("Report 7: All the cities in the world organised by largest population to smallest.");
+            System.out.println("Report 7: All the cities in the world organised by largest population to smallest.");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -160,13 +218,16 @@ public class SQL {
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                out.println(city);
+                System.out.println(city);
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
@@ -174,13 +235,15 @@ public class SQL {
     /**
      * Function that returns the population of each city in a continent (Asia) ordered from largest population to smallest.
      * @author Scott Darroch
+     * @return cities
      * Date Last modified 3/3/2021
      * Last modified by: Scott
      */
-    public void report8(){
+    public ArrayList<City> report8(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
-            out.println("Report 8: The population of each city in Asia ordered from largest population to smallest.");
+            System.out.println("Report 8: The population of each city in Asia ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -195,34 +258,38 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            out.printf("%-8s %-25s %-8s %-25s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                out.println(city);
+                System.out.println(city);
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return cities;
         }
-
     }
 
 
     /**
      * Function that returns the population of each city in a region (The Caribbean) ordered from largest population to smallest.
      * @author Adam Riddel
+     * @return cities
      * Date Last modified 3/3/2021
      * Last modified by: Adam
      */
-    public void report9(){
+    public ArrayList<City> report9(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
-            out.println("Report 9: The population of each city in The Caribbean ordered from largest population to smallest.");
+            System.out.println("Report 9: The population of each city in The Caribbean ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -240,13 +307,16 @@ public class SQL {
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                out.println(city);
+                System.out.println(city);
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
@@ -254,13 +324,15 @@ public class SQL {
     /**
      * Function that returns the population of each city in Scotland ordered from largest population to smallest.
      * @author Scott Darroch
+     * @return cities
      * Date Last modified 5/3/2021
      * Last modified by: Scott
      */
-    public void report10(){
+    public ArrayList<City> report10(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
-            out.println("Report 10: The population of each city in Scotland ordered from largest population to smallest.");
+            System.out.println("Report 10: The population of each city in Scotland ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -275,19 +347,22 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            out.printf("%-8s %-25s %-8s %-25s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                out.println(city);
+                System.out.println(city);
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return cities;
         }
 
     }
@@ -298,13 +373,15 @@ public class SQL {
      * @author Robert Denny
      * @author Adam Riddel
      * @author Euan Holmes
+     * @return cities
      * Date Last modified 5/3/2021
      * Last modified by: Robert
      */
-    public void report11() {
+    public ArrayList<City> report11() {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
-            out.println("Report 11: The population of each city in Noord_Brabant ordered from largest population to smallest.");
+            System.out.println("Report 11: The population of each city in Noord_Brabant ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -316,38 +393,243 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
             while (rset.next())
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                out.println(city);
+                System.out.println(city);
+                cities.add(city);
             }
-
+            return cities;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
-
-
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
     /*
         Leave Room For 12-16
      */
+    /**
+     * Function that gets a list of the top 7 most populated cities in the world.
+     * @author Scott Darroch
+     * Date Last modified 02/04/2021
+     * Last modified by: Scott
+     */
+    public void report12() {
+        try
+        {
+            System.out.println("Report 12: The top 7 populated cities in the world.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, name, CountryCode, district, population "
+                            + "FROM city "
+                            + "ORDER BY population DESC "
+                            + "LIMIT 7 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
 
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Function that gets a list of the top 14 most populated cities in North America.
+     * @author Scott Darroch
+     * Date Last modified 02/04/2021
+     * Last modified by: Scott
+     */
+    public void report13() {
+        try
+        {
+            System.out.println("Report 13: The top 14 populated cities in the continent of North America.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, city.name, CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.continent = 'North America' "
+                            + "ORDER BY population DESC "
+                            + "LIMIT 14 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Function that gets a list of the top 3 most populated cities in Southern Europe.
+     * @author Scott Darroch
+     * Date Last modified 02/04/2021
+     * Last modified by: Scott
+     */
+    public void report14() {
+        try
+        {
+            System.out.println("Report 14: The top 3 populated cities in the region of Southern Europe.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, city.name, CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.region = 'Southern Europe' "
+                            + "ORDER BY population DESC "
+                            + "LIMIT 3 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Function that gets a list of the top 5 most populated cities in Japan.
+     * @author Scott Darroch
+     * Date Last modified 02/04/2021
+     * Last modified by: Scott
+     */
+    public void report15() {
+        try
+        {
+            System.out.println("Report 15: The top 5 populated cities in Japan.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, city.name, CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.name = 'Japan' "
+                            + "ORDER BY population DESC "
+                            + "LIMIT 5 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Print header
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+
+    /**
+     * Outputs the top 'N' populated cities in a district (Noord-Brabant)
+     * @author Adam Riddel
+     * Date Last modified 04/04/2021
+     * Last modified by: Adam
+     */
+    public void report16(int n) {
+        try
+        {
+            System.out.println("Report 16: The top 'N' populated cities in a district (Noord-Brabant).");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, name, CountryCode, district, population "
+                            + "FROM city "
+                            + "WHERE district = 'Noord-Brabant' "
+                            + "ORDER BY population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+            }
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+
+        }
+    }
 
     /**
      * Function that prints the report showing all the capital cities in the world organised by largest population to smallest.
      * @author Euan Holmes
+     * @return cities
      * Date Last modified 10/3/2021
      * Last modified by: Euan
      */
-    public void report17(){
+    public ArrayList<City> report17(){
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
-            out.println("Report 17: All the capital cities in the world organised by largest population to smallest.");
+            System.out.println("Report 17: All the capital cities in the world organised by largest population to smallest.");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -366,14 +648,16 @@ public class SQL {
             {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
-                out.println(city);
-
+                System.out.println(city);
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
@@ -383,13 +667,15 @@ public class SQL {
      * @author Robert Denny
      * @author Scott Darroch
      * @author Euan Holmes
+     * @return capital_cities
      * Date Last modified 8/3/2021
      * Last modified by: Robert
      */
-    public void report18(){
+    public ArrayList<CapitalCity> report18(){
+        ArrayList<CapitalCity> capital_cities = new ArrayList<>();
         try{
 
-            out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
+            System.out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -407,15 +693,16 @@ public class SQL {
                 String CapitalCity_string =
                         String.format("%-30s %-35s %-15s",
                                 city.getName(), city.getCountry(), city.getPopulation());
-                out.println(CapitalCity_string);
-
-
+                System.out.println(CapitalCity_string);
+                capital_cities.add(city);
             }
+            return capital_cities;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details.");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details.");
+            return capital_cities;
         }
     }
 
@@ -425,13 +712,15 @@ public class SQL {
      * @author Robert Denny
      * @author Scott Darroch
      * @author Euan Holmes
+     * @return capital_cities
      * Date Last modified 5/3/2021
      * Last modified by: Robert
      */
-    public void report19(){
+    public ArrayList<CapitalCity> report19(){
+        ArrayList<CapitalCity> capital_cities = new ArrayList<>();
         try{
 
-            out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
+            System.out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -449,33 +738,151 @@ public class SQL {
                 String CapitalCity_string =
                         String.format("%-30s %-35s %-15s",
                                 city.getName(), city.getCountry(), city.getPopulation());
-                out.println(CapitalCity_string);
+                System.out.println(CapitalCity_string);
+                capital_cities.add(city);
+            }
+            return capital_cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details.");
+            return capital_cities;
+        }
+    }
 
+    /**
+     * Function that prints the report showing the top 'N' populated capital cities in the world.
+     * @author Adam Riddell
+     * Date Last modified 04/04/2021
+     * Last modified by: Adam
+     */
+    public void report20(int n) {
+        try
+        {
+            System.out.println("Report 20: Top 'N' populated capital cities in the world.");
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE city.ID = country.capital AND city.ID = country.capital "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
 
             }
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details.");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
         }
     }
 
-    /*
-        Leave room for 20 - 22
+    /**
+     * Function that prints the report showing the top 'N' populated capital cities in a continent.
+     * @author Adam Riddell
+     * Date Last modified 04/04/2021
+     * Last modified by: Adam
      */
+    public void report21(int n) {
+        try
+        {
+            System.out.println("Report 21: Top 'N' populated capital cities in Europe.");
 
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.continent = 'Europe' AND city.ID = country.capital "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
+
+    /**
+     * Function that prints the report showing the top 'N' populated capital cities in a region.
+     * @author Adam Riddell
+     * Date Last modified 04/04/2021
+     * Last modified by: Adam
+     */
+    public void report22(int n) {
+        try
+        {
+            System.out.println("Report 22: Top 'N' populated cities in the Caribbean.");
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
+                            + "FROM city "
+                            + "INNER JOIN country ON city.CountryCode = country.Code "
+                            + "WHERE country.region = 'Caribbean' AND city.ID = country.capital "
+                            + "GROUP BY city.ID "
+                            + "ORDER BY city.population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next())
+            {
+                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
+                        rset.getString("district"), rset.getInt("population"));
+                System.out.println(city);
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+        }
+    }
 
     /**
      * Function that returns the population of each continent that are both living in cities and not living in cities.
      * @author Scott Darroch
+     * @return populations
      * Date Last modified 12/3/2021
      * Last modified by: Scott
      */
-    public void report23(){
+    public ArrayList<Population> report23(){
+        ArrayList<Population> populations = new ArrayList<>();
         try
         {
-            out.println("Report 23: The population of a continent living in cities and not living in cities.");
+            System.out.println("Report 23: The population of a continent living in cities and not living in cities.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -489,19 +896,22 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            out.printf("%-40s %-18s %-18s %-12s%n", "Continent", "Country Population", "City Population", "Non-city Population");
+            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Continent", "Country Population", "City Population", "Non-city Population"));
 
             while (rset.next())
             {
                 Population pop = new Population(rset.getString("country.continent"),rset.getLong( "TotalCountryPopulation"),
                         rset.getInt("TotalCityPopulation"),
                         ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
-                out.println(pop);
+                System.out.println(pop);
+                populations.add(pop);
             }
+            return populations;
         }
         catch (Exception e) {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return populations;
         }
     }
 
@@ -509,13 +919,15 @@ public class SQL {
     /**
      * Function that returns the population of each region that are both living in cities and not living in cities.
      * @author Scott Darroch
+     * @return populations
      * Date Last modified 12/3/2021
      * Last modified by: Scott
      */
-    public void report24(){
+    public ArrayList<Population> report24(){
+        ArrayList<Population> populations = new ArrayList<>();
         try
         {
-            out.println("Report 24: The population of a region living in cities and not living in cities.");
+            System.out.println("Report 24: The population of a region living in cities and not living in cities.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -529,20 +941,23 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            out.printf("%-40s %-18s %-18s %-12s%n", "Region", "Country Population", "City Population", "Non-city Population");
+            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Region", "Country Population", "City Population", "Non-city Population"));
 
             while (rset.next())
             {
                 Population pop = new Population(rset.getString("country.region"),rset.getLong( "TotalCountryPopulation"),
                         rset.getInt("TotalCityPopulation"),
                         ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
-                out.println(pop);
+                System.out.println(pop);
+                populations.add(pop);
             }
+            return populations;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return populations;
         }
 
     }
@@ -551,13 +966,15 @@ public class SQL {
     /**
      * Function that returns the population of each country that are both living in cities and not living in cities.
      * @author Scott Darroch
+     * @return populations
      * Date Last modified 10/3/2021
      * Last modified by: Scott
      */
-    public void report25(){
+    public ArrayList<Population> report25(){
+        ArrayList<Population> populations = new ArrayList<>();
         try
         {
-            out.println("Report 25: The population of each country living in cities and not living in cities.");
+            System.out.println("Report 25: The population of each country living in cities and not living in cities.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -571,20 +988,23 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Print header
-            out.printf("%-40s %-18s %-18s %-12s%n", "Name", "Country Population", "City Population", "Non-city Population");
+            System.out.println(String.format("%-40s %-18s %-18s %-12s", "Name", "Country Population", "City Population", "Non-city Population"));
 
             while (rset.next())
             {
                 Population pop = new Population(rset.getString("country.name"),rset.getLong( "TotalCountryPopulation"),
                         rset.getInt("TotalCityPopulation"),
                         ((rset.getLong( "TotalCountryPopulation"))-(rset.getInt("TotalCityPopulation"))));
-                out.println(pop);
+                System.out.println(pop);
+                populations.add(pop);
             }
+            return populations;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return populations;
         }
 
     }
@@ -611,15 +1031,15 @@ public class SQL {
             while (rset.next())
             {
                 x = rset.getLong("SUM(country.population)");
-                out.println("Report #26: The total population of the world is: " + x);
+                System.out.println("Report #26: The total population of the world is: " + x);
             }
             return x;
 
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
             return 0L;
 
         }
@@ -649,14 +1069,14 @@ public class SQL {
             while (rset.next())
             {
                 x = rset.getInt("SUM(country.population)");
-                out.println("Report #27: The total population of Europe is: " + rset.getInt("SUM(country.population)"));
+                System.out.println("Report #27: The total population of Europe is: " + rset.getInt("SUM(country.population)"));
             }
             return x;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
             return 0;
         }
     }
@@ -683,14 +1103,14 @@ public class SQL {
 
             while (rset.next()) {
                 x = rset.getInt("SUM(Population)");
-                out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
+                System.out.println("Report #28: The population of The Caribbean: " + rset.getInt("SUM(Population)"));
             }
             return x;
         }
         catch(Exception e)
             {
-                out.println(e.getMessage());
-                out.println("Failed to get population details");
+                System.out.println(e.getMessage());
+                System.out.println("Failed to get population details");
                 return 0;
             }
         }
@@ -717,14 +1137,14 @@ public class SQL {
             while (rset.next())
             {
                 x = rset.getInt("country.population");
-                out.println("Report #29: The population of the Spain: " + rset.getInt("country.population"));
+                System.out.println("Report #29: The population of the Spain: " + rset.getInt("country.population"));
             }
             return x;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
             return 0;
         }
     }
@@ -753,14 +1173,14 @@ public class SQL {
             while (rset.next())
             {
                 x = rset.getInt("SUM(city.population)");
-                out.println("Report #30: The population of New South Wales is: " + rset.getInt("SUM(city.population)"));
+                System.out.println("Report #30: The population of New South Wales is: " + rset.getInt("SUM(city.population)"));
             }
             return x;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
             return 0;
         }
     }
@@ -769,10 +1189,12 @@ public class SQL {
     /**
      * Function that returns the population of a single city (Edinburgh).
      * @author Adam Riddell
+     * @return city
      * Date Last modified 25/2/2021
      * Last modified by: Adam
      */
-    public void report31() {
+    public int report31() {
+        int city = 0;
         try
         {
             // Create an SQL statement
@@ -783,17 +1205,19 @@ public class SQL {
                             + "FROM city "
                             + "WHERE name = 'Edinburgh' ";
             // Execute SQL statement
-            try (ResultSet rset = stmt.executeQuery(strSelect)) {
+            ResultSet rset = stmt.executeQuery(strSelect);
 
-                rset.next();
+            rset.next();
 
-                out.println("Report #31: The population of Edinburgh: " + rset.getInt("Population"));
-            }
+            System.out.println("Report #31: The population of Edinburgh: " + rset.getInt("Population"));
+            city = rset.getInt("Population");
+            return city;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return city;
         }
     }
 
@@ -802,35 +1226,36 @@ public class SQL {
      * Function that returns the number of people who speak Chinese, English, Hindi, Spanish and Arabic from
      * greatest number to smallest.
      * @author Euan Holmes
+     * @return languages
      * Date Last modified 10/3/2021
      * Last modified by: Euan
      */
-    public void report32() {
+    public Language[] report32() {
+        System.out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
+        System.out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
+
+        Language chinese = new Language("'Chinese'");
+        Language english = new Language("'English'");
+        Language hindi = new Language("'Hindi'");
+        Language spanish = new Language("'Spanish'");
+        Language arabic = new Language("'Arabic'");
+
+        Language[] languages = {chinese, english, hindi, spanish, arabic};
         try
         {
-            out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
-            out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
-
-            Language chinese = new Language("'Chinese'");
-            Language english = new Language("'English'");
-            Language hindi = new Language("'Hindi'");
-            Language spanish = new Language("'Spanish'");
-            Language arabic = new Language("'Arabic'");
-
-            Language[] languages = {chinese, english, hindi, spanish, arabic};
-
-            for (Language language : languages) {
+            for (int i = 0; i<languages.length; i++){
 
                 Statement stmt = con.createStatement();
                 String strSelect =
                         "SELECT SUM(country.population) AS country_pop, ROUND((100 * SUM(country.population))/(SELECT SUM(population) FROM country), 0) AS world_pop "
                                 + "FROM country INNER JOIN countrylanguage on country.code = countrylanguage.countryCode "
-                                + "WHERE countrylanguage.language = " + language.getName();
+                                + "WHERE countrylanguage.language = " + languages[i].getName();
                 ResultSet rset = stmt.executeQuery(strSelect);
 
-                while (rset.next()) {
-                    language.setLanguage_num(rset.getInt("country_pop"));
-                    language.setLanguage_percent(rset.getInt("world_pop"));
+                while (rset.next())
+                {
+                    languages[i].setLanguage_num(rset.getInt("country_pop"));
+                    languages[i].setLanguage_percent(rset.getInt("world_pop"));
                 }
             }
 
@@ -844,14 +1269,16 @@ public class SQL {
                 }
             }
 
-            for (Language language : languages) {
-                out.println(language);
+            for (int i = 0; i<languages.length; i++){
+                System.out.println(languages[i]);
             }
+            return languages;
         }
         catch (Exception e)
         {
-            out.println(e.getMessage());
-            out.println("Failed to get population details");
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return languages;
         }
     }
 }
