@@ -8,7 +8,8 @@ import java.sql.Statement;
  * Class that contain all SQL query codes and prints the result of the sql query.
  * @author Euan Holmes,
  * @author Adam Riddell,
- * @author Scott Darroch
+ * @author Scott Darroch,
+ * @author Robert Denny
  * Date Last modified 23/3/2021
  * Last modified by: Euan
  */
@@ -129,8 +130,46 @@ public class SQL {
     }
 
     /*
-        Leave Room For 4-6
+        Leave Room For 4-5
      */
+
+    /**
+     * Function that prints the report showing the top 'N' populated populated countries in the World
+     * @author Robert Denny
+     * Date Last modified: 6/4/2021
+     * Last modified by: Robert
+     */
+    public void report4(int n) {
+        try {
+            System.out.println("Report 4: The top 'N' populated countries in the World.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, country.capital "
+                            + "FROM country "
+                            + "ORDER BY population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
+                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("country.capital"));
+                System.out.println(coun);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+        }
+    }
+
+      /*
+        Leave Room For 5-6
+     */
+
 
 
     /**

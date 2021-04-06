@@ -37,12 +37,13 @@ public class App
         //Report #3: Population of the countries in the Caribbean in order of largest to smallest.
         sql.report3();
 
+        //Report #4 Top 'N' populated countries in the World
+        sql.report4(5);
+
         /*
-         * Leave room for 4-5
+         * Leave room for 5-6
          */
 
-        //Report #6:
-        sql.report6(5);
 
         //Report #7: All the cities in the world organised by largest population to smallest.
         sql.report7();
