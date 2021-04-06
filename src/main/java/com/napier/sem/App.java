@@ -7,7 +7,8 @@ import java.sql.*;
  * our calls to SQL.java to do our report functions.
  * @author Euan Holmes,
  * @author Adam Riddell,
- * @author Scott Darroch
+ * @author Scott Darroch,
+ * @author Robert Denny
  * Date Last modified 23/3/2021
  * Last modified by: Euan
  */
@@ -37,8 +38,11 @@ public class App
         sql.report3();
 
         /*
-         * Leave room for 4-6
+         * Leave room for 4-5
          */
+
+        //Report #6:
+        sql.report6(5);
 
         //Report #7: All the cities in the world organised by largest population to smallest.
         sql.report7();
