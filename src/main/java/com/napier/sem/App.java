@@ -9,8 +9,8 @@ import java.sql.*;
  * @author Adam Riddell,
  * @author Scott Darroch,
  * @author Robert Denny
- * Date Last modified 23/3/2021
- * Last modified by: Euan
+ * Date Last modified 6/4/2021
+ * Last modified by: Robert
  */
 public class App
 {
@@ -125,7 +125,8 @@ public class App
      * Class that connects to the database.
      * @author Euan Holmes,
      * @author Adam Riddell,
-     * @author Scott Darroch
+     * @author Scott Darroch,
+     * @author Robert Denny
      * Date Last modified 22/3/2021
      * Last modified by: Euan
      */
@@ -171,7 +172,8 @@ public class App
      * Function that disconnects from SQL database.
      * @author Euan Holmes,
      * @author Adam Riddell,
-     * @author Scott Darroch
+     * @author Scott Darroch,
+     * @author Robert Denny
      * Date Last modified 20/2/2021
      * Last modified by: Scott
      */

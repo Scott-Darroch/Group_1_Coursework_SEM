@@ -4,7 +4,8 @@ package com.napier.sem;
  * Class for a capital city report
  * @author Euan Holmes
  * @author Adam Riddell,
- * @author Scott Darroch
+ * @author Scott Darroch,
+ * @author Robert Denny
  * Date Last modified 23/3/2021
  * Last modified by: Euan
  */

@@ -10,8 +10,8 @@ import java.sql.Statement;
  * @author Adam Riddell,
  * @author Scott Darroch,
  * @author Robert Denny
- * Date Last modified 23/3/2021
- * Last modified by: Euan
+ * Date Last modified 6/4/2021
+ * Last modified by: Robert
  */
 public class SQL {
 
@@ -144,7 +144,7 @@ public class SQL {
             // Create string for SQL statement
             String strSelect =
                     "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
-                            + "FROM country "
+                            + "FROM country, city "
                             + "WHERE country.capital = city.ID "
                             + "ORDER BY population DESC "
                             + "LIMIT " + n;

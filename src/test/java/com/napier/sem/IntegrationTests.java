@@ -9,7 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * Class that contain all code for conducting integration tests for the project.
  * @author Euan Holmes,
  * @author Adam Riddell,
- * @author Scott Darroch
+ * @author Scott Darroch,
+ * @author Robert Denny
  * Date Last modified 23/3/2021
  * Last modified by: Euan
  */
