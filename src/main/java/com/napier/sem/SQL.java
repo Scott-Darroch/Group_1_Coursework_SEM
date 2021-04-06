@@ -145,8 +145,49 @@ public class SQL {
         }
     }
 
+    /**
+     * Function that gets the top 17 populated countries in the continent of Europe.
+     * @author Scott Darroch
+     * @return countries
+     * Date Last modified 06/04/2021
+     * Last modified by: Scott
+     */
+    public ArrayList<Country> report5() {
+        ArrayList<Country> countries = new ArrayList<>();
+        try
+        {
+            System.out.println("Report 5: A report showing the top 17 populated countries in Europe.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
+                            + "FROM country, city "
+                            + "WHERE country.continent = 'Europe' AND country.capital = city.ID "
+                            + "ORDER BY country.population DESC "
+                            + "LIMIT 17 ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information
+            while (rset.next())
+            {
+                Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
+                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
+                System.out.println(coun);
+                countries.add(coun);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return countries;
+        }
+    }
+
     /*
-        Leave Room For 4-6
+        Leave Room For 6
      */
 
 

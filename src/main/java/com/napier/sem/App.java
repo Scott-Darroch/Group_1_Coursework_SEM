@@ -37,8 +37,11 @@ public class App
         sql.report3();
 
         /*
-         * Leave room for 4-6
+         * Leave room for 4
          */
+
+        //Report #5: The top 17 populated countries in the continent of Europe.
+        sql.report5();
 
         //Report #7: All the cities in the world organised by largest population to smallest.
         sql.report7();
@@ -58,7 +61,7 @@ public class App
         //Report #12: The top 7 populated cities in the world.
         sql.report12();
 
-        //Report #13: Report 13: The top 14 populated cities in the continent of North America.
+        //Report #13: The top 14 populated cities in the continent of North America.
         sql.report13();
 
         //Report #14: The top 3 populated cities in the region of Southern Europe.
