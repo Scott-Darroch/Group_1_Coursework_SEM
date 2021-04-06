@@ -115,6 +115,56 @@ public class IntegrationTests {
                 "returned by checking the actual length returned against the hardcoded expected length.");
     }
 
+    // A test to prove that the report12 function gets a report showing the top N populated cities in the world.
+    @Test
+    void testReport12()
+    {
+        int city_expected_population = 10500000;
+        int city_population = sql.report12().get(0).getPopulation();
+        assertEquals(city_expected_population, city_population, "This asserts that the first city in the ArrayLists" +
+                "population is correct by checking against the hardcoded expected population of that city.");
+    }
+
+    // A test to prove that the report13 function gets a report showing the top N populated cities in a continent.
+    @Test
+    void testReport13()
+    {
+        int city_expected_population = 8591309;
+        int city_population = sql.report13().get(0).getPopulation();
+        assertEquals(city_expected_population, city_population, "This asserts that the first city in the ArrayLists" +
+                "population is correct by checking it against the hardcoded expected population of that city.");
+    }
+
+    // A test to prove that the report14 function gets a report showing the top N populated cities in a region.
+    @Test
+    void testReport14()
+    {
+        int city_expected_population = 2879052;
+        int city_population = sql.report14().get(0).getPopulation();
+        assertEquals(city_expected_population, city_population, "This asserts that the first city in the ArrayLists" +
+                "population is correct by checking it against the hardcoded expected population of that city.");
+    }
+
+    // A test to prove that the report15 function gets a report showing the top N populated cities in a country.
+    @Test
+    void testReport15()
+    {
+        int city_expected_population = 7980230;
+        int city_population = sql.report15().get(0).getPopulation();
+        assertEquals(city_expected_population, city_population, "This asserts that the first city in the ArrayLists" +
+                "population is correct by checking it against the hardcoded expected population of that city.");
+    }
+
+    // A test to prove that the report16 function gets a report showing the top N populated cities in a district.
+    @Test
+    void testReport16()
+    {
+        int city_expected_population = 201843;
+        int city_population = sql.report16(5).get(0).getPopulation();
+        assertEquals(city_expected_population, city_population, "This asserts that the first city in the ArrayLists" +
+                "population is correct by checking it against the hardcoded expected population of that city.");
+    }
+
     // A test to prove that the report17 function gets a report showing all the capital cities in the
     // world organised by largest population to smallest.
     @Test

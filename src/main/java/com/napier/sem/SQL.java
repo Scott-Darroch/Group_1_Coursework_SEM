@@ -419,10 +419,12 @@ public class SQL {
     /**
      * Function that gets a list of the top 7 most populated cities in the world.
      * @author Scott Darroch
+     * @return cities
      * Date Last modified 02/04/2021
      * Last modified by: Scott
      */
-    public void report12() {
+    public ArrayList<City> report12() {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 12: The top 7 populated cities in the world.");
@@ -445,23 +447,27 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
-
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
     /**
      * Function that gets a list of the top 14 most populated cities in North America.
      * @author Scott Darroch
+     * @return cities
      * Date Last modified 02/04/2021
      * Last modified by: Scott
      */
-    public void report13() {
+    public ArrayList<City> report13() {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 13: The top 14 populated cities in the continent of North America.");
@@ -486,23 +492,28 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
+            return cities;
 
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
     /**
      * Function that gets a list of the top 3 most populated cities in Southern Europe.
      * @author Scott Darroch
+     * @return cities
      * Date Last modified 02/04/2021
      * Last modified by: Scott
      */
-    public void report14() {
+    public ArrayList<City> report14() {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 14: The top 3 populated cities in the region of Southern Europe.");
@@ -527,23 +538,27 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
-
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
     /**
      * Function that gets a list of the top 5 most populated cities in Japan.
      * @author Scott Darroch
+     * @return cities
      * Date Last modified 02/04/2021
      * Last modified by: Scott
      */
-    public void report15() {
+    public ArrayList<City> report15() {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 15: The top 5 populated cities in Japan.");
@@ -568,13 +583,15 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
-
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
@@ -582,10 +599,12 @@ public class SQL {
     /**
      * Outputs the top 'N' populated cities in a district (Noord-Brabant)
      * @author Adam Riddel
+     * @return cities
      * Date Last modified 04/04/2021
      * Last modified by: Adam
      */
-    public void report16(int n) {
+    public ArrayList<City> report16(int n) {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 16: The top 'N' populated cities in a district (Noord-Brabant).");
@@ -606,15 +625,15 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
+                cities.add(city);
             }
-
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
-
-
+            return cities;
         }
     }
 
