@@ -773,10 +773,12 @@ public class SQL {
     /**
      * Function that prints the report showing the top 'N' populated capital cities in the world.
      * @author Adam Riddell
+     * @return cities
      * Date Last modified 04/04/2021
      * Last modified by: Adam
      */
-    public void report20(int n) {
+    public ArrayList<City> report20(int n) {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 20: Top 'N' populated capital cities in the world.");
@@ -800,23 +802,27 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
-
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
     /**
      * Function that prints the report showing the top 'N' populated capital cities in a continent.
      * @author Adam Riddell
+     * @return cities
      * Date Last modified 04/04/2021
      * Last modified by: Adam
      */
-    public void report21(int n) {
+    public ArrayList<City> report21(int n) {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 21: Top 'N' populated capital cities in Europe.");
@@ -840,23 +846,27 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
-
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 
     /**
      * Function that prints the report showing the top 'N' populated capital cities in a region.
      * @author Adam Riddell
+     * @return cities
      * Date Last modified 04/04/2021
      * Last modified by: Adam
      */
-    public void report22(int n) {
+    public ArrayList<City> report22(int n) {
+        ArrayList<City> cities = new ArrayList<>();
         try
         {
             System.out.println("Report 22: Top 'N' populated cities in the Caribbean.");
@@ -880,13 +890,15 @@ public class SQL {
                 City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
                         rset.getString("district"), rset.getInt("population"));
                 System.out.println(city);
-
+                cities.add(city);
             }
+            return cities;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get population details");
+            return cities;
         }
     }
 

@@ -198,6 +198,36 @@ public class IntegrationTests {
                 "array is returned by checking the actual length returned against the hardcoded expected length.");
     }
 
+    // A test to prove that the report20 function gets a report showing the top N populated capital cities in the world.
+    @Test
+    void testReport20()
+    {
+        int city_expected_population = 9981619;
+        int city_population = sql.report20(5).get(0).getPopulation();
+        assertEquals(city_expected_population, city_population, "This asserts that the first capital city in the ArrayLists" +
+                "population is correct by checking it against the hardcoded expected population of that capital city.");
+    }
+
+    // A test to prove that the report21 function gets a report showing the top N populated capital cities in a continent.
+    @Test
+    void testReport21()
+    {
+        int city_expected_population = 8389200;
+        int city_population = sql.report21(5).get(0).getPopulation();
+        assertEquals(city_expected_population, city_population, "This asserts that the first capital city in the ArrayLists" +
+                "population is correct by checking it against the hardcoded expected population of that capital city.");
+    }
+
+    // A test to prove that the report22 function gets a report showing the top N populated capital cities in a region.
+    @Test
+    void testReport22()
+    {
+        int city_expected_population = 2256000;
+        int city_population = sql.report22(5).get(0).getPopulation();
+        assertEquals(city_expected_population, city_population, "This asserts that the first capital city in the ArrayLists" +
+                "population is correct by checking it against the hardcoded expected population of that capital city.");
+    }
+
     // A test to prove that the report23 function gets a report showing the population of each continent that
     // are living in cities and not living in cities.
     @Test
