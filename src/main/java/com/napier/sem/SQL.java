@@ -146,6 +146,40 @@ public class SQL {
     }
 
     /**
+     * Function that prints the report showing the top 'N' populated populated countries in the World
+     * @author Robert Denny
+     * Date Last modified: 6/4/2021
+     * Last modified by: Robert
+     */
+    public void report4(int n) {
+        try {
+            System.out.println("Report 4: The top 'N' populated countries in the World.");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
+                            + "FROM country, city "
+                            + "WHERE country.capital = city.ID "
+                            + "ORDER BY population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while (rset.next()) {
+                Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
+                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
+                System.out.println(coun);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+
+        }
+    }
+
+    /**
      * Function that gets the top 17 populated countries in the continent of Europe.
      * @author Scott Darroch
      * @return countries
