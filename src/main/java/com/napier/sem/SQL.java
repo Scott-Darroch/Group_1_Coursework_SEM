@@ -773,7 +773,7 @@ public class SQL {
                     "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
                             + "FROM city "
                             + "INNER JOIN country ON city.CountryCode = country.code "
-                            + "WHERE country.continent = 'Europe' "
+                            + "WHERE country.continent = 'Europe' AND city.ID = country.capital "
                             + "ORDER BY city.population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -818,7 +818,7 @@ public class SQL {
                     "SELECT city.name, city.CountryCode, country.name, city.population, country.code "
                             + "FROM city "
                             + "INNER JOIN country ON city.CountryCode = country.code "
-                            + "WHERE country.region = 'Caribbean' "
+                            + "WHERE country.region = 'Caribbean' AND country.capital = city.id "
                             + "ORDER BY city.population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);

@@ -72,10 +72,6 @@ public class App
         //Report #15: The top 5 most populated cities in Japan.
         sql.report15();
 
-        /*
-         * Leave room for 16
-         */
-
         //Report #16: Top 'N' populated cities in a district ()
         sql.report16(5);
 
