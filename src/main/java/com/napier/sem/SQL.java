@@ -186,9 +186,46 @@ public class SQL {
         }
     }
 
-    /*
-        Leave Room For 6
+    /**
+     * Function that gets the top n populated countries in the region.
+     * @author Adam Riddell
+     * @return countries
+     * Date Last modified 07/04/2021
+     * Last modified by: Adam
      */
+    public ArrayList<Country> report6(int n) {
+        ArrayList<Country> countries = new ArrayList<>();
+        try
+        {
+            System.out.println("Report 6: A report showing the top 'N' populated countries in .");
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name "
+                            + "FROM country, city "
+                            + "WHERE country.region = 'Caribbean' AND city.ID = country.capital "
+                            + "ORDER BY population DESC "
+                            + "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract country information
+            while (rset.next())
+            {
+                Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
+                        rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
+                System.out.println(coun);
+                countries.add(coun);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return countries;
+        }
+    }
 
 
     /**
