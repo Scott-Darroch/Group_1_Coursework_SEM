@@ -42,6 +42,9 @@ public class App
         //Report #5: The top 17 populated countries in the continent of Europe.
         sql.report5();
 
+        //Report #6: The top 'N' populated countries in the caribbean
+        sql.report6(5);
+
         //Report #7: All the cities in the world organised by largest population to smallest.
         sql.report7();
 
