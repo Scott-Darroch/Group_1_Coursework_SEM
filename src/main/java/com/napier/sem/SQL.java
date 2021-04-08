@@ -763,7 +763,7 @@ public class SQL {
         ArrayList<CapitalCity> capital_cities = new ArrayList<>();
         try{
 
-            System.out.println("Report #18: All the capital cities in a continent organised by largest population to smallest");
+            System.out.println("Report 18: All the capital cities in a continent organised by largest population to smallest");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -808,7 +808,7 @@ public class SQL {
         ArrayList<CapitalCity> capital_cities = new ArrayList<>();
         try{
 
-            System.out.println("Report #19: All the capital cities in a region organised by largest to smallest.");
+            System.out.println("Report 19: All the capital cities in a region organised by largest to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
