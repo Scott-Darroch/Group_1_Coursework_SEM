@@ -7,9 +7,10 @@ import java.sql.*;
  * our calls to SQL.java to do our report functions.
  * @author Euan Holmes,
  * @author Adam Riddell,
- * @author Scott Darroch
- * Date Last modified 02/04/2021
- * Last modified by: Euan
+ * @author Scott Darroch,
+ * @author Robert Denny
+ * Date Last modified 08/04/2021
+ * Last modified by: Robert
  */
 public class App
 {
@@ -40,7 +41,7 @@ public class App
         sql.report4(3);
 
         //Report #5: The top 17 populated countries in the continent of Europe.
-        sql.report5();
+        sql.report5(15);
 
         //Report #6: The top 'N' populated countries in the caribbean
         sql.report6(5);

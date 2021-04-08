@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * @author Adam Riddell,
  * @author Scott Darroch,
  * @author Robert Denny
- * Date Last modified 23/3/2021
- * Last modified by: Euan
+ * Date Last modified 8/4/2021
+ * Last modified by: Robert
  */
 public class SQL {
 
@@ -181,13 +181,13 @@ public class SQL {
     }
 
     /**
-     * Function that gets the top 17 populated countries in the continent of Europe.
+     * Function that gets the top 'N' populated countries in the continent of Europe.
      * @author Scott Darroch
      * @return countries
      * Date Last modified 06/04/2021
      * Last modified by: Scott
      */
-    public ArrayList<Country> report5() {
+    public ArrayList<Country> report5(int n) {
         ArrayList<Country> countries = new ArrayList<>();
         try
         {
@@ -200,7 +200,7 @@ public class SQL {
                             + "FROM country, city "
                             + "WHERE country.continent = 'Europe' AND country.capital = city.ID "
                             + "ORDER BY country.population DESC "
-                            + "LIMIT 17 ";
+                            + "LIMIT " +n;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
@@ -485,9 +485,6 @@ public class SQL {
         }
     }
 
-    /*
-        Leave Room For 12-16
-     */
     /**
      * Function that gets a list of the top 7 most populated cities in the world.
      * @author Scott Darroch
