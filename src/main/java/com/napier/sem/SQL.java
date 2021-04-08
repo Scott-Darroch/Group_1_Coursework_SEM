@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * @author Adam Riddell,
  * @author Scott Darroch,
  * @author Robert Denny
- * Date Last modified 23/3/2021
- * Last modified by: Euan
+ * Date Last modified 08/04/2021
+ * Last modified by: Robert
  */
 public class SQL {
 
@@ -184,8 +184,8 @@ public class SQL {
      * Function that gets the top 'N' populated countries in the continent of Europe.
      * @author Scott Darroch
      * @return countries
-     * Date Last modified 06/04/2021
-     * Last modified by: Scott
+     * Date Last modified 08/04/2021
+     * Last modified by: Robert
      */
     public ArrayList<Country> report5(int n) {
         ArrayList<Country> countries = new ArrayList<>();
@@ -489,8 +489,8 @@ public class SQL {
      * Function that gets a list of the top 'N' most populated cities in the world.
      * @author Scott Darroch
      * @return cities
-     * Date Last modified 02/04/2021
-     * Last modified by: Scott
+     * Date Last modified 08/04/2021
+     * Last modified by: Robert
      */
     public ArrayList<City> report12(int n) {
         ArrayList<City> cities = new ArrayList<>();
@@ -532,8 +532,8 @@ public class SQL {
      * Function that gets a list of the top 'N' most populated cities in North America.
      * @author Scott Darroch
      * @return cities
-     * Date Last modified 02/04/2021
-     * Last modified by: Scott
+     * Date Last modified 08/04/2021
+     * Last modified by: Robert
      */
     public ArrayList<City> report13(int n) {
         ArrayList<City> cities = new ArrayList<>();
@@ -578,8 +578,8 @@ public class SQL {
      * Function that gets a list of the top 'N' most populated cities in Southern Europe.
      * @author Scott Darroch
      * @return cities
-     * Date Last modified 02/04/2021
-     * Last modified by: Scott
+     * Date Last modified 08/04/2021
+     * Last modified by: Robert
      */
     public ArrayList<City> report14(int n) {
         ArrayList<City> cities = new ArrayList<>();
@@ -623,8 +623,8 @@ public class SQL {
      * Function that gets a list of the top 'N' most populated cities in Japan.
      * @author Scott Darroch
      * @return cities
-     * Date Last modified 02/04/2021
-     * Last modified by: Scott
+     * Date Last modified 08/04/2021
+     * Last modified by: Robert
      */
     public ArrayList<City> report15(int n) {
         ArrayList<City> cities = new ArrayList<>();
