@@ -11,8 +11,8 @@ import java.util.ArrayList;
  * @author Adam Riddell,
  * @author Scott Darroch,
  * @author Robert Denny
- * Date Last modified 8/4/2021
- * Last modified by: Robert
+ * Date Last modified 23/3/2021
+ * Last modified by: Euan
  */
 public class SQL {
 
@@ -191,7 +191,7 @@ public class SQL {
         ArrayList<Country> countries = new ArrayList<>();
         try
         {
-            System.out.println("Report 5: A report showing the top 17 populated countries in Europe.");
+            System.out.println("Report 5: A report showing the top 'N' populated countries in Europe.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -222,7 +222,7 @@ public class SQL {
     }
 
     /**
-     * Function that gets the top n populated countries in the region.
+     * Function that gets the top 'N' populated countries in the region.
      * @author Adam Riddell
      * @return countries
      * Date Last modified 07/04/2021
@@ -486,17 +486,17 @@ public class SQL {
     }
 
     /**
-     * Function that gets a list of the top 7 most populated cities in the world.
+     * Function that gets a list of the top 'N' most populated cities in the world.
      * @author Scott Darroch
      * @return cities
      * Date Last modified 02/04/2021
      * Last modified by: Scott
      */
-    public ArrayList<City> report12() {
+    public ArrayList<City> report12(int n) {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 12: The top 7 populated cities in the world.");
+            System.out.println("Report 12: The top 'N' populated cities in the world.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -504,7 +504,7 @@ public class SQL {
                     "SELECT ID, name, CountryCode, district, population "
                             + "FROM city "
                             + "ORDER BY population DESC "
-                            + "LIMIT 7 ";
+                            + "LIMIT " + n;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -529,17 +529,17 @@ public class SQL {
     }
 
     /**
-     * Function that gets a list of the top 14 most populated cities in North America.
+     * Function that gets a list of the top 'N' most populated cities in North America.
      * @author Scott Darroch
      * @return cities
      * Date Last modified 02/04/2021
      * Last modified by: Scott
      */
-    public ArrayList<City> report13() {
+    public ArrayList<City> report13(int n) {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 13: The top 14 populated cities in the continent of North America.");
+            System.out.println("Report 13: The top 'N' populated cities in the continent of North America.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -549,7 +549,7 @@ public class SQL {
                             + "INNER JOIN country ON city.CountryCode = country.Code "
                             + "WHERE country.continent = 'North America' "
                             + "ORDER BY population DESC "
-                            + "LIMIT 14 ";
+                            + "LIMIT " + n;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -575,17 +575,17 @@ public class SQL {
     }
 
     /**
-     * Function that gets a list of the top 3 most populated cities in Southern Europe.
+     * Function that gets a list of the top 'N' most populated cities in Southern Europe.
      * @author Scott Darroch
      * @return cities
      * Date Last modified 02/04/2021
      * Last modified by: Scott
      */
-    public ArrayList<City> report14() {
+    public ArrayList<City> report14(int n) {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 14: The top 3 populated cities in the region of Southern Europe.");
+            System.out.println("Report 14: The top 'N' populated cities in the region of Southern Europe.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -595,7 +595,7 @@ public class SQL {
                             + "INNER JOIN country ON city.CountryCode = country.Code "
                             + "WHERE country.region = 'Southern Europe' "
                             + "ORDER BY population DESC "
-                            + "LIMIT 3 ";
+                            + "LIMIT " + n;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -620,17 +620,17 @@ public class SQL {
     }
 
     /**
-     * Function that gets a list of the top 5 most populated cities in Japan.
+     * Function that gets a list of the top 'N' most populated cities in Japan.
      * @author Scott Darroch
      * @return cities
      * Date Last modified 02/04/2021
      * Last modified by: Scott
      */
-    public ArrayList<City> report15() {
+    public ArrayList<City> report15(int n) {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 15: The top 5 populated cities in Japan.");
+            System.out.println("Report 15: The top 'N' populated cities in Japan.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -640,7 +640,7 @@ public class SQL {
                             + "INNER JOIN country ON city.CountryCode = country.Code "
                             + "WHERE country.name = 'Japan' "
                             + "ORDER BY population DESC "
-                            + "LIMIT 5 ";
+                            + "LIMIT " + n;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 

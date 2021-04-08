@@ -40,7 +40,7 @@ public class App
         //"Report #4: The top 'N' populated countries in the World."
         sql.report4(3);
 
-        //Report #5: The top 17 populated countries in the continent of Europe.
+        //Report #5: The top 'N' populated countries in the continent of Europe.
         sql.report5(15);
 
         //Report #6: The top 'N' populated countries in the caribbean
@@ -61,17 +61,17 @@ public class App
         //Report #11: population of each city in (District) Noord_Brabant
         sql.report11();
 
-        //Report #12: The top 7 populated cities in the world.
-        sql.report12();
+        //Report #12: The top 'N' populated cities in the world.
+        sql.report12(10);
 
-        //Report #13: The top 14 populated cities in the continent of North America.
-        sql.report13();
+        //Report #13: The top 'N' populated cities in the continent of North America.
+        sql.report13(15);
 
-        //Report #14: The top 3 populated cities in the region of Southern Europe.
-        sql.report14();
+        //Report #14: The top 'N' populated cities in the region of Southern Europe.
+        sql.report14(5);
 
-        //Report #15: The top 5 most populated cities in Japan.
-        sql.report15();
+        //Report #15: The top 'N' most populated cities in Japan.
+        sql.report15(5);
 
         //Report #16: Top 'N' populated cities in a district ()
         sql.report16(5);

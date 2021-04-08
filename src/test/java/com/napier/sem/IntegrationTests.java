@@ -121,7 +121,7 @@ public class IntegrationTests {
     void testReport12()
     {
         int city_expected_population = 10500000;
-        int city_population = sql.report12().get(0).getPopulation();
+        int city_population = sql.report12(10).get(0).getPopulation();
         assertEquals(city_expected_population, city_population, "This asserts that the first city in the ArrayLists" +
                 "population is correct by checking against the hardcoded expected population of that city.");
     }
@@ -131,7 +131,7 @@ public class IntegrationTests {
     void testReport13()
     {
         int city_expected_population = 8591309;
-        int city_population = sql.report13().get(0).getPopulation();
+        int city_population = sql.report13(15).get(0).getPopulation();
         assertEquals(city_expected_population, city_population, "This asserts that the first city in the ArrayLists" +
                 "population is correct by checking it against the hardcoded expected population of that city.");
     }
@@ -141,7 +141,7 @@ public class IntegrationTests {
     void testReport14()
     {
         int city_expected_population = 2879052;
-        int city_population = sql.report14().get(0).getPopulation();
+        int city_population = sql.report14(5).get(0).getPopulation();
         assertEquals(city_expected_population, city_population, "This asserts that the first city in the ArrayLists" +
                 "population is correct by checking it against the hardcoded expected population of that city.");
     }
@@ -151,7 +151,7 @@ public class IntegrationTests {
     void testReport15()
     {
         int city_expected_population = 7980230;
-        int city_population = sql.report15().get(0).getPopulation();
+        int city_population = sql.report15(5).get(0).getPopulation();
         assertEquals(city_expected_population, city_population, "This asserts that the first city in the ArrayLists" +
                 "population is correct by checking it against the hardcoded expected population of that city.");
     }
