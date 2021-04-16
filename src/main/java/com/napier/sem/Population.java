@@ -59,7 +59,7 @@ public class Population {
     //toString() method for class.
     @Override
     public String toString() {
-        return String.format("%-40s %-18s %-18s %-12s", this.name, this.total_population, this.total_population_in_cities, this.total_population_not_in_cities);
+        return String.format("%-40s %-18s %-18s %-12s", this.name, this.total_population, (this.total_population_in_cities + " ("+ (((this.total_population_in_cities)/(this.total_population))*100)+"%)"), this.total_population_not_in_cities+ " ("+ (this.total_population_not_in_cities/this.total_population)*100+"%)");
     }
 
 }

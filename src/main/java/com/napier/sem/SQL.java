@@ -34,7 +34,7 @@ public class SQL {
         ArrayList<Country> countries = new ArrayList<>();
         try
         {
-            System.out.println("Report 1: A report showing all countries in the world in order of largest to smallest population.");
+            System.out.println("Report #1: A report showing all countries in the world in order of largest to smallest population.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -47,6 +47,7 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
 
+            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
             while (rset.next())
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
@@ -87,6 +88,8 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
+
+            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
             while (rset.next())
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
@@ -116,7 +119,7 @@ public class SQL {
         ArrayList<Country> countries = new ArrayList<>();
         try
         {
-            System.out.println("Report 3: A report showing the population of the countries in the Caribbean in order of largest to smallest.");
+            System.out.println("Report #3: A report showing the population of the countries in the Caribbean in order of largest to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -128,6 +131,8 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
+
+            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
             while (rset.next())
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
@@ -153,7 +158,7 @@ public class SQL {
      */
     public void report4(int n) {
         try {
-            System.out.println("Report 4: The top 'N' populated countries in the World.");
+            System.out.println("Report #4: The top 'N' populated countries in the World.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -166,6 +171,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
             while (rset.next()) {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
                         rset.getString("country.region"),rset.getInt("country.population"),rset.getString("city.name"));
@@ -190,7 +196,7 @@ public class SQL {
         ArrayList<Country> countries = new ArrayList<>();
         try
         {
-            System.out.println("Report 5: A report showing the top 17 populated countries in Europe.");
+            System.out.println("Report #5: A report showing the top 17 populated countries in Europe.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -203,6 +209,8 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
+
+            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
             while (rset.next())
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
@@ -231,7 +239,7 @@ public class SQL {
         ArrayList<Country> countries = new ArrayList<>();
         try
         {
-            System.out.println("Report 6: A report showing the top 'N' populated countries in .");
+            System.out.println("Report #6: A report showing the top 'N' populated countries in .");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -244,6 +252,8 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
+
+            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
             while (rset.next())
             {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
@@ -273,7 +283,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 7: All the cities in the world organised by largest population to smallest.");
+            System.out.println("Report #7: All the cities in the world organised by largest population to smallest.");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -284,6 +294,8 @@ public class SQL {
                             + "ORDER BY population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
+
+            System.out.printf("%-8s %-30s %-8s %-30s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
 
             while (rset.next())
             {
@@ -314,7 +326,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 8: The population of each city in Asia ordered from largest population to smallest.");
+            System.out.println("Report #8: The population of each city in Asia ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -360,7 +372,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 9: The population of each city in The Caribbean ordered from largest population to smallest.");
+            System.out.println("Report #9: The population of each city in The Caribbean ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -373,6 +385,8 @@ public class SQL {
                             + "ORDER BY city.population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
+
+            System.out.printf("%-8s %-30s %-8s %-30s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
 
             while (rset.next())
             {
@@ -403,7 +417,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 10: The population of each city in Scotland ordered from largest population to smallest.");
+            System.out.println("Report #10: The population of each city in Scotland ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -452,7 +466,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 11: The population of each city in Noord_Brabant ordered from largest population to smallest.");
+            System.out.println("Report #11: The population of each city in Noord_Brabant ordered from largest population to smallest.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -498,7 +512,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 12: The top 7 populated cities in the world.");
+            System.out.println("Report #12: The top 7 populated cities in the world.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -541,7 +555,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 13: The top 14 populated cities in the continent of North America.");
+            System.out.println("Report #13: The top 14 populated cities in the continent of North America.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -555,8 +569,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            // Print header
-            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+            System.out.printf("%-8s %-30s %-8s %-30s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
 
             while (rset.next())
             {
@@ -587,7 +600,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 14: The top 3 populated cities in the region of Southern Europe.");
+            System.out.println("Report #14: The top 3 populated cities in the region of Southern Europe.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -632,7 +645,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 15: The top 5 populated cities in Japan.");
+            System.out.println("Report #15: The top 5 populated cities in Japan.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -678,7 +691,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 16: The top 'N' populated cities in a district (Noord-Brabant).");
+            System.out.println("Report #16: The top 'N' populated cities in a district (Noord-Brabant).");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -690,6 +703,8 @@ public class SQL {
                             + "LIMIT " + n;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
+
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
@@ -719,7 +734,7 @@ public class SQL {
         ArrayList<City> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 17: All the capital cities in the world organised by largest population to smallest.");
+            System.out.println("Report #17: All the capital cities in the world organised by largest population to smallest.");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -733,6 +748,8 @@ public class SQL {
                             + "ORDER BY city.population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
+
+            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
@@ -777,6 +794,8 @@ public class SQL {
                             + "ORDER BY city.population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
+
+            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
 
             while (rset.next()) {
                 CapitalCity city = new CapitalCity(rset.getString("city.name"),rset.getString("country.name"),rset.getInt("city.population"));
@@ -823,6 +842,8 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
+
             while (rset.next()) {
                 CapitalCity city = new CapitalCity(rset.getString("city.name"),rset.getString("country.name"),rset.getInt("city.population"));
                 String CapitalCity_string =
@@ -848,17 +869,17 @@ public class SQL {
      * Date Last modified 04/04/2021
      * Last modified by: Adam
      */
-    public ArrayList<City> report20(int n) {
-        ArrayList<City> cities = new ArrayList<>();
+    public ArrayList<CapitalCity> report20(int n) {
+        ArrayList<CapitalCity> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 20: Top 'N' populated capital cities in the world.");
+            System.out.println("Report #20: Top 'N' populated capital cities in the world.");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population, country.name "
                             + "FROM city "
                             + "INNER JOIN country ON city.CountryCode = country.Code "
                             + "WHERE city.ID = country.capital AND city.ID = country.capital "
@@ -868,11 +889,15 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
+
             while (rset.next())
             {
-                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
-                        rset.getString("district"), rset.getInt("population"));
-                System.out.println(city);
+                CapitalCity city = new CapitalCity(rset.getString("city.name"),rset.getString("country.name"),rset.getInt("city.population"));
+                String CapitalCity_string =
+                        String.format("%-30s %-35s %-15s",
+                                city.getName(), city.getCountry(), city.getPopulation());
+                System.out.println(CapitalCity_string);
                 cities.add(city);
             }
             return cities;
@@ -892,17 +917,17 @@ public class SQL {
      * Date Last modified 04/04/2021
      * Last modified by: Adam
      */
-    public ArrayList<City> report21(int n) {
-        ArrayList<City> cities = new ArrayList<>();
+    public ArrayList<CapitalCity> report21(int n) {
+        ArrayList<CapitalCity> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 21: Top 'N' populated capital cities in Europe.");
+            System.out.println("Report #21: Top 'N' populated capital cities in Europe.");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population, country.name "
                             + "FROM city "
                             + "INNER JOIN country ON city.CountryCode = country.Code "
                             + "WHERE country.continent = 'Europe' AND city.ID = country.capital "
@@ -912,11 +937,15 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
+
             while (rset.next())
             {
-                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
-                        rset.getString("district"), rset.getInt("population"));
-                System.out.println(city);
+                CapitalCity city = new CapitalCity(rset.getString("city.name"),rset.getString("country.name"),rset.getInt("city.population"));
+                String CapitalCity_string =
+                        String.format("%-30s %-35s %-15s",
+                                city.getName(), city.getCountry(), city.getPopulation());
+                System.out.println(CapitalCity_string);
                 cities.add(city);
             }
             return cities;
@@ -936,17 +965,17 @@ public class SQL {
      * Date Last modified 04/04/2021
      * Last modified by: Adam
      */
-    public ArrayList<City> report22(int n) {
-        ArrayList<City> cities = new ArrayList<>();
+    public ArrayList<CapitalCity> report22(int n) {
+        ArrayList<CapitalCity> cities = new ArrayList<>();
         try
         {
-            System.out.println("Report 22: Top 'N' populated cities in the Caribbean.");
+            System.out.println("Report #22: Top 'N' populated cities in the Caribbean.");
 
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population "
+                    "SELECT city.ID, city.name, city.CountryCode, city.district, city.population, country.name "
                             + "FROM city "
                             + "INNER JOIN country ON city.CountryCode = country.Code "
                             + "WHERE country.region = 'Caribbean' AND city.ID = country.capital "
@@ -956,11 +985,15 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
+
             while (rset.next())
             {
-                City city = new City(rset.getInt("ID"), rset.getString("name"),rset.getString("CountryCode"),
-                        rset.getString("district"), rset.getInt("population"));
-                System.out.println(city);
+                CapitalCity city = new CapitalCity(rset.getString("city.name"),rset.getString("country.name"),rset.getInt("city.population"));
+                String CapitalCity_string =
+                        String.format("%-30s %-35s %-15s",
+                                city.getName(), city.getCountry(), city.getPopulation());
+                System.out.println(CapitalCity_string);
                 cities.add(city);
             }
             return cities;
@@ -984,7 +1017,7 @@ public class SQL {
         ArrayList<Population> populations = new ArrayList<>();
         try
         {
-            System.out.println("Report 23: The population of a continent living in cities and not living in cities.");
+            System.out.println("Report #23: The population of a continent living in cities and not living in cities.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -1029,7 +1062,7 @@ public class SQL {
         ArrayList<Population> populations = new ArrayList<>();
         try
         {
-            System.out.println("Report 24: The population of a region living in cities and not living in cities.");
+            System.out.println("Report #24: The population of a region living in cities and not living in cities.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
@@ -1076,7 +1109,7 @@ public class SQL {
         ArrayList<Population> populations = new ArrayList<>();
         try
         {
-            System.out.println("Report 25: The population of each country living in cities and not living in cities.");
+            System.out.println("Report #25: The population of each country living in cities and not living in cities.");
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
