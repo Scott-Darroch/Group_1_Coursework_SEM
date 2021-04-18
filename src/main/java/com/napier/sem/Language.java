@@ -6,8 +6,8 @@ package com.napier.sem;
  * @author Adam Riddell,
  * @author Scott Darroch,
  * @author Robert Denny
- * Date Last modified 23/3/2021
- * Last modified by: Euan
+ * Date Last modified 18/4/2021
+ * Last modified by: Scott
  */
 public class Language {
     //Private variables for name, language number percentage of that language.
@@ -54,6 +54,6 @@ public class Language {
     //toString() method for class.
     @Override
     public String toString() {
-        return name + "\t" + language_num + "\t" + language_percent + "%";
+        return String.format("%-31s %-40s %-25s", this.name, this.language_num, this.language_percent);
     }
 }

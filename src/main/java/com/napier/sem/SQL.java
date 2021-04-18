@@ -1327,12 +1327,13 @@ public class SQL {
      * greatest number to smallest.
      * @author Euan Holmes
      * @return languages
-     * Date Last modified 10/3/2021
-     * Last modified by: Euan
+     * Date Last modified 18/4/2021
+     * Last modified by: Scott
      */
     public Language[] report32() {
         System.out.println("Report 32: The number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest including world population.");
-        System.out.println("Language:\tNumber of People who speak the language:\tPercentage of world population");
+        // Print header
+        System.out.println(String.format("%-11s %-40s %-18s", "Language", "Number of People who speak the language:", "Percentage of world population"));
 
         Language chinese = new Language("'Chinese'");
         Language english = new Language("'English'");
