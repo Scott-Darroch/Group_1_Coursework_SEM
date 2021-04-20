@@ -2,6 +2,8 @@ package com.napier.sem;
 
 import java.sql.*;
 
+import static java.lang.System.*;
+
 /**
  * Main app class that contains the connect() and disconnect() function for our database. Also contains
  * our calls to SQL.java to do our report functions.
@@ -124,7 +126,7 @@ public class App
         //Report #32 :Percentage share of each language compared to world population
         sql.report32();
 
-        System.out.println("End of Reports.");
+        out.println("End of Reports.");
 
         // Disconnect from database
         a.disconnect();
@@ -147,31 +149,31 @@ public class App
         }
         catch (ClassNotFoundException e)
         {
-            System.out.println("Could not load SQL driver");
-            System.exit(-1);
+            out.println("Could not load SQL driver");
+            exit(-1);
         }
 
         int retries = 10;
         for (int i = 0; i < retries; ++i)
         {
-            System.out.println("Connecting to database...");
+            out.println("Connecting to database...");
             try
             {
                 // Wait a bit for db to start
                 Thread.sleep(10000);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
-                System.out.println("Successfully connected");
+                out.println("Successfully connected");
                 break;
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + i);
-                System.out.println(sqle.getMessage());
+                out.println("Failed to connect to database attempt " + i);
+                out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
             {
-                System.out.println("Thread interrupted? Should not happen.");
+                out.println("Thread interrupted? Should not happen.");
             }
         }
     }
@@ -195,7 +197,7 @@ public class App
             }
             catch (Exception e)
             {
-                System.out.println("Error closing connection to database");
+                out.println("Error closing connection to database");
             }
         }
     }
