@@ -50,7 +50,7 @@ public class SQL {
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country information
 
-            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+            out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
 
             while (rset.next())
             {
@@ -92,7 +92,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+            out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
 
             // Extract country information
             while (rset.next())
@@ -136,7 +136,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+            out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
 
             // Extract country information
             while (rset.next())
@@ -177,7 +177,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+            out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
 
             while (rset.next()) {
                 Country coun = new Country(rset.getString("country.code"),rset.getString("country.name"),rset.getString("country.continent"),
@@ -216,7 +216,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+            out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
 
             // Extract country information
             while (rset.next())
@@ -260,7 +260,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+            out.println(String.format("%-5s %-48s %-20s %-30s %-15s %-15s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
 
             // Extract country information
             while (rset.next())
@@ -304,7 +304,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.printf("%-8s %-30s %-8s %-30s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
+            out.printf("%-8s %-30s %-8s %-30s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
 
             while (rset.next())
             {
@@ -395,7 +395,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.printf("%-8s %-30s %-8s %-30s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
+            out.printf("%-8s %-30s %-8s %-30s %-10s%n", "City ID", "City Name", "Country", "District", "Population");
 
             while (rset.next())
             {
@@ -711,7 +711,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+            out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
@@ -756,7 +756,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
+            out.println(String.format("%-8s %-30s %-8s %-30s %-10s", "City ID", "City Name", "Country", "District", "Population"));
 
             while (rset.next())
             {
@@ -802,7 +802,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
+            out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
 
             while (rset.next()) {
                 CapitalCity city = new CapitalCity(rset.getString("city.name"),rset.getString("country.name"),rset.getInt("city.population"));
@@ -849,7 +849,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
+            out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
 
             while (rset.next()) {
                 CapitalCity city = new CapitalCity(rset.getString("city.name"),rset.getString("country.name"),rset.getInt("city.population"));
@@ -896,7 +896,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
+            out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
 
             while (rset.next())
             {
@@ -942,7 +942,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
+            out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
 
             while (rset.next())
             {
@@ -988,7 +988,7 @@ public class SQL {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
+            out.println(String.format("%-30s %-35s %-15s", "City Name", "Country Name", "Population"));
 
             while (rset.next())
             {
