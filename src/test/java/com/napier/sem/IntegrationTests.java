@@ -182,7 +182,7 @@ public class IntegrationTests {
     @Test
     void testReport18()
     {
-        int capital_cities_expected_length = 841;
+        int capital_cities_expected_length = 46;
         int capital_cities_length = sql.report18().size();
         assertEquals(capital_cities_expected_length, capital_cities_length, "This asserts that the whole capital cities " +
                 "array is returned by checking the actual length returned against the hardcoded expected length.");
@@ -193,7 +193,7 @@ public class IntegrationTests {
     @Test
     void testReport19()
     {
-        int capital_cities_expected_length = 58;
+        int capital_cities_expected_length = 24;
         int capital_cities_length = sql.report19().size();
         assertEquals(capital_cities_expected_length, capital_cities_length, "This asserts that the whole capital cities " +
                 "array is returned by checking the actual length returned against the hardcoded expected length.");
