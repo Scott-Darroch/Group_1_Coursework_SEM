@@ -17,7 +17,7 @@ There are 32 requirements in total. 32 have been implemented which is 100%.
 
 | ID | Name | Met | Screenshot | Conditions |
 | --- | --- | --- | --- | --- |
-| 1 | All the countries in the world organised by largest population to smallest. | Yes | ![] | World |
+| 1 | All the countries in the world organised by largest population to smallest. | Yes | ![![](screenshots/Report1.png)] | World |
 | 2 | All the countries in a continent organised by largest population to smallest. | Yes | ![] | Africa |
 | 3 | All the countries in a region organised by largest population to smallest. | Yes | ![] | Caribbean |
 | 4 | The top N populated countries in the world where N is provided by the user. | Yes | ![] | World, Top 3 |
