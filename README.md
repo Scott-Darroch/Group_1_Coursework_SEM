@@ -48,4 +48,4 @@ There are 32 requirements in total. 32 have been implemented which is 100%.
 | 29 | The population of a country. | Yes | ![](screenshots/Report29.png) | Spain |
 | 30 | The population of a district. | Yes | ![](screenshots/Report30.png) | New South Wales |
 | 31 | The population of a city. | Yes | ![](screenshots/Report31.png)| London |
-| 32 | The population of Chinese, Hindi, Spanish, English and Arabic speakers. | Yes | ![] |  |
+| 32 | The population of Chinese, Hindi, Spanish, English and Arabic speakers. | Yes | ![](screenshots/Report32.png) |  |
